@@ -17,4 +17,8 @@ Rails.application.routes.draw do
       resources :movies, only: [:index]
     end
   end
+
+  get "watchlists/:id/follow", to: "watchlist#follow", as: :follow_watchlist
+  get "users/:id/follow", to: "user#follow", as: :follow_user
+
 end
