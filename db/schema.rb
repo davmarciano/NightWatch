@@ -10,10 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_01_123550) do
+ActiveRecord::Schema.define(version: 2019_12_01_150612) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "movies", force: :cascade do |t|
+    t.string "title"
+    t.string "year"
+    t.string "genres"
+    t.string "directors"
+    t.string "actors"
+    t.string "plot"
+    t.string "language"
+    t.string "poster"
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string "content"
+    t.integer "rating"
+    t.bigint "movie_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_reviews_on_movie_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +48,33 @@ ActiveRecord::Schema.define(version: 2019_12_01_123550) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "profile_picture"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "watchlist_movies", force: :cascade do |t|
+    t.bigint "movies_id"
+    t.bigint "watchlist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movies_id"], name: "index_watchlist_movies_on_movies_id"
+    t.index ["watchlist_id"], name: "index_watchlist_movies_on_watchlist_id"
+  end
+
+  create_table "watchlists", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_watchlists_on_user_id"
+  end
+
+  add_foreign_key "reviews", "movies"
+  add_foreign_key "reviews", "users"
+  add_foreign_key "watchlist_movies", "movies", column: "movies_id"
+  add_foreign_key "watchlist_movies", "watchlists"
+  add_foreign_key "watchlists", "users"
 end
