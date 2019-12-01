@@ -6,5 +6,9 @@ class User < ApplicationRecord
 
   acts_as_follower
   acts_as_followable
+
+  def follow
+  end
+
 end
 
