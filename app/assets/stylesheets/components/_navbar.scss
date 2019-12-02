@@ -1,11 +1,14 @@
 /*navbar top*/
 .navbar-lewagon {
+  -webkit-box-pack: end;
   justify-content: flex-end;
   background: white;
   padding-right: 70px;
   width: 100vw;
+  -webkit-box-align: start;
   align-items: flex-start;
-  height: 25vh;
+  height: 6vh;
+  z-index: 0;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -44,6 +47,7 @@
   height: 25vh;
   color: white;
   padding-top: 10px;
+  z-index: -1;
 }
 
 .navbar-purple .navbar-collapse {
