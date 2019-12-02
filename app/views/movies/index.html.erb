@@ -3,12 +3,14 @@
 
 <ul>
   <% @movies.each do |movie|  %>
-    <div class="card" style="width: 18rem;">
-      <img src="<%= movie.poster %>" class="card-img-top" alt="Movie Poster">
-      <div class="card-body">
-        <p class="card-text"> <%= movie.title %> </p>
-        <p class="card-text"> <%= movie.year %> </p>
+    <%= link_to movie_path(movie) do %>
+      <div class="card" style="width: 18rem;">
+        <img src="<%= movie.poster %>" class="card-img-top" alt="Movie Poster">
+        <div class="card-body">
+          <p class="card-text"> <%= movie.title %> </p>
+          <p class="card-text"> <%= movie.year %> </p>
+        </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
 </ul>
