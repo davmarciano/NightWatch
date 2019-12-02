@@ -6,7 +6,7 @@
     <div class="row" style="justify-content: space-evenly;">
 
       <% @movies.each do |movie|  %>
-      <%= link_to movie_path(movie) do  %>
+      <%= link_to movie_path(movie), class: "movie-card-link" do  %>
         <div class="movie-card">
           <img src="<%= movie.poster %>" class="card-img-top" alt="Movie Poster">
           <p> <%= movie.title %> </p>
