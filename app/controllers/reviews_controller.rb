@@ -1,17 +1,18 @@
 class ReviewsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index]
 
   def new
     @movie = Movie.find(params[:movie_id])
-    @movie_review = Review.new
+    @review = Review.new
   end
 
   def create
     @review = Review.new(review_params)
     @movie = Movie.find(params[:movie_id])
     @review.movie = @movie
+    @review.user = current_user
+      authorize @review
     if @review.save
-      redirect_to new_review_path
+      redirect_to movie_path(@movie)
     else
       flash[:alert] = "Something went wrong."
       render :new
@@ -30,5 +31,11 @@ class ReviewsController < ApplicationController
   def destroy
     @movie = Movie.find(params[:movie_id])
     @movie.destroy
+  end
+
+  private
+
+  def review_params
+    params.require(:review).permit(:content, :rating)
   end
 end
