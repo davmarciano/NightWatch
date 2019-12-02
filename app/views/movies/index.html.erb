@@ -3,13 +3,11 @@
 
     <% @movies.each do |movie|  %>
       <div class="movie-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path movie.poster, height: 300, width: 400, crop: :fill %>')">
-
-         <%= movie.title %>, <%= movie.year %>, <%= movie.poster %>
+        <img src="<%= movie.poster %>" class="card-img-top" alt="Movie Poster">
+        <div class="card-body">
+          <p class="card-text"> <%= movie.title %> </p>
+          <p class="card-text"> <%= movie.year %> </p>
+        </div>
+    </div>
   <% end %>
-  </div>
-</div>
 
-
-<div class="card-category" >
-  Cool article
-</div>
