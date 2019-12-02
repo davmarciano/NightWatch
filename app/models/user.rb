@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :watchlists
+  has_many :movies, through: :watchlists
+
   acts_as_follower
   acts_as_followable
 end

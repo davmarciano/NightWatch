@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
 
   namespace :profile do
-    get "/home", to: "watchlists#home"
+    get "/", to: "watchlists#home"
     resources :watchlists, only: [:index] do
       resources :movies, only: [:index]
     end
