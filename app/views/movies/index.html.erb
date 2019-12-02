@@ -1,5 +1,14 @@
+
 <h1>Movies</h1>
-<p>Find me in app/views/movies/index.html.erb</p>
-<% @movies.each do |movie|  %>
-<%= movie.title %>, <%= movie.year %>, <%= movie.poster %>
-<% end %>
+
+<ul>
+  <% @movies.each do |movie|  %>
+    <div class="card" style="width: 18rem;">
+      <img src="<%= movie.poster %>" class="card-img-top" alt="Movie Poster">
+      <div class="card-body">
+        <p class="card-text"> <%= movie.title %> </p>
+        <p class="card-text"> <%= movie.year %> </p>
+      </div>
+    </div>
+  <% end %>
+</ul>
