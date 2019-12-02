@@ -1,6 +1,6 @@
 class WatchlistsController < ApplicationController
   def index
-   @watchlists = Watchlist.all
+    @watchlists = Watchlist.all
   end
 
   def follow

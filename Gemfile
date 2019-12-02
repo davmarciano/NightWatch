@@ -15,6 +15,8 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem 'pundit'
+
 
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 
