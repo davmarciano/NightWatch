@@ -1,11 +1,17 @@
 .movie-card {
-
+  // position: absolute;
+  // left: 346px;
+  // top: 218px;
+  width: 959.2px;
+  height: 220px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 .watchlist-card {
   // position: absolute;
-  width: 262.07px;
-  height: 154px;
+  width: 260px;
+  height: 150px;
   // left: 346px;
   // top: 201px;
   background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://source.unsplash.com/featured/?movies');

@@ -1,5 +1,15 @@
-<h1>Movies</h1>
-<p>Find me in app/views/movies/index.html.erb</p>
-<% @movies.each do |movie|  %>
-<%= movie.title %>, <%= movie.year %>, <%= movie.poster %>
-<% end %>
+<div class="content-container">
+  <h1>Movies</h1>
+
+    <% @movies.each do |movie|  %>
+      <div class="movie-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path movie.poster, height: 300, width: 400, crop: :fill %>')">
+
+         <%= movie.title %>, <%= movie.year %>, <%= movie.poster %>
+  <% end %>
+  </div>
+</div>
+
+
+<div class="card-category" >
+  Cool article
+</div>
