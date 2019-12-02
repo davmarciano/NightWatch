@@ -5,6 +5,13 @@ require 'net/http'
 require 'openssl'
 require 'json'
 
+
+puts "delete all movies"
+Movie.delete_all
+
+puts "creating new movies"
+
+
 url = "https://www.imdb.com/search/title/?count=100&groups=top_1000&sort=user_rating"
 
 html_file = open(url).read
@@ -26,7 +33,7 @@ html_doc.search('.lister-item-header a').each do |element|
   request["x-rapidapi-key"] = 'a9e7e3bad6mshcb94aa3721ff12dp112d21jsn12f2d81d3dab'
   response = http.request(request).read_body
 
- Movie.create(
+ Movie.create!(
     title: JSON.parse(response)["Title"],
     year: JSON.parse(response)["Year"],
     genres: JSON.parse(response)["Genre"],
@@ -37,3 +44,5 @@ html_doc.search('.lister-item-header a').each do |element|
     poster: JSON.parse(response)["Poster"],
   )
 end
+
+puts "movie created"
