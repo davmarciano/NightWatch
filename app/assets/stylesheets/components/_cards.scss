@@ -1,8 +1,10 @@
+//MOVIE CARD
+
 .movie-card {
   // position: absolute;
   // left: 346px;
   // top: 218px;
-  width: 150px;
+  width: 200px;
   height: auto;
   text-align: center;
   padding-top: 2px;
@@ -20,11 +22,19 @@
 
 .movie-card > p {
   margin-top: 8px;
-  text-decoration-style: none;
-}
-.movie-card > a {
 }
 
+.movie-card-link {
+  text-decoration: none;
+  color: $p-text;
+  &:hover {
+    color: $p-text;
+    text-decoration: none;
+    opacity: .5;
+  }
+}
+
+// WATCHLIST CARD
 
 .watchlist-card {
   // position: absolute;
@@ -44,6 +54,8 @@
   font-weight: bold;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
+
+// FRIENDS CARD
 
 .follower-card {
 
