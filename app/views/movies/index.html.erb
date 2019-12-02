@@ -1,5 +1,18 @@
-<h1>Movies</h1>
-<p>Find me in app/views/movies/index.html.erb</p>
-<% @movies.each do |movie|  %>
-<%= movie.title %>, <%= movie.year %>, <%= movie.poster %>
-<% end %>
+<div class="content-container">
+
+    <h1>Movies</h1>
+
+
+    <div class="row" style="justify-content: space-evenly;">
+
+      <% @movies.each do |movie|  %>
+      <%= link_to movie_path(movie) do  %>
+        <div class="movie-card">
+          <img src="<%= movie.poster %>" class="card-img-top" alt="Movie Poster">
+          <p> <%= movie.title %> </p>
+        </div>
+      <% end %>
+      <% end %>
+    </div>
+</div>
+

@@ -4,6 +4,8 @@ class Profile::WatchlistsController < ApplicationController
   end
 
   def home
-    @test = "test"
+    @test = 0
+    @movies = current_user.movies
+    @watchlists = current_user.watchlists
   end
 end
