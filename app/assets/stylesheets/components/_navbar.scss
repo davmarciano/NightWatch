@@ -1,26 +1,75 @@
-/* The sidebar menu */
-.sidenav {
-  height: 100%; /* Full-height: remove this if you want "auto" height */
-  width: 250px; /* Set the width of the sidebar */
-  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-  z-index: 1; /* Stay on top */
-  top: 0; /* Stay at the top */
-  left: 0;
-  background-color: #111; /* Black */
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 20px;
+/*navbar top*/
+.navbar-lewagon {
+  justify-content: flex-end;
+  background: white;
+  padding-right: 70px;
+  width: 100vw;
+  align-items: flex-start;
+  height: 25vh;
 }
 
-/* The navigation menu links */
-.sidenav a {
-  padding: 6px 8px 6px 16px;
+.navbar-lewagon .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-lewagon .navbar-brand img {
+  width: 40px;
+}
+
+.fas.fa-angle-down {
+  padding-left: 8px;
+  color: #BCBCBC;
+  &:hover {
+    text-decoration: none;
+    color: #30343F;
+  }
+}
+
+.link-navbar {
   text-decoration: none;
-  font-size: 25px;
-  color: #f1f1f1;
-  display: block;
+  color: #BCBCBC;
+  &:hover {
+    text-decoration: none;
+    color: #30343F;
+  }
 }
 
-/* When you mouse over the navigation links, change their color */
-.sidenav a:hover {
-  color: #818181;
+
+.navbar-purple {
+  justify-content: flex-end;
+  background: #653954;
+  padding-right: 70px;
+  width: 100vw;
+  align-items: flex-start;
+  height: 25vh;
+  color: white;
 }
+
+.navbar-purple .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-purple .navbar-brand img {
+  width: 40px;
+}
+
+.fas.fa-angle-down {
+  padding-left: 8px;
+  color: #BCBCBC;
+  &:hover {
+    text-decoration: none;
+    color: #30343F;
+  }
+}
+
+.link-navbar-purple {
+  text-decoration: none;
+  color: #BCBCBC;
+  &:hover {
+    text-decoration: none;
+    color: #30343F;
+  }
+}
+
+
+
