@@ -1,4 +1,5 @@
 class Profile::WatchlistsController < ApplicationController
+  render layout: 'application_white'
   def index
     @watchlists = Watchlist.all
   end
