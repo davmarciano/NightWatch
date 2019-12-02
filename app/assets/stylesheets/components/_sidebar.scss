@@ -28,7 +28,7 @@
 
 
 .sidenav-white {
-  height: 100vh; /* Full-height: remove this if you want "auto" height */
+  height: 75vh; /* Full-height: remove this if you want "auto" height */
   width: 250px; /* Set the width of the sidebar */
   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
   z-index: 1; /* Stay on top */
@@ -36,8 +36,8 @@
   left: 0;
   background-color: #FFFFFF; /* Black */
   overflow-x: hidden; /* Disable horizontal scroll */
-  margin-top: 130px;
   padding-left: 3px;
+  margin-top: 25vh;
 }
 
 /* The navigation menu links */
