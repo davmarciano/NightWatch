@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 
   resources :profiles, only: [:show]
 
-  get "watchlists/:id/follow", to: "watchlist#follow", as: :follow_watchlist
+  get "watchlists/:id/follow", to: "watchlists#follow", as: :follow_watchlist
   get "profiles/:id/follow", to: "profiles#follow", as: :follow_user
 
 end
