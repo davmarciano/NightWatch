@@ -10,3 +10,43 @@
     background-color: #e882a4;
   }
 }
+
+
+.button-pink-secondary {
+  background-color: $white;
+  color: $p-text;
+  border-radius: 32px;
+  padding: 16px;
+  border: 1px solid $pink;
+  &:hover {
+    text-decoration: none;
+    color: #818181;
+    background-color: transparent;
+  }
+}
+
+.button-pink-small {
+  background-color: $pink;
+  color: $white;
+  border-radius: 32px;
+  padding: 8px;
+  &:hover {
+    text-decoration: none;
+    color: $white;
+    background-color: #e882a4;
+  }
+}
+
+
+.button-pink-small-secondary {
+  background-color: $white;
+  color: $p-text;
+  border-radius: 32px;
+  padding: 8px;
+  border: 1px solid $pink;
+  &:hover {
+    text-decoration: none;
+    color: #818181;
+    background-color: transparent;
+  }
+}
