@@ -11,12 +11,12 @@
   </head>
 
   <body>
-    <%= render 'shared/navbar_white' %>
     <div class="d-flex">
       <div>
         <%= render 'shared/sidebar_purple' %>
       </div>
       <div class="main-content-purple">
+      <%= render 'shared/navbar_white' %>
         <%= render 'shared/flashes' %>
         <%= yield %>
       </div>

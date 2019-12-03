@@ -7,6 +7,7 @@ class WatchlistsController < ApplicationController
   def show
     @watchlist = Watchlist.find(params[:id])
     authorize @watchlist
+    render layout: 'application_purple'
   end
 
   def new
