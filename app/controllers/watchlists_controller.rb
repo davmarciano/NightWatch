@@ -1,6 +1,4 @@
 class WatchlistsController < ApplicationController
-
-
   def index
     @watchlists = Watchlist.all
     render layout: 'application_white'
@@ -13,12 +11,13 @@ class WatchlistsController < ApplicationController
 
   def create
     @watchlist = Watchlist.new(watchlist_params)
-    watchlist.save
+    @watchlist.user = current_user
+    @watchlist.save
     if @watchlist.save
       redirect_to '#'
     else
       flash[:alert] = "Sorry, something went wrong."
-      render :new
+      render :new, layout: 'application_white'
     end
   end
 
