@@ -58,10 +58,6 @@ class WatchlistsController < ApplicationController
     authorize @watchlist
   end
 
-  def following?
-    current_user.follow?(@watchlist)
-  end
-
   def watchlist_params
     params.require(:watchlist).permit(:name, :description, :photo)
   end
