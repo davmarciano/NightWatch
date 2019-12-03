@@ -1,39 +1,49 @@
-<h1><%= @user.first_name %> <%= @user.last_name %></h1>
-<% unless @is_owner %>
-  <% if @following%>
-    <%= link_to "Unfollow", follow_user_path(@user), class: "btn btn-primary" %>
-  <% else %>
-    <%= link_to "Follow", follow_user_path(@user), class: "btn btb-primary" %>
-  <% end %>
-<% end %>
-<p><%= link_to "#{@user.followers_count} Followers", profile_followers_path(@user)  %></p>
-<p><%= link_to "#{@user.follow_count} Following", profile_followers_path(@user)  %> </p>
-<p><%= @user.watchlists.count %> Watchlists</p>
+<div class="transparent-container">
 
-<div>
+  <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+    <% unless @is_owner %>
+      <% if @following%>
+        <%= link_to "Unfollow", follow_user_path(@user), class: "btn btn-primary" %>
+      <% else %>
+        <%= link_to "Follow", follow_user_path(@user), class: "btn btb-primary" %>
+      <% end %>
+    <% end %>
+  <div class="d-flex follower" style="font-weight: lighter;font-size: 12px;justify-content: space-around;">
+    <p><i class="fas fa-users"></i><%= link_to "#{@user.followers_count} Followers", profile_followers_path(@user )%> </p>
+    <p><i class="fas fa-users"></i><%= link_to "#{@user.follow_count} Following", profile_followers_path(@user) %> </p>
+    <p><i class="fas fa-list"></i><%= @user.watchlists.count %> Watchlists</p>
+  </div>
+
   <h2>Movies</h2>
-  <% @user.watchlists.first.movies.each do |movie| %>
-    <%= link_to movie_path(movie), class: "movie-card-link" do  %>
-      <div class="movie-card">
-        <img src="<%= movie.poster %>" class="card-img-top" alt="Movie Poster">
-        <p> <%= movie.title %> </p>
-      </div>
+  <hr>
+  <div class="row">
+    <% @user.watchlists.first.movies.each do |movie| %>
+      <%= link_to movie_path(movie), class: "movie-card-link" do  %>
+        <div class="movie-card">
+          <img src="<%= movie.poster %>" class="card-img-top" alt="Movie Poster">
+          <p> <%= movie.title %> </p>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
 
-<div>
-  <h2>Watchlists</h2>
-  <%= link_to "Create new", new_watchlist_path %>
-  <% @user.watchlists.each do |watchlist| %>
-    <%= link_to watchlist_path(watchlist), class: "movie-card-link" do  %>
-      <div class="movie-card">
-        <img src="#" class="card-img-top" alt="Watchlist Poster">
-        <p> <%= watchlist.name %> </p>
-      </div>
+  <div class="d-flex justify-content-between">
+    <h2>Watchlists</h2>
+    <p><%= link_to "Create new", new_watchlist_path %></p>
+  </div>
+  <hr>
+
+  <div class="d-flex" style="justify-content: space-evenly;">
+    <% @user.watchlists.each do |watchlist| %>
+      <%= link_to watchlist_path(watchlist), class: "movie-card-link" do  %>
+        <div class="watchlist-card">
+          <img src="<%= watchlist.photo %>" class="card-img-top">
+          <p><%= watchlist.name %> </p>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
+    </div>
+  </div>
 </div>
-
 
 

@@ -10,11 +10,13 @@
           <%= f.input :email, required: true, autofocus: true, input_html: { autocomplete: "email" }%>
           <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: { autocomplete: "new-password" } %>
           <%= f.input :password_confirmation, required: true, input_html: { autocomplete: "new-password" } %>
-          <%= f.button :submit, "Sign up", class: "button-pink" %>
+          <%= f.input :profile_picture %>
+          <%= f.input :profile_picture_cache, as: :hidden %>
+          <%= f.button :submit, "Sign up", movies_path, class: "button-pink" %>
       <% end %>
       <br>
     <%= render "devise/shared/links" %>
     <hr>
-    <%= link_to "Sign up with facebook",  class: "btn btn-primary"  %>
+    <%= link_to "Sign up with facebook",  class: "btn btn-primary" %>
   </div>
 </div>
