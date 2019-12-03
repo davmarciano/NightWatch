@@ -1,6 +1,12 @@
 <div class="landingpage-background vh-100">
   <h1>The Night Watch</h1>
+  <h3>Become a part of the unique network!</h3>
+  <p>Get inspiration • Create your own watchlists • Follow your friends</p>
   <br>
-  <%= link_to "Join the network", new_user_registration_path, class: "button-pink"  %>
+  <% if user_signed_in? %>
+    <%= link_to "Join the network", movies_path, class: "button-pink" %>
+  <% else %>
+    <%= link_to "Join the network", new_user_registration_path, class: "button-pink"  %>
+  <% end %>
 </div>
 
