@@ -1,13 +1,16 @@
 <div class="sidenav">
-  <%= link_to '#' do %>
+  <%= link_to new_watchlist_path  do %>
     <i class="fas fa-plus-circle"></i> Create Watchlist
   <% end %>
   <%= link_to '#' do %>
     <i class="fas fa-plus-circle"></i> Add Movie
   <% end %>
   <hr>
-  <%= link_to '#' do %>
+  <%= link_to movies_path do %>
     <i class="fas fa-home"></i> Home
+  <% end %>
+  <%= link_to profile_path(current_user) do %>
+    <i class="fas fa-user"></i> Profile
   <% end %>
   <%= link_to '#' do %>
     <i class="fas fa-search"></i> Discover
@@ -15,7 +18,7 @@
   <%= link_to '#' do %>
     <i class="fas fa-users"></i> Friends
   <% end %>
-  <%= link_to '#' do %>
+  <%= link_to profile_movies_path do %>
     <i class="fas fa-video"></i> My Movies
   <% end %>
   <%= link_to '#' do %>
