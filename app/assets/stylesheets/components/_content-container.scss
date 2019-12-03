@@ -11,3 +11,15 @@
   height: 100vh;
   overflow: scroll;
 }
+
+.transparent-container {
+  width: 75vw;
+  position: absolute;
+  left: 269px;
+  top: 70px;
+  background: transparent;
+  padding: 35px;
+  margin-top: -25px;
+  height: 100vh;
+  overflow: scroll;
+}
