@@ -2,7 +2,8 @@ class ProfilesController < ApplicationController
   layout "application_purple"
 
   def index
-    @friends = current_user.following_by_type('User')
+    @followings = current_user.following_users
+    @followers = current_user.follows_by_type('User')
   end
 
   def show
