@@ -1,23 +1,32 @@
 <h1><%= @user.first_name %> <%= @user.last_name %></h1>
 
-<p><%= @user.following_by_type_count('User') %> Following</p>
+<p><%= @user.followers_count %> Following</p>
 <p><%= @user.follow_count %> Followers</p>
 <p><%= @user.watchlists.count %> Watchlists</p>
 
 <div>
   <h2>Movies</h2>
-  <% @user.movies.each do |movie| %>
-    <div>
-      <h3><%= movie.title %></h3>
-    </div>
+  <% @user.watchlists.first.movies.each do |movie| %>
+    <%= link_to movie_path(movie), class: "movie-card-link" do  %>
+      <div class="movie-card">
+        <img src="<%= movie.poster %>" class="card-img-top" alt="Movie Poster">
+        <p> <%= movie.title %> </p>
+      </div>
+    <% end %>
   <% end %>
 </div>
 
 <div>
   <h2>Watchlists</h2>
   <% @user.watchlists.each do |watchlist| %>
-    <div>
-      <h3><%= watchlist.name %></h3>
-    </div>
+    <%= link_to watchlist_path(watchlist), class: "movie-card-link" do  %>
+      <div class="movie-card">
+        <img src="#" class="card-img-top" alt="Watchlist Poster">
+        <p> <%= watchlist.name %> </p>
+      </div>
+    <% end %>
   <% end %>
 </div>
+
+
+
