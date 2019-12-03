@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4">
+      <%= simple_form_for(@watchlist) do |f| %>
+        <%= f.input :name %>
+        <%= f.input :description, label: "Leave your catchy description here" %>
+        <%= f.input :photo, label: "Choose image" %>
+        <%= f.submit "Create" %>
+      <% end %>
+    </div>
+  </div>
+</div>
