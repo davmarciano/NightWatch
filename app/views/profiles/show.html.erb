@@ -1,9 +1,9 @@
 <h1><%= @user.first_name %> <%= @user.last_name %></h1>
 <% unless @is_owner %>
-  <% if @following %>
-    <%= link_to "Unfollow", follow_user_path(@user) %>
+  <% if @following%>
+    <%= link_to "Unfollow", follow_user_path(@user), class: "btn btn-primary" %>
   <% else %>
-    <%= link_to "Follow", follow_user_path(@user) %>
+    <%= link_to "Follow", follow_user_path(@user), class: "btn btb-primary" %>
   <% end %>
 <% end %>
 <p><%= @user.followers_count %> Followers</p>
