@@ -1,10 +1,16 @@
 <div class="sidenav">
-  <%= link_to new_watchlist_path  do %>
+  <%= link_to '#', data: {toggle: "modal", target:"#createWatchlistModal"} do %>
     <i class="fas fa-plus-circle"></i> Create Watchlist
   <% end %>
-  <%= link_to '#' do %>
+
+  <%= link_to '#', data: {toggle: "modal", target:"#addMovieModal"} do %>
     <i class="fas fa-plus-circle"></i> Add Movie
   <% end %>
+
+  <!-- Modal -->
+  <%= render 'shared/createwatchlist_modal' %>
+  <%= render 'shared/addmovie_modal' %>
+
   <hr>
   <%= link_to movies_path do %>
     <i class="fas fa-home"></i> Home

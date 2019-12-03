@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'new/create'
   get 'users/follow'
   namespace :profile do
     get 'movies/index'
@@ -12,6 +13,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :watchlists, except: [:index]
+
+  resources :watchlists_movies, only: [:create]
 
 
   resources :movies, only: [:index, :show] do

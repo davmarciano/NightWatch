@@ -8,6 +8,7 @@ class WatchlistsController < ApplicationController
     @watchlist = Watchlist.find(params[:id])
     @following = current_user.following?(@watchlist)
     authorize @watchlist
+    render layout: 'application_purple'
   end
 
   def new
