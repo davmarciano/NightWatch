@@ -22,3 +22,20 @@
   height: 100vh;
   overflow: scroll;
 }
+
+.signup-container {
+  width: 45vw;
+  background: #0000007a;
+  box-shadow: 2px 4px 24px rgba(0, 0, 0, 0.2);
+  border-radius: 32px;
+  padding: 35px 55px 35px 55px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: $white;
+
+}
+
+.form-control {
+  border-radius: 32px;
+}

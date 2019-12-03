@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  layout :layout_for_devise
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
   def configure_permitted_parameters
@@ -8,4 +9,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:username])
   end
   include Pundit
+
+  private
+
+  def layout_for_devise
+    "application_home" if devise_controller?
+  end
 end
