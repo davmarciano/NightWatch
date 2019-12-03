@@ -1,6 +1,6 @@
 <!-- Modal -->
 <div class="modal fade" id="addMovieModal" tabindex="-1" role="dialog" aria-labelledby="addMovieModalLabel" aria-hidden="true">
-  <%= simple_form_for(WatchlistMovie.new, url: watchlists_movies_path) do |f| %>
+  <%= simple_form_for(WatchlistMovie.new, url: watchlists_movies_path, method: :post) do |f| %>
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
