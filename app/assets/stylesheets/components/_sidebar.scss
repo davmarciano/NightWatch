@@ -1,18 +1,17 @@
-/* The sidebar menu */
+// Sidebar-purple
 .sidenav {
-  height: 100vh; /* Full-height: remove this if you want "auto" height */
-  width: 250px; /* Set the width of the sidebar */
-  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-  z-index: 1; /* Stay on top */
-  top: 0; /* Stay at the top */
+  height: 100vh;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
   left: 0;
-  background-color: #653954; /* Black */
-  overflow-x: hidden; /* Disable horizontal scroll */
+  background-color: #653954;
+  overflow-x: hidden;
   padding-top: 25vh;
   padding-left: 3px;
 }
 
-/* The navigation menu links */
 .sidenav a {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
@@ -21,26 +20,28 @@
   display: block;
 }
 
-/* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
   color: #818181;
 }
 
+.fas {
+  width: 30px;
+}
 
+// Sidebar-white
 .sidenav-white {
-  height: 75vh; /* Full-height: remove this if you want "auto" height */
-  width: 250px; /* Set the width of the sidebar */
-  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-  z-index: 1; /* Stay on top */
-  top: 0; /* Stay at the top */
+  height: 75vh;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 50px;
   left: 0;
-  background-color: #FFFFFF; /* Black */
-  overflow-x: hidden; /* Disable horizontal scroll */
+  background-color: #FFFFFF;
+  overflow-x: hidden;
   padding-left: 3px;
   margin-top: 25vh;
 }
 
-/* The navigation menu links */
 .sidenav-white a {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
@@ -49,7 +50,6 @@
   display: block;
 }
 
-/* When you mouse over the navigation links, change their color */
 .sidenav-white a:hover {
   color: #BCBCBC;
 }
