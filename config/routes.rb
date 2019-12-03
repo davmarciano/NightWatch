@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
 
+  get 'users/follow'
+  namespace :profile do
+    get 'movies/index'
+  end
   get 'movies/index'
 
   devise_for :users
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :watchlists
+  resources :watchlists, except: [:index]
+
+
   resources :movies, only: [:index, :show] do
     resources :reviews, only: [:new, :create]
   end
@@ -15,13 +21,13 @@ Rails.application.routes.draw do
 
 
   namespace :profile do
-    get "/", to: "watchlists#home"
-    resources :watchlists, only: [:index] do
-      resources :movies, only: [:index]
-    end
+    resources :movies, only: [:index]
+    resources :watchlists, only: [:index]
   end
 
-  get "watchlists/:id/follow", to: "watchlist#follow", as: :follow_watchlist
-  get "users/:id/follow", to: "user#follow", as: :follow_user
+  resources :profiles, only: [:show]
+
+  post "watchlists/:id/follow", to: "watchlist#follow", as: :follow_watchlist
+  post "users/:id/follow", to: "user#follow", as: :follow_user
 
 end

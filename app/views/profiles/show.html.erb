@@ -1,1 +1,23 @@
-<h1>Hello</h1>
+<h1><%= @user.first_name %> <%= @user.last_name %></h1>
+
+<p><%= @user.following_by_type_count('User') %> Following</p>
+<p><%= @user.follow_count %> Followers</p>
+<p><%= @user.watchlists.count %> Watchlists</p>
+
+<div>
+  <h2>Movies</h2>
+  <% @user.movies.each do |movie| %>
+    <div>
+      <h3><%= movie.title %></h3>
+    </div>
+  <% end %>
+</div>
+
+<div>
+  <h2>Watchlists</h2>
+  <% @user.watchlists.each do |watchlist| %>
+    <div>
+      <h3><%= watchlist.name %></h3>
+    </div>
+  <% end %>
+</div>

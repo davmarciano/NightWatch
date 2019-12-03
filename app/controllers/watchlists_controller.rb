@@ -34,6 +34,23 @@ class WatchlistsController < ApplicationController
   end
 
   def follow
+    set_watchlist
+    if following?
+      current_user.stop_following(@watchlist)
+    else
+      current_user.follow(@watchlist)
+    end
+  end
+
+  private
+
+  def set_watchlist
+    @watchlist = Watchlist.find(params[:id])
+    authorize @watchlist
+  end
+
+  def following?
+    current_user.follow?(@watchlist)
   end
 
   def watchlist_params
