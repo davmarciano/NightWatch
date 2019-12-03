@@ -6,6 +6,7 @@ class WatchlistsController < ApplicationController
 
   def show
     @watchlist = Watchlist.find(params[:id])
+    @following = current_user.following?(@watchlist)
     authorize @watchlist
   end
 
@@ -56,10 +57,6 @@ class WatchlistsController < ApplicationController
   def set_watchlist
     @watchlist = Watchlist.find(params[:id])
     authorize @watchlist
-  end
-
-  def following?
-    current_user.follow?(@watchlist)
   end
 
   def watchlist_params

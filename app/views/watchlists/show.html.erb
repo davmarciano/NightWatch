@@ -1,5 +1,5 @@
 <h1><%= @watchlist.name %></h1>
-<% if @following%>
+<% if @following %>
   <%= link_to "Unfollow", follow_watchlist_path(@watchlist), class: "btn btn-primary" %>
 <% else %>
   <%= link_to "Follow", follow_watchlist_path(@watchlist), class: "btn btn-primary" %>
