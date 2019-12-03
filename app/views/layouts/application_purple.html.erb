@@ -9,16 +9,18 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
-
   <body>
-    <div class="d-flex">
+    <div class="d-flex layout-purple">
       <div>
         <%= render 'shared/sidebar_purple' %>
       </div>
+
       <div class="main-content-purple">
-      <%= render 'shared/navbar_white' %>
-        <%= render 'shared/flashes' %>
-        <%= yield %>
+        <%= render 'shared/navbar_white' %>
+        <div class="transparent-container">
+          <%= render 'shared/flashes' %>
+          <%= yield %>
+        </div>
       </div>
     </div>
     <%= javascript_include_tag 'application' %>
