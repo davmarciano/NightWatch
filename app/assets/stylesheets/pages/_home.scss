@@ -1,13 +1,14 @@
 .landingpage-background {
   // width: 100%;
   // height: 100%;
-  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://townsquare.media/site/442/files/2019/08/best-posters-of-the-decade.jpg?w=980&q=75');
+  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url('https://townsquare.media/site/442/files/2019/08/best-posters-of-the-decade.jpg?w=980&q=75');
   background-size: cover;
   height: 100vh;
   text-align: center;
   color: $white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
 .landingpage-background > h1 {
-  padding-top: 200px;
+  padding-top: 300px;
 }
