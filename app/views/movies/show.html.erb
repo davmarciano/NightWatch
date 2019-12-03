@@ -1,7 +1,36 @@
+<div class="transparent-container">
 
-<img src="<%= @movie.poster %>" class="card-img-top" alt="Movie Poster">
-<h1><%= @movie.title %></h1>
-<p> <%= @movie.year %> • <%= @movie.genres %></p>
-<p><strong>Directed by </strong><%= @movie.directors %></p>
-<p><strong>Starring </strong><%= @movie.actors %></p>
-<p><%= @movie.plot %></p>
+  <div class="row">
+
+    <img src="<%= @movie.poster %>" class="movie-poster" alt="Movie Poster">
+      <div class="movie-info">
+        <h1><%= @movie.title %></h1>
+        <p style="font-weight: lighter;font-size: 12px;"> <%= @movie.year %> • <%= @movie.genres %></p>
+        <p><%= @reviews %></p>
+        <br>
+        <p><strong>Directed by: </strong><%= @movie.directors %></p>
+        <p><strong>Starring: </strong><%= @movie.actors %></p>
+        <p style="margin-bottom: 0px;"><strong>Plot: </strong>
+        <p><%= @movie.plot %></p>
+      </div>
+  </div>
+
+    <br>
+    <h2 class="mt-5">Reviews by friends</h2>
+    <hr class="line">
+
+    <div class="row">
+      <% if @reviews.any? %>
+        <% @reviews.each do |review| %>
+          <% review.rating.times do  %>
+            <i class="fas fa-star"></i>
+          <% end %>
+          <br>
+          <%= review.content %>
+           <br>
+          <small><em>by <%= review.movie.user.first_name %> <%= review.movie.user.last_name %></em></small>
+        <% end %>
+      <% end %>
+    </div>
+
+</div>

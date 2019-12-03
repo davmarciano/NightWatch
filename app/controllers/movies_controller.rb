@@ -9,6 +9,7 @@ class MoviesController < ApplicationController
   def show
     @movie = Movie.find(params[:id])
     authorize @movie
+    @reviews = @movie.reviews
     render layout: 'application_purple'
   end
 
