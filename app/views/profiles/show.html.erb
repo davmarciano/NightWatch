@@ -1,8 +1,14 @@
 <h1><%= @user.first_name %> <%= @user.last_name %></h1>
-
-<p><%= @user.followers_count %> Following</p>
-<p><%= @user.follow_count %> Followers</p>
-<p><%= @user.watchlists.count %> Watchlists</p>
+<% unless @is_owner %>
+  <% if @following%>
+    <%= link_to "Unfollow", follow_user_path(@user) %>
+  <% else %>
+    <%= link_to "Follow", follow_user_path(@user) %>
+  <% end %>
+<% end %>
+<p><%= @user.followers_count %> Followers</p>
+<p><%= @user.follow_count %> Following </p>
+<p><%= @user.watchlists.count - 2 %> Watchlists</p>
 
 <div>
   <h2>Movies</h2>
@@ -18,6 +24,7 @@
 
 <div>
   <h2>Watchlists</h2>
+  <%= link_to "Create new", new_watchlist_path %>
   <% @user.watchlists.each do |watchlist| %>
     <%= link_to watchlist_path(watchlist), class: "movie-card-link" do  %>
       <div class="movie-card">
