@@ -1,4 +1,5 @@
 class Watchlist < ApplicationRecord
+  mount_uploader :photo, PhotoUploader
   belongs_to :user
   has_many :watchlist_movies
   has_many :movies, through: :watchlist_movies

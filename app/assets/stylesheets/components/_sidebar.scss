@@ -1,11 +1,7 @@
 // Sidebar-purple
 .sidenav {
-  height: 100vh;
+  height: 100vh ;
   width: 250px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
   background-color: #653954;
   overflow-x: hidden;
   padding-top: 25vh;
@@ -32,10 +28,6 @@
 .sidenav-white {
   height: 75vh;
   width: 250px;
-  position: fixed;
-  z-index: 1;
-  top: 50px;
-  left: 0;
   background-color: #FFFFFF;
   overflow-x: hidden;
   padding-left: 3px;
