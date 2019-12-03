@@ -1,13 +1,17 @@
 class ProfilesController < ApplicationController
   layout "application_purple"
 
+  before_action :set_profile, only: %i[show follow]
+
   def index
-    @followings = current_user.following_users
-    @followers = current_user.follows_by_type('User')
+    @user = current_user
+    show
+    render :show
   end
 
   def show
-    @user = User.find(params[:id])
+    @followers = @user.follows_by_type('User')
+    @followings = @user.following_users
     @movies = @user.movies
     @watchlists = @user.watchlists
     @is_owner = current_user == @user
@@ -15,7 +19,6 @@ class ProfilesController < ApplicationController
   end
 
   def follow
-    @user = User.find(params[:id])
     @following = current_user.following?(@user)
     if @following
       current_user.stop_following(@user)
@@ -29,6 +32,6 @@ class ProfilesController < ApplicationController
 
   def set_profile
     @user = User.find(params[:id])
-    authorize @user
+    # authorize @user
   end
 end

@@ -6,9 +6,9 @@
     <%= link_to "Follow", follow_user_path(@user), class: "btn btb-primary" %>
   <% end %>
 <% end %>
-<p><%= link_to "#{@user.followers_count} Followers", profiles_path  %></p>
-<p><%= link_to "#{@user.follow_count} Following", profiles_path  %> </p>
-<p><%= @user.watchlists.count - 2 %> Watchlists</p>
+<p><%= link_to "#{@user.followers_count} Followers", profile_followers_path(@user)  %></p>
+<p><%= link_to "#{@user.follow_count} Following", profile_followers_path(@user)  %> </p>
+<p><%= @user.watchlists.count %> Watchlists</p>
 
 <div>
   <h2>Movies</h2>
