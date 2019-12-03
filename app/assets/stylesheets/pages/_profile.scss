@@ -1,4 +1,9 @@
-.follower > a {
+.follower > p > a {
   text-decoration: none;
-  color: black;
+  color: $p-text;
+  margin-right: 10px;
+}
+
+.follower > p > .fas {
+  width: 20px;
 }

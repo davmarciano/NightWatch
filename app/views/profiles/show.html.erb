@@ -8,7 +8,7 @@
         <%= link_to "Follow", follow_user_path(@user), class: "btn btb-primary" %>
       <% end %>
     <% end %>
-  <div class="d-flex follower" style="font-weight: lighter;font-size: 12px;justify-content: space-around;">
+  <div class="d-flex follower" style="font-weight: lighter;font-size: 12px;">
     <p><i class="fas fa-users"></i><%= link_to "#{@user.followers_count} Followers", profile_followers_path(@user )%> </p>
     <p><i class="fas fa-users"></i><%= link_to "#{@user.follow_count} Following", profile_followers_path(@user) %> </p>
     <p><i class="fas fa-list"></i><%= @user.watchlists.count %> Watchlists</p>
