@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 
   resources :profiles, only: [:show]
 
-  post "watchlists/:id/follow", to: "watchlist#follow", as: :follow_watchlist
-  post "users/:id/follow", to: "user#follow", as: :follow_user
+  get "watchlists/:id/follow", to: "watchlist#follow", as: :follow_watchlist
+  get "profiles/:id/follow", to: "profiles#follow", as: :follow_user
 
 end

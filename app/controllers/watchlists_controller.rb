@@ -1,9 +1,13 @@
 class WatchlistsController < ApplicationController
 
-
   def index
     @watchlists = Watchlist.all
     render layout: 'application_white'
+  end
+
+  def show
+    @watchlist = Watchlist.find(params[:id])
+    authorize @watchlist
   end
 
   def new
@@ -13,12 +17,13 @@ class WatchlistsController < ApplicationController
 
   def create
     @watchlist = Watchlist.new(watchlist_params)
-    watchlist.save
+    @watchlist.user = current_user
+    @watchlist.save
     if @watchlist.save
-      redirect_to '#'
+      redirect_to watchlist_path(@watchlist)
     else
       flash[:alert] = "Sorry, something went wrong."
-      render :new
+      render :new, layout: 'application_white'
     end
   end
 
@@ -37,12 +42,14 @@ class WatchlistsController < ApplicationController
   end
 
   def follow
-    set_watchlist
-    if following?
+    @watchlist = Watchlist.find(params[:id])
+    @following = current_user.following?(@watchlist)
+    if @following
       current_user.stop_following(@watchlist)
     else
       current_user.follow(@watchlist)
     end
+    redirect_to watchlist_path(@watchlist)
   end
 
   private
