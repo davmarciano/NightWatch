@@ -12,6 +12,8 @@ class User < ApplicationRecord
 
   after_create :create_default_watchlists
 
+  mount_uploader :profile_picture, PhotoUploader
+
   private
 
   def create_default_watchlists
