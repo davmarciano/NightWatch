@@ -1,4 +1,6 @@
 class WatchlistsController < ApplicationController
+
+
   def index
     @watchlists = Watchlist.all
     render layout: 'application_white'
@@ -6,6 +8,7 @@ class WatchlistsController < ApplicationController
 
   def new
     @watchlist = Watchlist.new
+    render layout: 'application_white'
   end
 
   def create
