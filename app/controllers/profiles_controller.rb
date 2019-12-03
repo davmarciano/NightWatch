@@ -1,6 +1,10 @@
 class ProfilesController < ApplicationController
   layout "application_purple"
 
+  def index
+    @friends = current_user.following_by_type('User')
+  end
+
   def show
     @user = User.find(params[:id])
     @movies = @user.movies
