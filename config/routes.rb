@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   namespace :profile do
     get 'movies/index'
   end
+
   get 'movies/index'
 
   devise_for :users
