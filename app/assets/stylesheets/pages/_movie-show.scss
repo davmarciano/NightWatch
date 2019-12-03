@@ -1,0 +1,16 @@
+.movie-poster {
+  width: 224px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.movie-info {
+  width: 600px;
+  padding-left: 22px;
+}
+
+hr.line {
+  border-top: 1px solid #8c8b8b;
+}
