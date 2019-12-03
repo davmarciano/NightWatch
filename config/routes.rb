@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
 
-  get 'new/create'
-  get 'users/follow'
+
+  # get 'users/follow'
+
   namespace :profile do
     get 'movies/index'
   end
 
-  get 'movies/index'
+  # get 'movies/index'
 
   devise_for :users
   root to: 'pages#home'
@@ -29,7 +30,9 @@ Rails.application.routes.draw do
     resources :watchlists, only: [:index]
   end
 
-  resources :profiles, only: [:index, :show]
+  resources :profiles, only: [:index, :show] do
+    resources :followers, only: [:index]
+  end
 
   get "watchlists/:id/follow", to: "watchlists#follow", as: :follow_watchlist
   get "profiles/:id/follow", to: "profiles#follow", as: :follow_user
