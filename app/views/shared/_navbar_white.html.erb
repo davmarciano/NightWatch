@@ -7,22 +7,26 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active"> <%= link_to'#', class: "link-navbar" do %>
+      <li class="nav-item active">
+        <%= link_to '#', class: "link-navbar" do %>
         <i class="far fa-user"></i> Name
       <% end %>
       </li>
 
+
       <li class="nav-item dropdown">
-        <%= link_to '#' do %>
         <i class="fas fa-angle-down" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
-        <% end %>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <%= link_to 'Settings', '#' %>
-          <%= link_to 'Log out', '#' %>
+          <%= link_to 'Settings', '#', class: "dropdown-item"%>
+          <%= link_to 'Log out', '#', class: "dropdown-item" %>
         </div>
       </li>
+
     </ul>
   </div>
 </div>
+
+
+
 
 
