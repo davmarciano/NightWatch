@@ -4,13 +4,13 @@
   border-radius: 32px;
   padding: 16px;
   min-width: 140px;
+  border: none;
   &:hover {
     text-decoration: none;
     color: $white;
     background-color: #e882a4;
   }
 }
-
 
 .button-pink-secondary {
   background-color: $white;
@@ -25,6 +25,20 @@
   }
 }
 
+.button-pink-flat {
+  background-color: $pink;
+  color: $white;
+  border-radius: 32px;
+  padding: 10px;
+  min-width: 140px;
+  border: none;
+  &:hover {
+    text-decoration: none;
+    color: $white;
+    background-color: #e882a4;
+  }
+}
+
 .button-pink-small {
   background-color: $pink;
   color: $white;
@@ -36,7 +50,6 @@
     background-color: #e882a4;
   }
 }
-
 
 .button-pink-small-secondary {
   background-color: $white;
