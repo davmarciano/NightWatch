@@ -73,7 +73,7 @@
 <div class="d-flex">
   <% @user.friends.each do |friend| %>
   <% if friend %>
-  <%= link_to profile_path(friend.id), class: "friend-card-link" do  %>
+  <%= link_to profile_path(friend.followable_id), class: "friend-card-link" do  %>
     <div class="friend-card">
         <% user_friend = User.find(friend.followable_id) %>
         <% if user_friend.profile_picture? %>
