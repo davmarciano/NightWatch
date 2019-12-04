@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :watchlists, except: [:index]
+  resources :watchlists
 
   resources :watchlists_movies, only: [:create]
   # post 'watchlists_movies', to: 'watchlists_movies#create'

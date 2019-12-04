@@ -75,7 +75,7 @@
         <% else %>
           <%= image_tag "https://i2.wp.com/metro.co.uk/wp-content/uploads/2019/09/PRI_85461411.jpg?quality=90&strip=all&zoom=1&resize=644%2C779&ssl=1", class: "avatar-bordered" %>
         <% end %>
-        <p><%= friend.first_name %></p>
+        <p><%= friend.first_name if friend%></p>
     </div>
   <% end %>
   <% end %>
