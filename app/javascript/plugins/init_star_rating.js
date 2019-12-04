@@ -4,6 +4,10 @@ import $ from 'jquery'; // <-- if you're NOT using a Le Wagon template (cf jQuer
 
 const initStarRating = () => {
   console.log("HI")
+  $('#watchlist_movie_rating').barrating({
+    theme: 'css-stars'
+  });
+  console.log("HI")
   $('#review_rating').barrating({
     theme: 'css-stars'
   });
