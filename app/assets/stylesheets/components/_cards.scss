@@ -38,7 +38,6 @@
 .watchlist-card {
   width: 260px;
   height: 150px;
-  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://source.unsplash.com/featured/?movies');
   background-size: cover;
   background-position: center;
   border-radius: 10px;
@@ -49,6 +48,10 @@
   font-weight: bold;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   margin-right: 15px;
+}
+
+.watchlist-card-name {
+
 }
 
 // FRIENDS CARD
