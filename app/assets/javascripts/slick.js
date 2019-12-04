@@ -1,4 +1,5 @@
-const slick = () => {
+// you cant use ES6 here
+function slick() {
   $('.watchlists-line-wrapper').slick({
     infinite: true,
     slidesToShow: 3,
