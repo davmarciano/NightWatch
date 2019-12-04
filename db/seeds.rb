@@ -6,7 +6,7 @@ require 'openssl'
 require 'json'
 
 puts "delete all movies"
-Movie.delete_all
+Movie.destroy_all
 puts "all movies deleted"
 
 puts "creating new movies"
