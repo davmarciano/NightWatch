@@ -11,7 +11,7 @@
   <h2>Followers</h2>
   <ul>
     <% @followers.each do |f| %>
-      <p><%= link_to "#{f.follower.first_name} #{f.follower.last_name}", profile_path(f.follower) %></p>
+      <p><%= link_to "#{f.followable.first_name} #{f.followable.last_name}", profile_path(f.followable) %></p>
     <% end %>
   </ul>
 </div>

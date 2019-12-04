@@ -6,18 +6,22 @@ class User < ApplicationRecord
 
   has_many :watchlists, dependent: :destroy
   has_many :movies, through: :watchlists
+  has_many :reviews, dependent: :destroy
 
   acts_as_follower
   acts_as_followable
 
   after_create :create_default_watchlists
+  before_destroy :remove_all_follows
 
   mount_uploader :profile_picture, PhotoUploader
 
   def friends
-    follows.map do |follow|
+    my_friends = []
+    follows.each do |follow|
       if follow.followable_type == "User"
-        User.find(follow.followable_id)
+        user = User.find(follow.followable_id)
+        my_friends << user unless user.nil?
       end
     end
   end
@@ -27,6 +31,10 @@ class User < ApplicationRecord
   def create_default_watchlists
     Watchlist.create(user: self, name: "My Movies")
     Watchlist.create(user: self, name: "Watch Later")
+  end
+
+  def remove_all_follows
+
   end
 
 end
