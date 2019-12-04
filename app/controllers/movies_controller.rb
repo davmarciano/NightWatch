@@ -6,6 +6,7 @@ class MoviesController < ApplicationController
       sql_query = "title ILIKE :query OR movies.actors ILIKE :query
       OR movies.directors ILIKE :query  OR movies.genres ILIKE :query"
       @movies = Movie.where(sql_query, query: "%#{params[:query]}%")
+      render layout: 'application_white'
     else
       @movies = policy_scope(Movie)
       render layout: 'application_white'
