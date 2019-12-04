@@ -14,6 +14,14 @@ class User < ApplicationRecord
 
   mount_uploader :profile_picture, PhotoUploader
 
+  def friends
+    follows.map do |follow|
+      if follow.followable_type == "User"
+        User.find(follow.followable_id)
+      end
+    end
+  end
+
   private
 
   def create_default_watchlists

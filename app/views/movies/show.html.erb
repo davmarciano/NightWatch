@@ -4,8 +4,7 @@
       <div class="movie-info">
         <h1><%= @movie.title %></h1>
         <p style="font-weight: lighter;font-size: 12px;"> <%= @movie.year %> • <%= @movie.genres %></p>
-        <p><%= @reviews %></p>
-        <br
+        <p><%= @friends_average_rating %></p>
         <p><strong>Directed by: </strong><%= @movie.directors %></p>
         <p><strong>Starring: </strong><%= @movie.actors %></p>
         <p style="margin-bottom: 0px;"><strong>Plot: </strong>
@@ -26,8 +25,7 @@
           <br>
           <%= review.content %>
            <br>
-          <small><em>by <%= review.movie.user.first_name %> <%= review.movie.user.last_name %></em></small>
+          <small><em>by <%= review.user.first_name %> <%= review.user.last_name %></em></small>
         <% end %>
       <% end %>
     </div>
-s

@@ -1,17 +1,28 @@
 <div class="transparent-container">
 
-  <h1><%= @user.first_name %> <%= @user.last_name %></h1>
-    <% unless @is_owner %>
-      <% if @following%>
-        <%= link_to "Unfollow", follow_user_path(@user), class: "btn btn-primary" %>
-      <% else %>
-        <%= link_to "Follow", follow_user_path(@user), class: "btn btb-primary" %>
-      <% end %>
+  <div class="d-flex mb-5">
+
+    <% if @user.profile_picture? %>
+      <%= cl_image_tag @user.profile_picture, class: "avatar-bordered" %>
+    <% else %>
+      <%= image_tag "https://i2.wp.com/metro.co.uk/wp-content/uploads/2019/09/PRI_85461411.jpg?quality=90&strip=all&zoom=1&resize=644%2C779&ssl=1", class: "avatar-bordered" %>
     <% end %>
-  <div class="d-flex follower" style="font-weight: lighter;font-size: 12px;">
-    <p><i class="fas fa-users"></i><%= link_to "#{@user.followers_count} Followers", profile_followers_path(@user )%> </p>
-    <p><i class="fas fa-users"></i><%= link_to "#{@user.follow_count} Following", profile_followers_path(@user) %> </p>
-    <p><i class="fas fa-list"></i><%= @user.watchlists.count %> Watchlists</p>
+    <div>
+      <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+        <% unless @is_owner %>
+          <% if @following%>
+            <%= link_to "Unfollow", follow_user_path(@user), class: "btn btn-primary" %>
+          <% else %>
+            <%= link_to "Follow", follow_user_path(@user), class: "btn btb-primary" %>
+          <% end %>
+        <% end %>
+
+      <div class="d-flex follower" style="font-weight: lighter;font-size: 12px;">
+        <p><i class="fas fa-users"></i><%= link_to "#{@user.followers_count} Followers", profile_followers_path(@user )%> </p>
+        <p><i class="fas fa-users"></i><%= link_to "#{@user.follow_count} Following", profile_followers_path(@user) %> </p>
+        <p><i class="fas fa-list"></i><%= @user.watchlists.count %> Watchlists</p>
+      </div>
+    </div>
   </div>
 
   <h2>Movies</h2>
@@ -44,6 +55,17 @@
     <% end %>
     </div>
   </div>
+
+  <h2>Friends</h2>
+  <hr>
+
+  <div class="d-flex">
+    <% @user.friends.each do |friend| %>
+    <%= friend.first_name %>
+    <% end %>
+  </div>
+
+
 </div>
 
 
