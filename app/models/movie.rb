@@ -1,6 +1,8 @@
 class Movie < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :watchlist_movies
+  
+  validates :title, uniqueness: true
 
   def friend_reviews(current_user)
     reviews.select { |review| current_user.follows.pluck(:followable_id).include?(review.user_id) }
