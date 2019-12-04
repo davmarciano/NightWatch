@@ -2,20 +2,15 @@
   <h1>Discover</h1>
   <h5>Didn't decide on a movie yet?</h5>
 
-  <div class="search-box">
-    <%= form_tag movies_path, method: :get do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "search-txt",
-        placeholder: "Find a movie"
-      %>
-      <%= button_tag(type: "submit", class: "search-btn") do %>
-        <i class="fas fa-search"></i>
-      <% end %>
-    <% end %>
-  </div>
+  <%= form_tag movies_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find a movie"
+    %>
+    <%= submit_tag "Search", class: "button-pink-flat" %>
+  <% end %>
 </div>
-
 
 <!-- the list of movies -->
 <hr>
