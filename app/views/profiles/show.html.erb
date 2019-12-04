@@ -1,71 +1,82 @@
-<div class="transparent-container">
+<div class="d-flex mb-5 justify-content-between">
 
-  <div class="d-flex mb-5">
-
+  <div class="d-flex">
     <% if @user.profile_picture? %>
       <%= cl_image_tag @user.profile_picture, class: "avatar-bordered" %>
     <% else %>
       <%= image_tag "https://i2.wp.com/metro.co.uk/wp-content/uploads/2019/09/PRI_85461411.jpg?quality=90&strip=all&zoom=1&resize=644%2C779&ssl=1", class: "avatar-bordered" %>
     <% end %>
+
     <div>
       <h1><%= @user.first_name %> <%= @user.last_name %></h1>
-        <% unless @is_owner %>
-          <% if @following%>
-            <%= link_to "Unfollow", follow_user_path(@user), class: "btn btn-primary" %>
-          <% else %>
-            <%= link_to "Follow", follow_user_path(@user), class: "btn btb-primary" %>
-          <% end %>
-        <% end %>
-
       <div class="d-flex follower" style="font-weight: lighter;font-size: 12px;">
         <p><i class="fas fa-users"></i><%= link_to "#{@user.followers_count} Followers", profile_followers_path(@user )%> </p>
         <p><i class="fas fa-users"></i><%= link_to "#{@user.follow_count} Following", profile_followers_path(@user) %> </p>
         <p><i class="fas fa-list"></i><%= @user.watchlists.count %> Watchlists</p>
       </div>
     </div>
+
   </div>
 
-  <h2>Movies</h2>
-  <hr>
-  <div class="row">
-    <% @user.watchlists.first.movies.each do |movie| %>
-      <%= link_to movie_path(movie), class: "movie-card-link" do  %>
-        <div class="movie-card">
-          <img src="<%= movie.poster %>" class="card-img-top" alt="Movie Poster">
-          <p> <%= movie.title %> </p>
-        </div>
+  <div class="mr-5 mt-4">
+    <% unless @is_owner %>
+      <% if @following%>
+        <%= link_to "Unfollow", follow_user_path(@user), class: "button-pink" %>
+      <% else %>
+        <%= link_to "Follow", follow_user_path(@user), class: "button-pink" %>
       <% end %>
     <% end %>
   </div>
-
-  <div class="d-flex justify-content-between">
-    <h2>Watchlists</h2>
-    <p><%= link_to "Create new", new_watchlist_path %></p>
-  </div>
-  <hr>
-
-  <div class="d-flex" style="justify-content: space-evenly;">
-    <% @user.watchlists.each do |watchlist| %>
-      <%= link_to watchlist_path(watchlist), class: "movie-card-link" do  %>
-        <div class="watchlist-card">
-          <img src="<%= watchlist.photo %>" class="card-img-top">
-          <p><%= watchlist.name %> </p>
-        </div>
-      <% end %>
-    <% end %>
-    </div>
-  </div>
-
-  <h2>Friends</h2>
-  <hr>
-
-  <div class="d-flex">
-    <% @user.friends.each do |friend| %>
-    <%= friend.first_name if friend%>
-    <% end %>
-  </div>
-
 
 </div>
 
+<h2 class="mt-5">Movies</h2>
+<hr>
+<div class="d-flex">
+  <% @user.watchlists.first.movies.each do |movie| %>
+    <%= link_to movie_path(movie), class: "movie-card-link" do  %>
+      <div class="movie-card">
+        <img src="<%= movie.poster %>" class="card-img-top" alt="Movie Poster">
+        <p> <%= movie.title %> </p>
+      </div>
+    <% end %>
+  <% end %>
+</div>
 
+<div class="d-flex justify-content-between mt-5 watchlist">
+  <h2>Watchlists</h2>
+  <%= link_to new_watchlist_path do %>
+   <p><i class="fas fa-plus-circle"></i>Create new</p>
+  <% end %>
+</div>
+<hr>
+
+<div class="d-flex">
+  <% @user.watchlists.each do |watchlist| %>
+    <%= link_to watchlist_path(watchlist), class: "movie-card-link" do  %>
+      <div class="watchlist-card">
+        <img src="<%= watchlist.photo %>" class="card-img-top">
+        <p><%= watchlist.name %> </p>
+      </div>
+    <% end %>
+  <% end %>
+  </div>
+
+
+<h2 class="mt-5">Friends</h2>
+<hr>
+
+<div class="d-flex">
+  <% @user.friends.each do |friend| %>
+  <%= link_to profile_path(friend.id), class: "friend-card-link" do  %>
+    <div class="friend-card">
+        <% if friend.profile_picture? %>
+          <%= cl_image_tag friend.profile_picture, class: "avatar-bordered" %>
+        <% else %>
+          <%= image_tag "https://i2.wp.com/metro.co.uk/wp-content/uploads/2019/09/PRI_85461411.jpg?quality=90&strip=all&zoom=1&resize=644%2C779&ssl=1", class: "avatar-bordered" %>
+        <% end %>
+        <p><%= friend.first_name if friend%></p>
+    </div>
+  <% end %>
+  <% end %>
+</div>
