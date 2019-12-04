@@ -21,6 +21,7 @@ gem 'carrierwave', '~> 1.2'
 gem 'dotenv-rails', groups: [:development, :test]
 
 
+
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 
 group :development do
