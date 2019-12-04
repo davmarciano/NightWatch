@@ -1,0 +1,11 @@
+function refreshForm(innerHTML) {
+  const newWatchlistMovieForm = document.getElementById('new_watchlist_movie');
+  newWatchlistMovieForm.innerHTML = innerHTML;
+}
+
+
+<% if @watchlist_movie.errors.any? %>
+  refreshForm('<%= j render "shared/addmovie_form", modal_watchlist_movie: @watchlist_movie %>');
+<% else %>
+  refreshForm('<%= j render "shared/addmovie_form", modal_watchlist_movie: WatchlistMovie.new %>');
+<% end %>
