@@ -5,9 +5,9 @@ require 'net/http'
 require 'openssl'
 require 'json'
 
-
 puts "delete all movies"
 Movie.delete_all
+puts "all movies deleted"
 
 puts "creating new movies"
 
