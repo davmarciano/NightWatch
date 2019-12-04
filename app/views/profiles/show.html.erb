@@ -45,22 +45,26 @@
 
 <div class="d-flex justify-content-between mt-5 watchlist">
   <h2>Watchlists</h2>
-  <%= link_to new_watchlist_path do %>
-   <p><i class="fas fa-plus-circle"></i>Create new</p>
+  <% if current_user == @user %>
+    <%= link_to new_watchlist_path do %>
+     <p><i class="fas fa-plus-circle"></i>Create new</p>
+    <% end %>
   <% end %>
 </div>
 <hr>
 
 <div class="d-flex">
   <% @user.watchlists.each do |watchlist| %>
-    <%= link_to watchlist_path(watchlist), class: "movie-card-link" do  %>
-      <div class="watchlist-card">
-        <img src="<%= watchlist.photo %>" class="card-img-top">
-        <p><%= watchlist.name %> </p>
-      </div>
+    <% if watchlist.name != "My Movies" && watchlist.name != "Watch Later" %>
+      <%= link_to watchlist_path(watchlist), class: "movie-card-link" do  %>
+        <div class="watchlist-card">
+          <img src="<%= watchlist.photo %>" class="card-img-top">
+          <p><%= watchlist.name %> </p>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
-  </div>
+</div>
 
 
 <h2 class="mt-5">Friends</h2>
