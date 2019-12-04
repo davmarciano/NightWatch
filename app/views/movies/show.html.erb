@@ -4,9 +4,9 @@
         <h1><%= @movie.title %></h1>
         <p style="font-weight: lighter;font-size: 12px;"> <%= @movie.year %> • <%= @movie.genres %></p>
 
-        <p>Average rating of your friends:  <% @friends_average_rating.times do  %>
+        <p><% @friends_average_rating.times do  %>
           <i class="fas fa-star rating"></i>
-        <% end %></p>
+        <% end %> <small><em>– average friends rating</em></small></p>
 
         <p><strong>Directed by: </strong><%= @movie.directors %></p>
         <p><strong>Starring: </strong><%= @movie.actors %></p>
@@ -23,14 +23,14 @@
 </div>
   <hr>
 
-<div class="d-flex">
+<div>
   <% if @reviews.any? %>
     <% @reviews.each do |review| %>
     <div class="review-card">
       <% review.rating.times do  %>
         <i class="fas fa-star rating"></i>
-      <% end %>
-      <p><%= review.content %></p>
+      <% end %> – <%= review.content %>
+      <br>
       <small><em>by <%= review.user.first_name %> <%= review.user.last_name %></em></small>
     </div>
     <% end %>
