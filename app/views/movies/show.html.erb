@@ -1,5 +1,4 @@
-  <div class="row">
-
+<div class="d-flex">
     <img src="<%= @movie.poster %>" class="movie-poster" alt="Movie Poster">
       <div class="movie-info">
         <h1><%= @movie.title %></h1>
@@ -16,20 +15,24 @@
       </div>
   </div>
 
-    <br>
-    <h2 class="mt-5">Reviews by friends</h2>
-    <hr class="line">
+<div class="d-flex justify-content-between mt-5 watchlist">
+  <h2>Reviews by friends</h2>
+  <%= link_to new_movie_review_path(@movie) do %>
+    <p><i class="fas fa-plus-circle"></i>Create new</p>
+  <% end %>
+</div>
+  <hr>
 
-    <div class="row">
-      <% if @reviews.any? %>
-        <% @reviews.each do |review| %>
-          <% review.rating.times do  %>
-            <i class="fas fa-star rating"></i>
-          <% end %>
-          <br>
-          <%= review.content %>
-           <br>
-          <small><em>by <%= review.user.first_name %> <%= review.user.last_name %></em></small>
-        <% end %>
+<div class="d-flex">
+  <% if @reviews.any? %>
+    <% @reviews.each do |review| %>
+    <div class="review-card">
+      <% review.rating.times do  %>
+        <i class="fas fa-star rating"></i>
       <% end %>
+      <p><%= review.content %></p>
+      <small><em>by <%= review.user.first_name %> <%= review.user.last_name %></em></small>
     </div>
+    <% end %>
+  <% end %>
+</div>
