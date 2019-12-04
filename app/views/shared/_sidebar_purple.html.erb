@@ -11,23 +11,5 @@
   <%= render 'shared/createwatchlist_modal', modal_watchlist: Watchlist.new %>
   <%= render 'shared/addmovie_modal', modal_watchlist_movie: WatchlistMovie.new %>
 
-  <hr>
-  <%= link_to profile_path(current_user) do %>
-    <i class="fas fa-user"></i> Profile
-  <% end %>
-  <%= link_to '#' do %>
-    <i class="fas fa-search"></i> Discover
-  <% end %>
-  <%= link_to '#' do %>
-    <i class="fas fa-users"></i> Friends
-  <% end %>
-  <%= link_to profile_movies_path do %>
-    <i class="fas fa-video"></i> My Movies
-  <% end %>
-  <%= link_to '#' do %>
-    <i class="fas fa-list"></i> Watchlists
-  <% end %>
-  <%= link_to '#' do %>
-    <i class="fas fa-bookmark"></i> Watch later
-  <% end %>
+  <%= render 'shared/sidebar_layout'%>
 </div>
