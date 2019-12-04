@@ -3,6 +3,10 @@ function refreshForm(innerHTML) {
   newWatchlistForm.innerHTML = innerHTML;
 }
 
+// function addWatchlist(watchlistHTML) {
+//   const watchlists = document.getElementById('watchlists');
+//   watchlists.insertAdjacentHTML('beforeend', watchlistHTML);
+// }
 
 <% if @watchlist.errors.any? %>
   refreshForm('<%= j render "shared/createwatchlist_form", modal_watchlist: @watchlist %>');

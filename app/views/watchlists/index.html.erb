@@ -1,2 +1,33 @@
-<h1>Watchlists#index</h1>
-<p>Find me in app/views/watchlists/index.html.erb</p>
+<div class="d-flex justify-content-between">
+  <h1>My Watchlists</h1>
+  <p><%= link_to "Create new", new_watchlist_path %></p>
+</div>
+
+<div class="d-flex" style="justify-content: space-evenly;">
+  <% current_user.watchlists.each do |watchlist| %>
+  <%= link_to watchlist_path(watchlist), class: "movie-card-link" do  %>
+  <div class="watchlist-card">
+    <img src="<%= watchlist.photo %>" class="card-img-top">
+    <p><%= watchlist.name %> </p>
+  </div>
+  <% end %>
+  <% end %>
+</div>
+
+<div class= "followed-watchlists">
+<div class="d-flex justify-content-between">
+  <h1>Followed Watchlists</h1>
+</div>
+
+<div class="d-flex" style="justify-content: space-evenly;">
+  <%  current_user.following_by_type('Watchlist').each do |watchlist| %>
+  <%= link_to watchlist_path(watchlist), class: "movie-card-link" do  %>
+  <div class="watchlist-card">
+    <img src="<%= watchlist.photo %>" class="card-img-top">
+    <p><%= watchlist.name %> </p>
+  </div>
+  <% end %>
+  <% end %>
+</div>
+</div>
+

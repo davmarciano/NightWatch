@@ -61,7 +61,7 @@
 
   <div class="d-flex">
     <% @user.friends.each do |friend| %>
-    <%= friend.first_name %>
+    <%= friend.first_name if friend%>
     <% end %>
   </div>
 
