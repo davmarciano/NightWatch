@@ -10,6 +10,14 @@ class ApplicationController < ActionController::Base
   end
   include Pundit
 
+  def after_sign_in_path_for(resource)
+     movies_path
+  end
+
+  def after_sign_up_path_for(scope)
+    movies_path
+  end
+
   private
 
   def layout_for_devise
