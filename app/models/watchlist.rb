@@ -5,4 +5,6 @@ class Watchlist < ApplicationRecord
   has_many :movies, through: :watchlist_movies
 
   acts_as_followable
+
+  validates :name, presence: true
 end

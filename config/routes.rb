@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :watchlists, except: [:index]
 
   resources :watchlists_movies, only: [:create]
+  # post 'watchlists_movies', to: 'watchlists_movies#create'
 
 
   resources :movies, only: [:index, :show] do

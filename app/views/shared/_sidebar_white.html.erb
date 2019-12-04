@@ -8,13 +8,10 @@
   <% end %>
 
   <!-- Modal -->
-  <%= render 'shared/createwatchlist_modal' %>
-  <%= render 'shared/addmovie_modal' %>
+  <%= render 'shared/createwatchlist_modal', modal_watchlist: Watchlist.new %>
+  <%= render 'shared/addmovie_modal', modal_watchlist_movie: WatchlistMovie.new %>
 
   <hr>
-  <%= link_to movies_path do %>
-    <i class="fas fa-home"></i> Home
-  <% end %>
   <%= link_to profile_path(current_user) do %>
     <i class="fas fa-user"></i> Profile
   <% end %>
