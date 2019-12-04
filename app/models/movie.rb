@@ -4,6 +4,14 @@ class Movie < ApplicationRecord
   
   validates :title, uniqueness: true
 
+  include PgSearch::Model
+  pg_search_scope :search_by_anything,
+  against: [:title, :watchlist, :actor, :director, :genre],
+
+  using: {
+    tsearch: { prefix: true }
+  }
+  
   def friend_reviews(current_user)
     reviews.select { |review| current_user.follows.pluck(:followable_id).include?(review.user_id) }
   end
