@@ -1,0 +1,30 @@
+  <%= simple_form_for(modal_watchlist, remote: true) do |f| %>
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="createWatchlistModalLabel">Create Watchlist</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-4">
+                <%= f.input :name %>
+                <%= f.input :description, label: "Leave your catchy description here" %>
+                <%= f.input :photo, label: "Choose image"  %>
+                <%= f.input :photo_cache, as: :hidden %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn button-pink-small-secondary" data-dismiss="modal">Cancel</button>
+          <%= f.submit "Create", class: "btn button-pink-small" %>
+        </div>
+      </div>
+    </div>
+    <% end %>

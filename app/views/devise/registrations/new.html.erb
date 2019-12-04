@@ -12,7 +12,7 @@
           <%= f.input :password_confirmation, required: true, input_html: { autocomplete: "new-password" } %>
           <%= f.input :profile_picture %>
           <%= f.input :profile_picture_cache, as: :hidden %>
-          <%= f.button :submit, "Sign up", class: "button-pink" %>
+          <%= f.submit "Sign up", class: "button-pink" %>
       <% end %>
       <br>
     <%= render "devise/shared/links" %>

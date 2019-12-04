@@ -21,10 +21,10 @@ class WatchlistsController < ApplicationController
     @watchlist.user = current_user
     @watchlist.save
     if @watchlist.save
-      redirect_to watchlist_path(@watchlist)
-    else
-      flash[:alert] = "Sorry, something went wrong."
-      render :new, layout: 'application_white'
+      respond_to do |format|
+        format.html { redirect_to watchlist_path(@watchlist) }
+        format.js # <-- will render `app/views/reviews/create.js.erb`
+      end
     end
   end
 
