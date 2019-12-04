@@ -7,6 +7,7 @@ class WatchlistsController < ApplicationController
   def show
     @watchlist = Watchlist.find(params[:id])
     @following = current_user.following?(@watchlist)
+    @is_owner = current_user == @watchlist.user
     authorize @watchlist
     render layout: 'application_purple'
   end
@@ -45,12 +46,15 @@ class WatchlistsController < ApplicationController
   def follow
     @watchlist = Watchlist.find(params[:id])
     @following = current_user.following?(@watchlist)
-    if @following
-      current_user.stop_following(@watchlist)
-    else
-      current_user.follow(@watchlist)
+    @is_owner = current_user == @watchlist.user
+    unless @is_owner
+      if @following
+        current_user.stop_following(@watchlist)
+      else
+        current_user.follow(@watchlist)
+      end
+      redirect_to watchlist_path(@watchlist)
     end
-    redirect_to watchlist_path(@watchlist)
   end
 
   private
