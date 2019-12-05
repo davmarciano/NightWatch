@@ -13,6 +13,7 @@ class ProfilesController < ApplicationController
   end
 
   def show
+    @mymovies = current_user.movies.uniq
     @user = User.find(params[:id])
     @followers = @user.follows_by_type('User')
     @followings = @user.following_users
