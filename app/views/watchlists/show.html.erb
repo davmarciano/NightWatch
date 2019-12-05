@@ -1,7 +1,7 @@
 <div class="d-flex">
   <div class="div">
     <h1><%= @watchlist.name %></h1>
-    <p style="font-weight:lighter;font-size:12px;font-style:italic;">Created by <%= link_to profile_path(@watchlist.user) do %><%= @watchlist.user.first_name %> <% end %></p>
+    <p style="font-weight:lighter;font-size:12px;font-style:italic;">Created by <%= link_to profile_path(@watchlist.user) do %><%= @watchlist.user.first_name %> <%= @watchlist.user.last_name unless nil %> <% end %></p>
   </div>
 
   <div class="mr-5 mt-4">
