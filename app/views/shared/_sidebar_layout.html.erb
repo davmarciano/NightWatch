@@ -19,7 +19,7 @@
     <i class="fas fa-list"></i> Watchlists
   <% end %>
 
-  <% watch_later = current_user.watchlists.second %>
+  <% watch_later = current_user.watchlists.first %>
   <%= link_to watchlist_path(watch_later) do %>
     <i class="fas fa-bookmark"></i> Watch later
   <% end %>
