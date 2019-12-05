@@ -1,6 +1,7 @@
 function refreshForm(innerHTML) {
   const newWatchlistForm = document.getElementById('new_watchlist');
   newWatchlistForm.innerHTML = innerHTML;
+  document.getElementById('watchlist-close').click()
 }
 
 // function addWatchlist(watchlistHTML) {
@@ -13,3 +14,4 @@ function refreshForm(innerHTML) {
 <% else %>
   refreshForm('<%= j render "shared/createwatchlist_form", modal_watchlist: Watchlist.new %>');
 <% end %>
+
