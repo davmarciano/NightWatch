@@ -17,8 +17,6 @@ function slick() {
 };
 
 
-
-
 function slickFollowed() {
 
   const count = parseInt(document.querySelector(".followed-watchlists-line-wrapper").dataset.watchlistCount, 10)
@@ -40,3 +38,23 @@ function slickFollowed() {
 };
 
 //export { slick };
+
+function slickFriends() {
+
+  const count = parseInt(document.querySelector(".friends-line-wrapper").dataset.friendsCount, 10)
+  let slides;
+  if (count >= 3) {
+    slides = 3
+  } else if (count === 2) {
+    slides = 2
+  } else {
+    slides = 1
+  }
+
+  $('.friends-wrapper').slick({
+    infinite: true,
+    slidesToShow: slides,
+    slidesToScroll: slides,
+    dots: true
+  });
+};

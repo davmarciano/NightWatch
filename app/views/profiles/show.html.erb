@@ -65,7 +65,7 @@
   </div>
   <h2 class="mt-5">Friends</h2>
   <hr>
-  <div class="d-flex">
+  <div class="d-flex friends-line-wrapper" data-watchlist-count="<%= @user.friends.count %>" style="justify-content: start;">
     <% @user.friends.each do |friend| %>
     <% if friend %>
     <%= link_to profile_path(friend.followable_id), class: "friend-card-link" do  %>
@@ -82,5 +82,7 @@
     <% end %>
     <% end %>
   </div>
+
+
   <%= render 'shared/createwatchlist_modal', modal_watchlist: Watchlist.new %>
   <%= render 'shared/follower_modal' %>

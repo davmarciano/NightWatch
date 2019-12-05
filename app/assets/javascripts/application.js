@@ -5,3 +5,4 @@
 //= require slick.js
 slick()
 slickFollowed()
+slickFriends ()
