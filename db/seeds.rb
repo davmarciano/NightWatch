@@ -48,7 +48,7 @@ end
 puts "MOVIES CREATED !"
 
 
-######
+#####
 require 'faker'
 
 40.times do
@@ -58,7 +58,7 @@ require 'faker'
     last_name: Faker::Name.last_name,
     email: "#{Faker::Name.first_name}-#{Faker::Name.last_name}@mail.com",
     password: "123456",
-    profile_picture: nil
+    profile_picture: "https://source.unsplash.com/featured/?face"
   )
 
   user.email = "#{user.first_name}-#{user.last_name}@mail.com"
