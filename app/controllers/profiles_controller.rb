@@ -13,6 +13,7 @@ class ProfilesController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
     @followers = @user.follows_by_type('User')
     @followings = @user.following_users
     @movies = @user.movies
@@ -30,7 +31,7 @@ class ProfilesController < ApplicationController
       current_user.follow(@user)
     end
     redirect_to profile_path(@user)
-    render layout: 'application_purple'
+    # render layout: 'application_purple'
   end
 
   private

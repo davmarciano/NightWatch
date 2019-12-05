@@ -32,6 +32,7 @@ class User < ApplicationRecord
         my_friends << user unless user.nil?
       end
     end
+    my_friends
   end
 
   private
