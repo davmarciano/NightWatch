@@ -14,7 +14,7 @@
 
 <!-- the list of movies -->
 <hr>
-  <div class="row" style="justify-content: space-evenly;">
+  <div class="row" style="justify-content: normal;">
     <% @movies.each do |movie|  %>
       <%= link_to movie_path(movie), class: "movie-card-link" do  %>
         <div class="movie-card">
