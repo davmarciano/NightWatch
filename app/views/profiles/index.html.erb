@@ -1,27 +1,28 @@
-<h1>Network</h1>
 <div class="search mb-3">
-  <h1>Find a movie friend</h1>
+  <h1>Find inspiring friends</h1>
   <h5>add people to your network!</h5>
 
-  <%= form_tag profiles_path, method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Find your friend"
-    %>
-    <%= submit_tag "Search", class: "button-pink-flat" %>
+    <%= form_tag profiles_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find your friend"
+      %>
+      <%= submit_tag "Find friends", class: "button-pink-flat" %>
   <% end %>
 </div>
+
+<hr>
 <div class="d-flex">
   <% @users.each do |user| %>
   <%= link_to profile_path(user), class: "friend-card-link" do  %>
-    <div class="friend-card">
+    <div class="friend-card mt-2" style="width: 160px;">
         <% if user.profile_picture? %>
           <%= cl_image_tag user.profile_picture, class: "avatar-bordered" %>
         <% else %>
           <%= image_tag "https://i2.wp.com/metro.co.uk/wp-content/uploads/2019/09/PRI_85461411.jpg?quality=90&strip=all&zoom=1&resize=644%2C779&ssl=1", class: "avatar-bordered" %>
         <% end %>
-        <p><%= user.first_name %></p>
+        <p><%= user.first_name %> <%= user.last_name %></p>
     </div>
   <% end %>
   <% end %>
