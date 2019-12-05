@@ -4,3 +4,4 @@
 //= require jquery.slick
 //= require slick.js
 slick()
+slickFollowed()
