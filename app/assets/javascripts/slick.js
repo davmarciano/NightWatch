@@ -1,4 +1,4 @@
-const slick = () => {
+function slick() {
   const count = parseInt(document.querySelector(".my-watchlists-line-wrapper").dataset.watchlistCount, 10)
   let slides;
   if (count >= 3) {
@@ -19,7 +19,7 @@ const slick = () => {
 
 
 
-const slickFollowed = () => {
+function slickFollowed() {
 
   const count = parseInt(document.querySelector(".followed-watchlists-line-wrapper").dataset.watchlistCount, 10)
   let slides;
