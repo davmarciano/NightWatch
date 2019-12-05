@@ -1,14 +1,20 @@
-<h1><%= @watchlist.name %></h1>
+<div class="d-flex">
+  <div class="div">
+    <h1><%= @watchlist.name %></h1>
+    <p style="font-weight:lighter;font-size:12px;font-style:italic;">Created by <%= link_to profile_path(@watchlist.user) do %><%= @watchlist.user.first_name %> <% end %></p>
+  </div>
 
-<% if !@is_owner %>
-  <% if @following %>
-    <%= link_to "Unfollow", follow_watchlist_path(@watchlist), class: "btn btn-primary" %>
-  <% else %>
-    <%= link_to "Follow", follow_watchlist_path(@watchlist), class: "btn btn-primary" %>
-  <% end %>
-<% end %>
-
-
+  <div class="mr-5 mt-4">
+    <% if !@is_owner %>
+      <% if @following %>
+        <%= link_to "Unfollow", follow_watchlist_path(@watchlist), class: "button-pink" %>
+      <% else %>
+        <%= link_to "Follow", follow_watchlist_path(@watchlist), class: "button-pink" %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<hr>
 
 <div>
   <% @watchlist.movies.each do |movie| %>
