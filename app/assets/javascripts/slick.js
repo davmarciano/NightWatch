@@ -43,15 +43,15 @@ function slickFriends() {
 
   const count = parseInt(document.querySelector(".friends-line-wrapper").dataset.friendsCount, 10)
   let slides;
-  if (count >= 3) {
-    slides = 3
-  } else if (count === 2) {
-    slides = 2
+  if (count >= 10) {
+    slides = 10
+  } else if (count === 9) {
+    slides = 9
   } else {
     slides = 1
   }
 
-  $('.friends-wrapper').slick({
+  $('.friends-line-wrapper').slick({
     infinite: true,
     slidesToShow: slides,
     slidesToScroll: slides,
