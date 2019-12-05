@@ -20,6 +20,7 @@ class WatchlistsMoviesController < ApplicationController
         movie_id: @watchlist_movie.movie_id,
         user_id: current_user.id)
     end
+
     respond_to do |format|
       format.html { redirect_to movies_path } # we do not really expect html, but only JS
       format.js  # <-- idem
