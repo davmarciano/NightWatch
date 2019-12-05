@@ -1,5 +1,5 @@
 function slick() {
-  const count = parseInt(document.querySelector(".my-watchlists-line-wrapper").dataset.watchlistCount, 10)
+  var count = parseInt(document.querySelector(".my-watchlists-line-wrapper").dataset.watchlistCount, 10)
   let slides;
   if (count >= 3) {
     slides = 3
@@ -19,7 +19,7 @@ function slick() {
 
 function slickFollowed() {
 
-  const count = parseInt(document.querySelector(".followed-watchlists-line-wrapper").dataset.watchlistCount, 10)
+  var count = parseInt(document.querySelector(".followed-watchlists-line-wrapper").dataset.watchlistCount, 10)
   let slides;
   if (count >= 3) {
     slides = 3
@@ -41,7 +41,7 @@ function slickFollowed() {
 
 function slickFriends() {
 
-  const count = parseInt(document.querySelector(".friends-line-wrapper").dataset.friendsCount, 10)
+  var count = parseInt(document.querySelector(".friends-line-wrapper").dataset.friendsCount, 10)
   let slides;
   if (count >= 10) {
     slides = 10
