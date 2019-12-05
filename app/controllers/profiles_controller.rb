@@ -5,8 +5,14 @@ class ProfilesController < ApplicationController
 
   # Hamze search bar // controller index #view
   def index
+    if params[:query].present?
+      sql_query = "first_name ILIKE :query OR last_name ILIKE :query"
+      @users = User.where(sql_query, query: "%#{params[:query]}%")
+      render layout: 'application_white'
+    else
     @users = User.all
   end
+end
 
   def show
     @followers = @user.follows_by_type('User')
