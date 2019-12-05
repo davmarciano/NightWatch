@@ -16,7 +16,7 @@
 </div>
 <hr>
 
-<div>
+<div class="row" style="justify-content: normal;">
   <% @watchlist.movies.each do |movie| %>
     <%= link_to movie_path(movie), class: "movie-card-link" do  %>
       <div class="movie-card">
