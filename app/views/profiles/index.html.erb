@@ -1,5 +1,17 @@
 <h1>Network</h1>
+<div class="search mb-3">
+  <h1>Find a movie friend</h1>
+  <h5>add people to your network!</h5>
 
+  <%= form_tag profiles_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find your friend"
+    %>
+    <%= submit_tag "Search", class: "button-pink-flat" %>
+  <% end %>
+</div>
 <div class="d-flex">
   <% @users.each do |user| %>
   <%= link_to profile_path(user), class: "friend-card-link" do  %>

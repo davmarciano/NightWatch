@@ -16,6 +16,15 @@ class User < ApplicationRecord
 
   mount_uploader :profile_picture, PhotoUploader
 
+  include PgSearch::Model
+  pg_search_scope :search_friend,
+  against: [:first_name, :last_name],
+
+  using: {
+    tsearch: { prefix: true }
+  }
+
+
   def friends
     my_friends = []
     follows.each do |follow|
