@@ -5,11 +5,11 @@ require 'net/http'
 require 'openssl'
 require 'json'
 
-puts "delete all movies"
+puts "DELETING ALL MOVIES ..."
 Movie.destroy_all
 puts "all movies deleted"
 
-puts "creating new movies"
+puts "CREATING NEW MOVIES ..."
 
 
 url = "https://www.imdb.com/search/title/?count=100&groups=top_1000&sort=user_rating"
@@ -45,4 +45,28 @@ html_doc.search('.lister-item-header a').each do |element|
   )
 end
 
-puts "movie created"
+puts "MOVIES CREATED !"
+
+
+######
+require 'faker'
+
+40.times do
+
+  user = User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: "#{Faker::Name.first_name}-#{Faker::Name.last_name}@mail.com",
+    password: "123456",
+    profile_picture: nil
+  )
+
+  user.email = "#{user.first_name}-#{user.last_name}@mail.com"
+  user.save!
+end
+
+
+
+
+
+

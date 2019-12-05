@@ -22,7 +22,7 @@ gem 'carrierwave', '~> 1.2'
 gem "jquery-slick-rails"
 gem 'jquery-rails'
 
-
+gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
 
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 

@@ -1,89 +1,86 @@
 <div class="d-flex mb-5 justify-content-between">
-
   <div class="d-flex">
     <% if @user.profile_picture? %>
-      <%= cl_image_tag @user.profile_picture, class: "avatar-bordered" %>
+    <%= cl_image_tag @user.profile_picture, class: "avatar-bordered" %>
     <% else %>
-      <%= image_tag "https://i2.wp.com/metro.co.uk/wp-content/uploads/2019/09/PRI_85461411.jpg?quality=90&strip=all&zoom=1&resize=644%2C779&ssl=1", class: "avatar-bordered" %>
+    <%= image_tag "https://i2.wp.com/metro.co.uk/wp-content/uploads/2019/09/PRI_85461411.jpg?quality=90&strip=all&zoom=1&resize=644%2C779&ssl=1", class: "avatar-bordered" %>
     <% end %>
-
     <div>
       <h1><%= @user.first_name %> <%= @user.last_name %></h1>
       <div class="d-flex follower" style="font-weight: lighter;font-size: 12px;">
-        <p><i class="fas fa-users"></i><%= link_to "#{@user.followers_count} Followers", profile_followers_path(@user )%> </p>
+        <p><i class="fas fa-users"></i><%= link_to "#{@user.followers_count} Followers", '#', data: {toggle: "modal", target:"#followerModal"}%> </p>
         <p><i class="fas fa-users"></i><%= link_to "#{@user.follow_count} Following", profile_followers_path(@user) %> </p>
         <p><i class="fas fa-list"></i><%= @user.watchlists.count %> Watchlists</p>
       </div>
     </div>
-
   </div>
-
   <div class="mr-5 mt-4">
     <% unless @is_owner %>
-      <% if @following%>
-        <%= link_to "Unfollow", follow_user_path(@user), class: "button-pink" %>
-      <% else %>
-        <%= link_to "Follow", follow_user_path(@user), class: "button-pink" %>
-      <% end %>
+    <% if @following%>
+    <%= link_to "Unfollow", follow_user_path(@user), class: "button-pink" %>
+    <% else %>
+    <%= link_to "Follow", follow_user_path(@user), class: "button-pink" %>
+    <% end %>
     <% end %>
   </div>
-
 </div>
-
 <h2 class="mt-5">Movies</h2>
 <hr>
 <div class="d-flex">
   <% @user.watchlists.first.movies.each do |movie| %>
-    <%= link_to movie_path(movie), class: "movie-card-link" do  %>
-      <div class="movie-card">
-        <img src="<%= movie.poster %>" class="card-img-top" alt="Movie Poster">
-        <p> <%= movie.title %> </p>
-      </div>
-    <% end %>
+  <%= link_to movie_path(movie), class: "movie-card-link" do  %>
+  <div class="movie-card">
+    <img src="<%= movie.poster %>" class="card-img-top" alt="Movie Poster">
+    <p> <%= movie.title %> </p>
+  </div>
+  <% end %>
   <% end %>
 </div>
-
-<div class="d-flex justify-content-between mt-5 watchlist">
-  <h2>Watchlists</h2>
-  <% if current_user == @user %>
-    <%= link_to new_watchlist_path do %>
-     <p><i class="fas fa-plus-circle"></i>Create new</p>
+<div class="own-watchlists">
+  <div class="d-flex justify-content-between">
+    <h2 class="mt-5">My Watchlists</h2>
+    <%= link_to '#', data: {toggle: "modal", target:"#createWatchlistModal"} do %>
+    <p class="createnew mt-5"><i class="fas fa-plus-circle"></i> Create New</p>
     <% end %>
-  <% end %>
-</div>
-<hr>
-
-<div class="d-flex">
-  <% @user.watchlists.each do |watchlist| %>
-    <% if watchlist.name != "My Movies" && watchlist.name != "Watch Later" %>
+  </div>
+  <hr>
+  <div class="d-flex my-watchlists-line-wrapper" data-watchlist-count="<%= current_user.watchlists.count %>" style="justify-content: start;">
+    <% current_user.watchlists.each do |watchlist| %>
+    <div class="multiple-watchlists">
       <%= link_to watchlist_path(watchlist), class: "movie-card-link" do  %>
-        <div class="watchlist-card">
-          <img src="<%= watchlist.photo %>" class="card-img-top">
+      <div class="watchlist-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(
+        <% if watchlist.photo? %>
+        <%= cl_image_path watchlist.photo, class:"watchlist-photo" %>
+        <% else %>
+        <%= image_path "https://source.unsplash.com/featured/?movies" %>
+        <% end %>)">
+        <div class="watchlist-card-name">
           <p><%= watchlist.name %> </p>
         </div>
-      <% end %>
-    <% end %>
-  <% end %>
-</div>
-
-
-<h2 class="mt-5">Friends</h2>
-<hr>
-
-<div class="d-flex">
-  <% @user.friends.each do |friend| %>
-  <% if friend %>
-  <%= link_to profile_path(friend.followable_id), class: "friend-card-link" do  %>
-    <div class="friend-card">
-        <% user_friend = User.find(friend.followable_id) %>
-        <% if user_friend.profile_picture? %>
-          <%= cl_image_tag user_friend.profile_picture, class: "avatar-bordered" %>
-        <% else %>
-          <%= image_tag "https://i2.wp.com/metro.co.uk/wp-content/uploads/2019/09/PRI_85461411.jpg?quality=90&strip=all&zoom=1&resize=644%2C779&ssl=1", class: "avatar-bordered" %>
+        </div> <!-- .watchlist-card -->
         <% end %>
-        <p><%= user_friend.first_name if friend%></p>
+      </div>
+      <% end %>
     </div>
-  <% end %>
-  <% end %>
-  <% end %>
-</div>
+  </div>
+  <h2 class="mt-5">Friends</h2>
+  <hr>
+  <div class="d-flex">
+    <% @user.friends.each do |friend| %>
+    <% if friend %>
+    <%= link_to profile_path(friend.followable_id), class: "friend-card-link" do  %>
+    <div class="friend-card">
+      <% user_friend = User.find(friend.followable_id) %>
+      <% if user_friend.profile_picture? %>
+      <%= cl_image_tag user_friend.profile_picture, class: "avatar-bordered" %>
+      <% else %>
+      <%= image_tag "https://i2.wp.com/metro.co.uk/wp-content/uploads/2019/09/PRI_85461411.jpg?quality=90&strip=all&zoom=1&resize=644%2C779&ssl=1", class: "avatar-bordered" %>
+      <% end %>
+      <p><%= user_friend.first_name if friend%></p>
+    </div>
+    <% end %>
+    <% end %>
+    <% end %>
+  </div>
+  <%= render 'shared/createwatchlist_modal', modal_watchlist: Watchlist.new %>
+  <%= render 'shared/follower_modal' %>
