@@ -11,9 +11,9 @@ class Movie < ApplicationRecord
   using: {
     tsearch: { prefix: true }
   }
-  
+
   def friend_reviews(current_user)
-    reviews.select { |review| current_user.follows.pluck(:followable_id).include?(review.user_id) }
+    reviews.by_friends(current_user)
   end
 
   def friends_average_rating(current_user)

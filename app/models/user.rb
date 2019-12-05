@@ -16,6 +16,7 @@ class User < ApplicationRecord
 
   mount_uploader :profile_picture, PhotoUploader
 
+
   def friends
     my_friends = []
     follows.each do |follow|

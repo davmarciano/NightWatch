@@ -16,7 +16,7 @@ class MoviesController < ApplicationController
   def show
     @movie = Movie.find(params[:id])
     authorize @movie
-    @reviews = @movie.friend_reviews(current_user)
+    @reviews = @movie.friend_reviews(current_user) + current_user.reviews.where(movie: @movie)
     @friends_average_rating = @movie.friends_average_rating(current_user)
     render layout: 'application_purple'
   end
