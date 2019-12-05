@@ -4,7 +4,7 @@
   width: 200px;
   height: auto;
   text-align: center;
-  padding-top: 4px;
+  margin-top: 15px;
   font-weight: bold;
 }
 
@@ -29,7 +29,7 @@
     color: $p-text;
     text-decoration: none;
     opacity: .7;
-    -webkit-transform: scale(1.15, 1.15);
+    -webkit-transform: scale(1.05, 1.05);
     -webkit-transition: all .5s ease-in-out;
   }
 }
@@ -82,7 +82,7 @@
     color: $p-text;
     text-decoration: none;
     opacity: .7;
-    -webkit-transform: scale(1.15, 1.15);
+    -webkit-transform: scale(1.05, 1.05);
     -webkit-transition: all .5s ease-in-out;
   }
 }

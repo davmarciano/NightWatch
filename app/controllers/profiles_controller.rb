@@ -1,6 +1,4 @@
 class ProfilesController < ApplicationController
-  layout "application_purple"
-
   before_action :set_profile, only: %i[show follow]
 
   # Hamze search bar // controller index #view
@@ -8,11 +6,11 @@ class ProfilesController < ApplicationController
     if params[:query].present?
       sql_query = "first_name ILIKE :query OR last_name ILIKE :query"
       @users = User.where(sql_query, query: "%#{params[:query]}%")
-      render layout: 'application_white'
     else
-    @users = User.all
+      @users = User.all
+    end
+    render layout: 'application_white'
   end
-end
 
   def show
     @followers = @user.follows_by_type('User')
@@ -21,6 +19,7 @@ end
     @watchlists = @user.watchlists
     @is_owner = current_user == @user
     @following = current_user.following?(@user)
+    render layout: 'application_purple'
   end
 
   def follow
@@ -31,6 +30,7 @@ end
       current_user.follow(@user)
     end
     redirect_to profile_path(@user)
+    render layout: 'application_purple'
   end
 
   private
