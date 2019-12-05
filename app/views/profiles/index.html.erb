@@ -1,17 +1,16 @@
-<div>
-  <h2>Following</h2>
-  <ul>
-    <% @followings.each do |f| %>
-      <p><%= link_to "#{f.first_name} #{f.last_name}", profile_path(f) %></p>
-    <% end %>
-  </ul>
-</div>
+<h1>Network</h1>
 
-<div>
-  <h2>Followers</h2>
-  <ul>
-    <% @followers.each do |f| %>
-      <p><%= link_to "#{f.follower.first_name} #{f.follower.last_name}", profile_path(f.follower) %></p>
-    <% end %>
-  </ul>
+<div class="d-flex">
+  <% @users.each do |user| %>
+  <%= link_to profile_path(user), class: "friend-card-link" do  %>
+    <div class="friend-card">
+        <% if user.profile_picture? %>
+          <%= cl_image_tag user.profile_picture, class: "avatar-bordered" %>
+        <% else %>
+          <%= image_tag "https://i2.wp.com/metro.co.uk/wp-content/uploads/2019/09/PRI_85461411.jpg?quality=90&strip=all&zoom=1&resize=644%2C779&ssl=1", class: "avatar-bordered" %>
+        <% end %>
+        <p><%= user.first_name %></p>
+    </div>
+  <% end %>
+  <% end %>
 </div>

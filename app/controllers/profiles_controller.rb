@@ -3,10 +3,9 @@ class ProfilesController < ApplicationController
 
   before_action :set_profile, only: %i[show follow]
 
+  # Hamze search bar // controller index #view
   def index
-    @user = current_user
-    show
-    render :show
+    @users = User.all
   end
 
   def show
