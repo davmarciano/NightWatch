@@ -24,7 +24,6 @@ class User < ApplicationRecord
     tsearch: { prefix: true }
   }
 
-
   def friends
     my_friends = []
     follows.each do |follow|
