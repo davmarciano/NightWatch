@@ -38,7 +38,7 @@ class User < ApplicationRecord
   private
 
   def create_default_watchlists
-    Watchlist.create(user: self, name: "My Movies")
+    # Watchlist.create(user: self, name: "My Movies")
     Watchlist.create(user: self, name: "Watch Later")
   end
 
