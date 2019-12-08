@@ -1,40 +1,37 @@
 function slick() {
-  var count = parseInt(document.querySelector(".my-watchlists-line-wrapper").dataset.watchlistCount, 10)
-  var slides;
-  if (count >= 3) {
-    slides = 3
-  } else if (count === 2) {
-    slides = 2
-  } else {
-    slides = 1
-  }
+  const count = parseInt(document.querySelector(".my-watchlists-line-wrapper").dataset.watchlistCount, 10)
+  // let slides;
+  // if (count >= 3) {
+  //   slides = 3
+  // } else if (count === 2) {
+  //   slides = 2
+  // } else {
+  //   slides = 1
+  // }
   $('.my-watchlists-line-wrapper').slick({
     infinite: true,
-    slidesToShow: slides,
-    slidesToScroll: slides,
+    slidesToShow: 3,
+    slidesToScroll: 3,
     dots: true,
-    centerPadding: 20
   });
 };
 
 
 function slickFollowed() {
 
-  var count = parseInt(document.querySelector(".followed-watchlists-line-wrapper").dataset.watchlistCount, 10)
-  var slides;
-  if (count >= 3) {
-    slides = 3
-  } else if (count === 2) {
-    slides = 2
-  } else {
-    slides = 1
-  }
+  const count = parseInt(document.querySelector(".followed-watchlists-line-wrapper").dataset.watchlistCount, 10)
+  // let slides;
+  // if (count >= 3) {
+  //   slides = 3
+  // } else {
+  //   slides = 3
+  // }
 
   $('.followed-watchlists-line-wrapper').slick({
     infinite: true,
-    slidesToShow: slides,
-    slidesToScroll: slides,
-    dots: true
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    dots: 3
   });
 };
 
@@ -42,8 +39,8 @@ function slickFollowed() {
 
 function slickFriends() {
 
-  var count = parseInt(document.querySelector(".friends-line-wrapper").dataset.friendsCount, 10)
-  var slides;
+  const count = parseInt(document.querySelector(".friends-line-wrapper").dataset.friendsCount, 10)
+  let slides;
   if (count >= 10) {
     slides = 10
   } else if (count === 9) {
@@ -75,25 +72,11 @@ function slickFriends() {
 };
 
 function slickMovies() {
-  const count = parseInt(document.querySelector(".my-movies-line-wrapper").dataset.watchlistCount, 10)
-  let slides;
-  if (count >= 6) {
-    slides = 6
-  } else if (count === 5) {
-    slides = 5
-  } else if (count === 4) {
-    slides = 4
-  } else if (count === 3) {
-    slides = 3
-  } else if (count === 2) {
-    slides = 2
-  } else {
-    slides = 1
-  }
-  $('.my-movies-line-wrapper').slick({
+  const count = parseInt(document.querySelector(".movies-line-wrapper").dataset.moviesCount, 10)
+  $('.movies-line-wrapper').slick({
     infinite: true,
-    slidesToShow: slides,
-    slidesToScroll: slides,
+    slidesToShow: 5,
+    slidesToScroll: 5,
     dots: true
   });
 };
