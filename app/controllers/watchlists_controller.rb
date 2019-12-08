@@ -8,6 +8,7 @@ class WatchlistsController < ApplicationController
     @watchlist = Watchlist.find(params[:id])
     @following = current_user.following?(@watchlist)
     @is_owner = current_user == @watchlist.user
+
     authorize @watchlist
     render layout: 'application_purple'
   end

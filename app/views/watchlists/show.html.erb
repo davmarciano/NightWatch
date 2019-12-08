@@ -1,7 +1,7 @@
-<div class="d-flex">
-  <div class="div">
-    <h1><%= @watchlist.name %></h1>
-    <p style="font-weight:lighter;font-size:12px;font-style:italic;">Created by <%= link_to profile_path(@watchlist.user) do %><%= @watchlist.user.first_name %> <%= @watchlist.user.last_name unless nil %> <% end %></p>
+<div class="d-flex justify-content-between">
+  <div>
+    <h1><%= @watchlist.name %> <element style="font-weight:lighter;font-size:14px;font-style:italic;">Created by <%= link_to profile_path(@watchlist.user), style: "color:#DE4779" do %><%= @watchlist.user.first_name %> <%= @watchlist.user.last_name unless nil%> <% end %></element></h1>
+    <p><%= @watchlist.description %></p>
   </div>
 
   <div class="mr-5 mt-4">
@@ -16,12 +16,21 @@
 </div>
 <hr>
 
-<div class="row" style="justify-content: normal;">
+<div class="d-flex" style="justify-content: normal;">
   <% @watchlist.movies.each do |movie| %>
     <%= link_to movie_path(movie), class: "movie-card-link" do  %>
-      <div class="movie-card">
-        <img src="<%= movie.poster %>" class="card-img-top" alt="Movie Poster">
-        <p> <%= movie.title %> </p>
+      <div class="d-flex movie-review-card">
+        <img src="<%= movie.poster %>" alt="Movie Poster">
+        <div class="movie-review-text">
+          <h5> <%= movie.title %> </h5>
+          <% user_review = movie.reviews.where(user: @watchlist.user).first %>
+          <% if user_review.present? %>
+            <% user_review.rating.times do  %>
+              <i class="fas fa-star rating"></i>
+            <% end %>
+            <p> <%= user_review.content %> </p>
+          <% end %>
+        </div>
       </div>
     <% end %>
   <% end %>
