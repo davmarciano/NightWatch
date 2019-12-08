@@ -5,4 +5,5 @@ class FollowersController < ApplicationController
     @followings = @user.following_by_type('User')
     render layout: 'application_white'
   end
+
 end
