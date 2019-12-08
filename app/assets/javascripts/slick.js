@@ -12,7 +12,8 @@ function slick() {
     infinite: true,
     slidesToShow: slides,
     slidesToScroll: slides,
-    dots: true
+    dots: true,
+    centerPadding: 20
   });
 };
 
@@ -47,6 +48,20 @@ function slickFriends() {
     slides = 10
   } else if (count === 9) {
     slides = 9
+  } else if (count === 8) {
+    slides = 8
+  } else if (count === 7) {
+    slides = 7
+  } else if (count === 6) {
+    slides = 6
+  } else if (count === 5) {
+    slides = 5
+  } else if (count === 4) {
+    slides = 4
+  } else if (count === 3) {
+    slides = 3
+  } else if (count === 2) {
+    slides = 2
   } else {
     slides = 1
   }
@@ -58,3 +73,28 @@ function slickFriends() {
     dots: true
   });
 };
+
+function slickMovies() {
+  const count = parseInt(document.querySelector(".my-movies-line-wrapper").dataset.watchlistCount, 10)
+  let slides;
+  if (count >= 6) {
+    slides = 6
+  } else if (count === 5) {
+    slides = 5
+  } else if (count === 4) {
+    slides = 4
+  } else if (count === 3) {
+    slides = 3
+  } else if (count === 2) {
+    slides = 2
+  } else {
+    slides = 1
+  }
+  $('.my-movies-line-wrapper').slick({
+    infinite: true,
+    slidesToShow: slides,
+    slidesToScroll: slides,
+    dots: true
+  });
+};
+

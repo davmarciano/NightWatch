@@ -1,35 +1,4 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <%= link_to profile_path(current_user), class: "link-navbar-purple" do %>
-          <% if current_user.profile_picture? %>
-            <%= cl_image_tag current_user.profile_picture, class: "avatar" %>
-            <%= current_user.first_name.first.capitalize %> <%= current_user.last_name.first.capitalize %>
-          <% else %>
-            <%= image_tag "https://i2.wp.com/metro.co.uk/wp-content/uploads/2019/09/PRI_85461411.jpg?quality=90&strip=all&zoom=1&resize=644%2C779&ssl=1", class: "avatar" %>
-            <%= current_user.first_name.first.capitalize %> <%= current_user.last_name.first.capitalize %>
-          <% end %>
-        <% end %>
-      </li>
-
-
-      <li class="nav-item dropdown">
-        <i class="fas fa-angle-down" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <%= link_to 'Settings', edit_user_registration_path, class: "dropdown-item"%>
-          <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-        </div>
-      </li>
-
-    </ul>
-  </div>
 </div>
 
 

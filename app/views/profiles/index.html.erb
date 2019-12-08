@@ -1,28 +1,27 @@
+<!-- Find friends page -->
+
 <div class="search mb-3">
   <h1>Find inspiring friends</h1>
-  <h5>add people to your network!</h5>
+    <h5>add people to your network!</h5>
 
-    <%= form_tag profiles_path, method: :get do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Find your friend"
-      %>
-      <%= submit_tag "Find friends", class: "button-pink-flat" %>
-  <% end %>
+      <%= form_tag profiles_path, method: :get do %>
+        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find your friend" %>
+        <%= submit_tag "Find friends", class: "button-pink-flat" %>
+      <% end %>
 </div>
 
 <hr>
-  <div class="row" style="justify-content: space-evenly;">
+
+<div class="row" style="justify-content: space-evenly;">
   <% @users.each do |user| %>
   <%= link_to profile_path(user), class: "friend-card-link" do  %>
     <div class="friend-card mt-2" style="width: 160px;">
-        <% if user.profile_picture? %>
-          <%= cl_image_tag user.profile_picture, class: "avatar-bordered" %>
-        <% else %>
-          <%= image_tag "https://source.unsplash.com/featured/?face", class: "avatar-bordered" %>
-        <% end %>
-        <p><%= user.first_name %> <%= user.last_name %></p>
+      <% if user.profile_picture? %>
+        <%= cl_image_tag user.profile_picture, class: "avatar-bordered" %>
+      <% else %>
+        <%= image_tag "https://source.unsplash.com/featured/?face", class: "avatar-bordered" %>
+      <% end %>
+      <p><%= user.first_name %> <%= user.last_name %></p>
     </div>
   <% end %>
   <% end %>

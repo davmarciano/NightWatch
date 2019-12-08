@@ -13,10 +13,10 @@ class ReviewsController < ApplicationController
     @review.user = current_user
       authorize @review
     if @review.save
-      redirect_to movie_path(@movie)
-    else
-      flash[:alert] = "Sorry, something went wrong."
-      render :new
+      respond_to do |format|
+        format.html { redirect_to movie_path(@movie) } # we do not really expect html, but only JS
+        format.js  # <-- idem
+      end
     end
   end
 

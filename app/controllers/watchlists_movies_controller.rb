@@ -4,15 +4,15 @@ class WatchlistsMoviesController < ApplicationController
 
   def create
     @watchlist_movie = WatchlistMovie.new(watchlist_movie_params)
-    if params[:watchlist_movie][:movie].to_i > 0
-      @movie = Movie.find(params[:watchlist_movie][:movie])
-      @watchlist_movie.movie = @movie
-    end
+    # if params[:watchlist_movie][:movie].to_i > 0
+    #   @movie = Movie.find(params[:watchlist_movie][:movie])
+    #   @watchlist_movie.movie = @movie
+    # end
 
-    if params[:watchlist_movie][:watchlist].to_i > 0
-      @watchlist = Watchlist.find(params[:watchlist_movie][:watchlist])
-      @watchlist_movie.watchlist = @watchlist
-    end
+    # if params[:watchlist_movie][:watchlist].to_i > 0
+    #   @watchlist = Watchlist.find(params[:watchlist_movie][:watchlist])
+    #   @watchlist_movie.watchlist = @watchlist
+    # end
 
     if @watchlist_movie.save
       Review.create(content: @watchlist_movie.comment,
@@ -30,7 +30,6 @@ class WatchlistsMoviesController < ApplicationController
   private
 
   def watchlist_movie_params
-    params.require(:watchlist_movie).permit(:comment, :rating)
+    params.require(:watchlist_movie).permit(:comment, :rating, :watchlist_id, :movie_id)
   end
-
 end

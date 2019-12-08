@@ -1,60 +1,60 @@
 <div class="own-watchlists">
   <div class="d-flex justify-content-between">
     <h1>My Watchlists</h1>
-    <%= link_to '#', data: {toggle: "modal", target:"#createWatchlistModal"} do %>
-      <p class="createnew"><i class="fas fa-plus-circle"></i> Create New</p>
-    <% end %>
-    <%= render 'shared/createwatchlist_modal', modal_watchlist: Watchlist.new %>
+      <%= link_to '#', data: {toggle: "modal", target:"#createWatchlistModal"} do %>
+        <p class="createnew"><i class="fas fa-plus-circle"></i> Create New</p>
+      <% end %>
+      <%= render 'shared/createwatchlist_modal', modal_watchlist: Watchlist.new %>
   </div>
+
   <hr>
 
   <div class="d-flex my-watchlists-line-wrapper" data-watchlist-count="<%= current_user.watchlists.count %>" style="justify-content: start;">
-
-      <% current_user.watchlists.each do |watchlist| %>
-        <div class="multiple-watchlists">
-          <%= link_to watchlist_path(watchlist), class: "movie-card-link" do  %>
-            <div class="watchlist-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(
-              <% if watchlist.photo? %>
-                <%= cl_image_path watchlist.photo, class:"watchlist-photo" %>
-              <% else %>
-                <%= image_path "https://source.unsplash.com/featured/?movies" %>
-              <% end %>)">
-              <div class="watchlist-card-name">
-                <p><%= watchlist.name %> </p>
-              </div>
-            </div> <!-- .watchlist-card -->
-          <% end %>
+    <% current_user.watchlists.each do |watchlist| %>
+      <div class="multiple-watchlists">
+        <%= link_to watchlist_path(watchlist), class: "movie-card-link" do  %>
+        <div class="watchlist-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(
+          <% if watchlist.photo? %>
+            <%= cl_image_path watchlist.photo, class:"watchlist-photo" %>
+          <% else %>
+            <%= image_path "https://source.unsplash.com/featured/?movies" %>
+          <% end %>)">
+        <div class="watchlist-card-name">
+          <p><%= watchlist.name %> </p>
         </div>
+      </div> <!-- .watchlist-card -->
       <% end %>
+    </div>
+    <% end %>
   </div>
 </div>
 
 
 <div class="watchlists-followed mt-6">
+
   <div class="d-flex justify-content-between">
     <h1>Followed Watchlists</h1>
   </div>
+
   <hr>
 
   <div class="d-flex followed-watchlists-line-wrapper" data-watchlist-count="<%= current_user.following_by_type('Watchlist').count %>" style="justify-content: start;">
     <% current_user.following_by_type('Watchlist').each do |watchlist| %>
-      <div class="multiple-watchlists">
-        <%= link_to watchlist_path(watchlist), class: "movie-card-link" do  %>
-          <div class="watchlist-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(
-            <% if watchlist.photo? %>
-              <%= cl_image_path watchlist.photo %>
-            <% else %>
-              <%= image_path "https://source.unsplash.com/featured/?movies" %>
-            <% end %>)">
-            <div class="watchlist-card-name">
-              <p><%= watchlist.name %> </p>
-            </div>
-          </div> <!-- .watchlist-card -->
-        <% end %>
-      </div>
+    <div class="multiple-watchlists">
+      <%= link_to watchlist_path(watchlist), class: "movie-card-link" do  %>
+      <div class="watchlist-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(
+        <% if watchlist.photo? %>
+          <%= cl_image_path watchlist.photo %>
+        <% else %>
+          <%= image_path "https://source.unsplash.com/featured/?movies" %>
+        <% end %>)">
+        <div class="watchlist-card-name">
+            <p><%= watchlist.name %> </p>
+        </div>
+      </div> <!-- .watchlist-card -->
+      <% end %>
+    </div>
     <% end %>
   </div>
+
 </div>
-
-
-

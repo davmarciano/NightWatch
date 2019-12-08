@@ -1,19 +1,16 @@
   <hr>
+   <%= link_to movies_path do %>
+    <i class="fas fa-search"></i> Discover
+  <% end %>
+
   <%= link_to profile_path(current_user) do %>
     <i class="fas fa-user"></i> Profile
   <% end %>
 
-  <%= link_to movies_path do %>
-    <i class="fas fa-search"></i> Discover
-  <% end %>
-
   <%= link_to profiles_path do %>
-    <i class="fas fa-users"></i> Network
+    <i class="fas fa-users"></i> Find Friends
   <% end %>
 
-  <%= link_to profile_movies_path do %>
-    <i class="fas fa-video"></i> My Movies
-  <% end %>
 
   <%= link_to watchlists_path do %>
     <i class="fas fa-list"></i> Watchlists
@@ -21,7 +18,7 @@
 
   <% watch_later = current_user.watchlists.second %>
   <%= link_to watchlist_path(watch_later) do %>
-    <i class="fas fa-bookmark"></i> Watch later
+    <i class="fas fa-bookmark"></i> Saved
   <% end %>
 
 
