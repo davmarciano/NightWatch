@@ -1,42 +1,48 @@
-<div class="d-flex">
-    <img src="<%= @movie.poster %>" class="movie-poster" alt="Movie Poster">
-      <div class="movie-info">
-        <h1><%= @movie.title %></h1>
-        <p style="font-weight: lighter;font-size: 12px;"> <%= @movie.year %> • <%= @movie.genres %></p>
+<!-- <div class="movie-container" style="background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url(<%= @movie.poster %>); background-repeat: no-repeat;background-size: cover;">
+ -->
+  <div class="d-flex in-movie">
+      <img src="<%= @movie.poster %>" class="movie-poster" alt="Movie Poster">
+        <div class="movie-info">
+          <h1><%= @movie.title %></h1>
+          <p style="font-weight: lighter;font-size: 12px;"> <%= @movie.year %> • <%= @movie.genres %></p>
 
-        <p><% @friends_average_rating.times do  %>
-          <i class="fas fa-star rating"></i>
-        <% end %> <small><em>– average friends rating</em></small></p>
+          <% if @friends_average_rating > 0 %>
+            <p><% @friends_average_rating.times do  %>
+              <i class="fas fa-star rating"></i>
+            <% end %> <small><em>– average friends rating</em></small></p>
+          <% end %>
 
-        <p><strong>Directed by: </strong><%= @movie.directors %></p>
-        <p><strong>Starring: </strong><%= @movie.actors %></p>
-        <p style="margin-bottom: 0px;"><strong>Plot: </strong>
-        <p><%= @movie.plot %></p>
-      </div>
+          <p><strong>Directed by: </strong><%= @movie.directors %></p>
+          <p><strong>Starring: </strong><%= @movie.actors %></p>
+          <p style="margin-bottom: 0px;"><strong>Plot: </strong>
+          <p><%= @movie.plot %></p>
+        </div>
+    </div>
+
+  <div class="d-flex justify-content-between mt-5 watchlist">
+    <h2>Reviews by friends</h2>
+
+    <%= link_to '#', data: {toggle: "modal", target:"#addReviewModal"} do %>
+      <p><i class="fas fa-plus-circle"></i>Add Review</p>
+    <% end %>
   </div>
 
-<div class="d-flex justify-content-between mt-5 watchlist">
-  <h2>Reviews by friends</h2>
+  <hr>
 
-  <%= link_to '#', data: {toggle: "modal", target:"#addReviewModal"} do %>
-    <p><i class="fas fa-plus-circle"></i>Add Review</p>
-  <% end %>
-</div>
-
-<hr>
-
-<div>
-  <% if @reviews.any? %>
-    <% @reviews.each do |review| %>
-    <div class="review-card">
-      <% review.rating.times do  %>
-        <i class="fas fa-star rating"></i>
-      <% end %> – <%= review.content %>
-      <br>
-      <small><em>by <%= review.user.first_name %> <%= review.user.last_name %></em></small>
-    </div>
+  <div>
+    <% if @reviews.present? %>
+      <% @reviews.each do |review| %>
+      <div class="review-card">
+        <% review.rating.times do  %>
+          <i class="fas fa-star rating"></i>
+        <% end %> – <%= review.content %>
+        <br>
+        <small><em>by <%= review.user.first_name %> <%= review.user.last_name %></em></small>
+      </div>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
 
-<%= render 'shared/addreview_modal', review: Review.new, movie: @movie %>
+  <%= render 'shared/addreview_modal', review: Review.new, movie: @movie %>
+<!-- </div>
+ -->

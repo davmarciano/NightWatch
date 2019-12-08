@@ -35,3 +35,14 @@
   background-color: #ffffff9e;
   justify-content: center;
 }
+
+.movie-container {
+  width: 79vw;
+  position: absolute;
+  left: 269px;
+  top: 45px;
+  border-radius: 32px 32px 0px 0px;
+  padding: 35px;
+  height: calc(100vh - 45px);
+  overflow: scroll;
+}
