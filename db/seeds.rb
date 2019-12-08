@@ -6,6 +6,8 @@ require 'openssl'
 require 'json'
 require "csv"
 
+###### UNCOMMENT ######
+
 puts "DELETING ALL SEEDS ..."
 
 WatchlistMovie.destroy_all
@@ -18,6 +20,7 @@ User.destroy_all
 
 puts "DONE!"
 
+#######################
 
 # url = "https://www.imdb.com/search/title/?count=100&groups=top_1000&sort=user_rating"
 
@@ -28,6 +31,8 @@ puts "DONE!"
 #   value = element.attribute('href').value
 #   pattern = /(?<imdb_id>tt\d{1,})/
 #   imdb_id = value.match(pattern)
+
+###### UNCOMMENT ######
 
 puts "CREATING MOVIES ..."
 
@@ -59,6 +64,8 @@ end
 
 puts "MOVIES CREATED !"
 
+#######################
+
 # require 'faker'
 
 # 40.times do
@@ -74,7 +81,7 @@ puts "MOVIES CREATED !"
 #   user.email = "#{user.first_name}-#{user.last_name}@mail.com"
 #   user.save!
 # end
-#
+
 
 
 
