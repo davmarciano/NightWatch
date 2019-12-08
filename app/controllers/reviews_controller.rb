@@ -12,6 +12,7 @@ class ReviewsController < ApplicationController
     @review.movie = @movie
     @review.user = current_user
       authorize @review
+    @reviews = @movie.reviews
     if @review.save
       respond_to do |format|
         format.html { redirect_to movie_path(@movie) } # we do not really expect html, but only JS

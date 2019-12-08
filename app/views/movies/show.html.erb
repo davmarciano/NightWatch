@@ -31,18 +31,8 @@
 
 <hr>
 
-<div>
-  <% if @reviews.any? %>
-    <% @reviews.each do |review| %>
-    <div class="review-card">
-      <% review.rating.times do  %>
-        <i class="fas fa-star rating"></i>
-      <% end %> – <%= review.content %>
-      <br>
-      <small><em>by <%= review.user.first_name %> <%= review.user.last_name %></em></small>
-    </div>
-    <% end %>
-  <% end %>
+<div id="reviews">
+  <%= render 'reviews/show', reviews: @reviews %>
 </div>
 
 <%= render 'shared/addreview_modal', review: Review.new, movie: @movie %>

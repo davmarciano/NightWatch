@@ -18,8 +18,16 @@
 
   <% watch_later = current_user.watchlists.first %>
   <%= link_to watchlist_path(watch_later) do %>
-    <i class="fas fa-bookmark"></i> Saved
+    <i class="fas fa-bookmark "></i> Saved
   <% end %>
+
+
+  <div class="">
+  <hr>
+  <%= link_to destroy_user_session_path do %>
+    <i class="fas fa-sign-out-alt"></i> Log out
+  <% end %>
+  </div>
 
 
 

@@ -3,7 +3,15 @@
 //= require jquery
 //= require jquery.slick
 //= require slick.js
-slick()
-// slickFollowed()
-slickFriends ()
-slickMovies ()
+if (document.URL.match('watchlists')) {
+slickFollowed();
+}
+
+if (!document.URL.match(/movies\/\d+/)) {
+  slick();
+  slickFriends ();
+  slickMovies();
+}
+
+
+
