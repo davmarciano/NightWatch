@@ -1,17 +1,20 @@
 function refreshForm(innerHTML) {
   const newWatchlistForm = document.getElementById('new_watchlist');
   newWatchlistForm.innerHTML = innerHTML;
-  document.getElementById('watchlist-close').click()
 }
 
 // function addWatchlist(watchlistHTML) {
 //   const watchlists = document.getElementById('watchlists');
-//   watchlists.insertAdjacentHTML('beforeend', watchlistHTML);
+//   if (watchlists){
+//     watchlists.insertAdjacentHTML('beforeend', watchlistHTML);
+//   }
 // }
 
 <% if @watchlist.errors.any? %>
   refreshForm('<%= j render "shared/createwatchlist_form", modal_watchlist: @watchlist %>');
 <% else %>
   refreshForm('<%= j render "shared/createwatchlist_form", modal_watchlist: Watchlist.new %>');
+  document.getElementById('watchlist-close').click()
+  // addWatchlist('watchlistHTML')
 <% end %>
 

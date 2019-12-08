@@ -1,0 +1,12 @@
+function refreshForm(innerHTML) {
+  const newReviewForm = document.getElementById('new_review');
+  newReviewForm.innerHTML = innerHTML;
+}
+
+<% if @review.errors.any? %>
+  refreshForm('<%= j render "shared/addreview_form", review: @review, movie: @movie %>');
+<% else %>
+  refreshForm('<%= j render "shared/addreview_form", review: Review.new, movie: @movie %>');
+  document.getElementById('review-close').click()
+  window.starRating();
+<% end %>

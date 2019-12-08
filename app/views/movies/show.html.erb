@@ -17,11 +17,13 @@
 
 <div class="d-flex justify-content-between mt-5 watchlist">
   <h2>Reviews by friends</h2>
-  <%= link_to new_movie_review_path(@movie) do %>
-    <p><i class="fas fa-plus-circle"></i>Create new</p>
+
+  <%= link_to '#', data: {toggle: "modal", target:"#addReviewModal"} do %>
+    <p><i class="fas fa-plus-circle"></i>Add Review</p>
   <% end %>
 </div>
-  <hr>
+
+<hr>
 
 <div>
   <% if @reviews.any? %>
@@ -36,3 +38,5 @@
     <% end %>
   <% end %>
 </div>
+
+<%= render 'shared/addreview_modal', review: Review.new, movie: @movie %>

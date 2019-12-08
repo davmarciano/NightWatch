@@ -12,8 +12,8 @@
         <div class="container">
           <div class="row">
             <div class="col-xs-4">
-              <%= f.input :movie, collection: Movie.all.order(:title), label: "Add Title", include_hidden: false %>
-              <%= f.input :watchlist, collection: Watchlist.where(user: current_user), label: "Add to Watchlist"%>
+              <%= f.input :movie_id, collection: Movie.all.order(:title), label: "Add Title", include_hidden: false %>
+              <%= f.input :watchlist_id, collection: Watchlist.where(user: current_user), label: "Add to Watchlist"%>
               <%= f.input :comment, label: "Add comment"%>
               <%= f.input :rating, collection: (1..5).to_a, label: "Give a rating"%>
             </div>

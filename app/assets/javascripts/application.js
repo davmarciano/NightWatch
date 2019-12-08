@@ -6,3 +6,4 @@
 slick()
 // slickFollowed()
 slickFriends ()
+slickMovies ()

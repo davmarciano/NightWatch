@@ -13,6 +13,8 @@ const initStarRating = () => {
   });
 };
 
+window.starRating = initStarRating;
+
 export { initStarRating };
 
 

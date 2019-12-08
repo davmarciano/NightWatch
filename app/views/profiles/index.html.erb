@@ -1,15 +1,13 @@
+<!-- Find friends page -->
+
 <div class="search mb-3">
   <h1>Find inspiring friends</h1>
-  <h5>add people to your network!</h5>
+    <h5>add people to your network!</h5>
 
-    <%= form_tag profiles_path, method: :get do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Find your friend"
-      %>
-      <%= submit_tag "Find friends", class: "button-pink-flat" %>
-  <% end %>
+      <%= form_tag profiles_path, method: :get do %>
+        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find your friend" %>
+        <%= submit_tag "Find friends", class: "button-pink-flat" %>
+      <% end %>
 </div>
 
 <hr>
@@ -27,5 +25,6 @@
         </div>
       <% end %>
     <% end %>
+
   <% end %>
 </div>

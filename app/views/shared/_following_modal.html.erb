@@ -1,0 +1,29 @@
+<div class="modal fade" id="followingModal" tabindex="-1" role="dialog" aria-labelledby="followingModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="followingModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="friend-card">
+        <% @followings.each do |f| %>
+          <%= link_to profile_path(f), class: "friend-card-link" do  %>
+            <% if f.profile_picture? %>
+                <%= cl_image_tag f.profile_picture, class: "avatar-bordered" %>
+            <% else %>
+                <%= image_tag "https://i2.wp.com/metro.co.uk/wp-content/uploads/2019/09/PRI_85461411.jpg?quality=90&strip=all&zoom=1&resize=644%2C779&ssl=1", class: "avatar-bordered" %>
+              <% end %>
+              <p><%= f.first_name %></p>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn button-pink-small" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
