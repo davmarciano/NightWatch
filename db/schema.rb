@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_04_095748) do
+ActiveRecord::Schema.define(version: 2019_12_08_151712) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 2019_12_04_095748) do
     t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "imdb_id"
+    t.string "background"
   end
 
   create_table "pg_search_documents", force: :cascade do |t|
