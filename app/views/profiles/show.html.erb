@@ -74,7 +74,7 @@
     <div class="d-flex justify-content-between">
       <h2 class="mt-5">My Watchlists</h2>
         <%= link_to '#', data: {toggle: "modal", target:"#createWatchlistModal"} do %>
-          <p class="createnew mt-5"><i class="fas fa-plus-circle" style="color: #DE4779"></i>Create Watchlist</p>
+          <p class="createnew" style="margin-top: 54px;"><i class="fas fa-plus-circle" style="color: #DE4779"></i>Create Watchlist</p>
         <% end %>
     </div>
     <hr>
@@ -99,7 +99,6 @@
     </div>
 
   <% else %>
-    <h2 class="mt-5">Watchlists</h2>
 
     <div class="d-flex justify-content-between">
       <h2 class="mt-5"><%= @user.first_name %>'s Watchlists</h2>
@@ -128,7 +127,6 @@
 
 <!--   friends  -->
 
-<div class= friends>
   <% if @is_owner %>
     <div class="d-flex justify-content-between">
       <h2 class="mt-5">My Friends</h2>
@@ -156,9 +154,7 @@
 
 
   <% else %>
-    <div class="d-flex justify-content-between">
-      <h2 class="mt-5"><%= @user.first_name %>'s Friends</h2>
-    </div>
+    <h2 class="mt-5"><%= @user.first_name %>'s Friends</h2>
     <hr>
     <div class="d-flex friends-line-wrapper" data-friends-count="<%= @user.friends.count %>" style="justify-content: start;">
       <% @user.friends.each do |friend| %>
@@ -171,7 +167,7 @@
                 <% else %>
                   <%= image_tag "https://i2.wp.com/metro.co.uk/wp-content/uploads/2019/09/PRI_85461411.jpg?quality=90&strip=all&zoom=1&resize=644%2C779&ssl=1", class: "avatar-bordered" %>
                 <% end %>
-                <p><%= friend.first_name if friend%></p>
+                <p><%= friend.first_name if friend %></p>
               </div>
             <% end %>
           <% end %>
@@ -179,7 +175,6 @@
       <% end %>
     </div>
   <% end %>
-</div>
 
 
   <%= render 'shared/createwatchlist_modal', modal_watchlist: Watchlist.new %>
