@@ -1,4 +1,5 @@
   <hr>
+  <br>
    <%= link_to movies_path do %>
     <i class="fas fa-search"></i> Discover
   <% end %>
@@ -20,10 +21,14 @@
   <%= link_to watchlist_path(watch_later) do %>
     <i class="fas fa-bookmark "></i> Saved
   <% end %>
+  <br>
 
 
   <div class="">
   <hr>
+  <%= link_to edit_user_registration_path do %>
+    <i class="fas fa-cog"></i> Settings
+  <% end %>
   <%= link_to destroy_user_session_path do %>
     <i class="fas fa-sign-out-alt"></i> Log out
   <% end %>
