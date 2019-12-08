@@ -14,7 +14,7 @@
       <div class="d-flex follower" style="font-weight: lighter;font-size: 12px;">
         <p><i class="fas fa-users"></i><%= link_to "#{@user.followers_count} Followers", '#', data: {toggle: "modal", target:"#followerModal"}%> </p>
         <p><i class="fas fa-users"></i><%= link_to "#{@user.follow_count} Following", profile_followers_path(@user) %> </p>
-        <p><i class="fas fa-list"></i><%= @user.watchlists.count - 2 %> Watchlists</p>
+        <p><i class="fas fa-list"></i><%= @user.watchlists.count - 1 %> Watchlists</p>
       </div>
     </div>
 
