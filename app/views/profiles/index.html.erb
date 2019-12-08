@@ -13,7 +13,7 @@
 <hr>
   <div class="row" style="justify-content: space-evenly;">
   <% @suggested_users.each do |user| %>
-    <% unless user == current_user %>
+    <% unless user == current_user || current_user.following?(user) %>
       <%= link_to profile_path(user), class: "friend-card-link" do  %>
         <div class="friend-card mt-2" style="width: 160px;">
             <% if user.profile_picture? %>
