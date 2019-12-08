@@ -3,10 +3,17 @@ function refreshForm(innerHTML) {
   newReviewForm.innerHTML = innerHTML;
 }
 
+function addReview(reviewHTML) {
+  const reviews = document.getElementById('reviews');
+  reviews.insertAdjacentHTML('beforeend', reviewHTML);
+}
+
+
 <% if @review.errors.any? %>
   refreshForm('<%= j render "shared/addreview_form", review: @review, movie: @movie %>');
 <% else %>
   refreshForm('<%= j render "shared/addreview_form", review: Review.new, movie: @movie %>');
+  addReview('<%= j render "reviews/show", reviews: @reviews %>');
   document.getElementById('review-close').click()
   window.starRating();
 <% end %>
