@@ -14,16 +14,18 @@
 
 <hr>
   <div class="row" style="justify-content: space-evenly;">
-  <% @users.each do |user| %>
-  <%= link_to profile_path(user), class: "friend-card-link" do  %>
-    <div class="friend-card mt-2" style="width: 160px;">
-        <% if user.profile_picture? %>
-          <%= cl_image_tag user.profile_picture, class: "avatar-bordered" %>
-        <% else %>
-          <%= image_tag "https://source.unsplash.com/featured/?face", class: "avatar-bordered" %>
-        <% end %>
-        <p><%= user.first_name %> <%= user.last_name %></p>
-    </div>
-  <% end %>
+  <% @suggested_users.each do |user| %>
+    <% unless user == current_user %>
+      <%= link_to profile_path(user), class: "friend-card-link" do  %>
+        <div class="friend-card mt-2" style="width: 160px;">
+            <% if user.profile_picture? %>
+              <%= cl_image_tag user.profile_picture, class: "avatar-bordered" %>
+            <% else %>
+              <%= image_tag "https://source.unsplash.com/featured/?face", class: "avatar-bordered" %>
+            <% end %>
+            <p><%= user.first_name %> <%= user.last_name %></p>
+        </div>
+      <% end %>
+    <% end %>
   <% end %>
 </div>
