@@ -35,4 +35,6 @@
   <%= render 'reviews/show', reviews: @reviews %>
 </div>
 
+<img src="<%= @movie.background %>" alt="Movie Poster">
+
 <%= render 'shared/addreview_modal', review: Review.new, movie: @movie %>
