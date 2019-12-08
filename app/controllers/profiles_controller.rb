@@ -21,6 +21,8 @@ class ProfilesController < ApplicationController
     @watchlists = @user.watchlists
     @is_owner = current_user == @user
     @following = current_user.following?(@user)
+    common_movies
+    @common_movies
     render layout: 'application_purple'
   end
 
@@ -40,5 +42,16 @@ class ProfilesController < ApplicationController
   def set_profile
     @user = User.find(params[:id])
     # authorize @user
+  end
+
+  def common_movies
+    @common_movies = 0
+    unless @user == current_user
+      my_movies = current_user.movies.uniq
+      user_movies = @user.movies.uniq
+      my_movies.each do |movie|
+        @common_movies += 1 if user_movies.include?(movie)
+      end
+    end
   end
 end
