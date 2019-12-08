@@ -15,3 +15,15 @@
   margin-top: 20px;
   margin-bottom: 15px;
 }
+
+.search-friends {
+  padding: 35px 55px 35px 55px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80");
+  color: $white;
+  border-radius: 16px;
+  background-size: cover;
+  background-position: center;
+}

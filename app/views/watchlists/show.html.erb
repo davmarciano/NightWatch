@@ -4,13 +4,17 @@
     <p><%= @watchlist.description %></p>
   </div>
 
-  <div class="mr-5 mt-4">
+  <div class="mr-5 mt-3">
     <% if !@is_owner %>
       <% if @following %>
         <%= link_to "Unfollow", follow_watchlist_path(@watchlist), class: "button-pink" %>
       <% else %>
         <%= link_to "Follow", follow_watchlist_path(@watchlist), class: "button-pink" %>
       <% end %>
+    <% else %>
+      <%= link_to '#', class: "button-pink", data: {toggle: "modal", target:"#addMovieModal"} do %>
+          Add Movie
+        <% end %>
     <% end %>
   </div>
 </div>

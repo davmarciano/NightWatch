@@ -1,8 +1,8 @@
 <div class="own-watchlists">
   <div class="d-flex justify-content-between">
     <h1>My Watchlists</h1>
-      <%= link_to '#', data: {toggle: "modal", target:"#createWatchlistModal"} do %>
-        <p class="createnew"><i class="fas fa-plus-circle"></i> Create New</p>
+      <%= link_to '#', data: {toggle: "modal", target:"#createWatchlistModal"}, class: "button-pink" do %>
+        Create Watchlist
       <% end %>
       <%= render 'shared/createwatchlist_modal', modal_watchlist: Watchlist.new %>
   </div>
