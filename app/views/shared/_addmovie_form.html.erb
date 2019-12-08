@@ -12,8 +12,16 @@
         <div class="container">
           <div class="row">
             <div class="col-xs-4">
-              <%= f.input :movie_id, collection: Movie.all.order(:title), label: "Add Title", include_hidden: false %>
-              <%= f.input :watchlist_id, collection: Watchlist.where(user: current_user), label: "Add to Watchlist"%>
+              <% if controller_name == 'movies' && @movie.present? %>
+                <%= f.input :movie_id, collection: Movie.all.order(:title), label: "Add Title", include_hidden: false, selected: @movie.id %>
+              <% else %>
+                <%= f.input :movie_id, collection: Movie.all.order(:title), label: "Add Title", include_hidden: false %>
+              <% end %>
+              <% if controller_name =='watchlists' && @watchlist.present? %>
+                <%= f.input :watchlist_id, collection: Watchlist.where(user: current_user), label: "Add to Watchlist", selected: @watchlist.id%>
+              <% else %>
+                <%= f.input :watchlist_id, collection: Watchlist.where(user: current_user), label: "Add to Watchlist" %>
+              <% end %>
               <%= f.input :comment, label: "Add comment"%>
               <%= f.input :rating, collection: (1..5).to_a, label: "Give a rating"%>
             </div>

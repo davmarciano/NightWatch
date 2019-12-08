@@ -1,15 +1,15 @@
 <div class="own-watchlists">
   <div class="d-flex justify-content-between">
     <h1>My Watchlists</h1>
-      <%= link_to '#', data: {toggle: "modal", target:"#createWatchlistModal"} do %>
-        <p class="createnew"><i class="fas fa-plus-circle"></i> Create New</p>
+      <%= link_to '#', data: {toggle: "modal", target:"#createWatchlistModal"}, class: "button-pink" do %>
+        Create Watchlist
       <% end %>
       <%= render 'shared/createwatchlist_modal', modal_watchlist: Watchlist.new %>
   </div>
 
   <hr>
 
-  <div class="d-flex my-watchlists-line-wrapper" data-watchlist-count="<%= current_user.watchlists.count %>" style="justify-content: start;">
+  <div class="my-watchlists-line-wrapper" data-watchlist-count="<%= current_user.watchlists.count %>" style="justify-content: start;">
     <% current_user.watchlists.each do |watchlist| %>
       <div class="multiple-watchlists">
         <%= link_to watchlist_path(watchlist), class: "movie-card-link" do  %>
@@ -38,7 +38,7 @@
 
   <hr>
 
-  <div class="d-flex followed-watchlists-line-wrapper" data-watchlist-count="<%= current_user.following_by_type('Watchlist').count %>" style="justify-content: start;">
+  <div class="followed-watchlists-line-wrapper" data-watchlist-count="<%= current_user.following_by_type('Watchlist').count %>" style="justify-content: start;">
     <% current_user.following_by_type('Watchlist').each do |watchlist| %>
     <div class="multiple-watchlists">
       <%= link_to watchlist_path(watchlist), class: "movie-card-link" do  %>

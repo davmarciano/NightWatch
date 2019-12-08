@@ -13,30 +13,26 @@
         <p style="margin-bottom: 0px;"><strong>Plot: </strong>
         <p><%= @movie.plot %></p>
       </div>
-  </div>
+
+      <div class="mr-4 mt-3">
+        <%= link_to '#', class: "button-pink", data: {toggle: "modal", target:"#addMovieModal"} do %>
+          Add Movie to ...
+        <% end %>
+      </div>
+</div>
 
 <div class="d-flex justify-content-between mt-5 watchlist">
   <h2>Reviews by friends</h2>
 
   <%= link_to '#', data: {toggle: "modal", target:"#addReviewModal"} do %>
-    <p><i class="fas fa-plus-circle"></i>Add Review</p>
+    <p><i class="fas fa-plus-circle" style="color: #DE4779"></i>Add Review</p>
   <% end %>
 </div>
 
 <hr>
 
-<div>
-  <% if @reviews.any? %>
-    <% @reviews.each do |review| %>
-    <div class="review-card">
-      <% review.rating.times do  %>
-        <i class="fas fa-star rating"></i>
-      <% end %> – <%= review.content %>
-      <br>
-      <small><em>by <%= review.user.first_name %> <%= review.user.last_name %></em></small>
-    </div>
-    <% end %>
-  <% end %>
+<div id="reviews">
+  <%= render 'reviews/show', reviews: @reviews %>
 </div>
 
 <img src="<%= @background %>" alt="Movie Poster">

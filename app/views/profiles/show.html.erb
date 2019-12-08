@@ -13,9 +13,9 @@
       <div class="d-flex follower" style="font-weight: lighter;font-size: 12px;">
         <p><i class="fas fa-users"></i><%= link_to "#{@user.followers_count} Followers", '#', data: {toggle: "modal", target:"#followerModal"}%> </p>
         <p><i class="fas fa-users"></i><%= link_to "#{@user.follow_count} Following", profile_followers_path(@user) %> </p>
-        <p><i class="fas fa-list"></i><%= pluralize(@user.watchlists.count - 1, "Watchlist") %> </p>
+        <p style="margin-right: 10px;"><i class="fas fa-list"></i><%= pluralize(@user.watchlists.count - 1, "Watchlist") %> </p>
         <% unless @user == current_user %>
-          <p><%= pluralize(@common_movies, "Movie") %> in common </p>
+          <p><i class="fas fa-share-alt"></i><%= pluralize(@common_movies, "Movie") %> in common </p>
         <% end %>
       </div>
     </div>
@@ -38,7 +38,7 @@
 
   <h2 class="mt-5">My Movies</h2>
   <hr>
-    <div class="d-flex my-movies-line-wrapper" data-watchlist-count="<%= current_user.movies.count %>" style="justify-content: start;">
+    <div class="movies-line-wrapper" data-movies-count="<%= current_user.movies.count %>" style="justify-content: start;">
       <% @mymovies.each do |movie| %>
         <%= link_to movie_path(movie), class: "movie-card-link" do  %>
         <div class="movie-card">
@@ -51,9 +51,9 @@
 
 <% else %>
 
-  <h2 class="mt-5">Movies</h2>
+  <h2 class="mt-5"><%= @user.first_name %>'s Movies</h2>
   <hr>
-    <div class="d-flex my-movies-line-wrapper" data-watchlist-count="<%= @user.movies.count %>" style="justify-content: start;">
+    <div class="movies-line-wrapper" data-movies-count="<%= @user.movies.count %>" style="justify-content: start;">
       <% @user.movies.each do |movie| %>
         <%= link_to movie_path(movie), class: "movie-card-link" do  %>
         <div class="movie-card">
@@ -74,12 +74,12 @@
     <div class="d-flex justify-content-between">
       <h2 class="mt-5">My Watchlists</h2>
         <%= link_to '#', data: {toggle: "modal", target:"#createWatchlistModal"} do %>
-          <p class="createnew mt-5"><i class="fas fa-plus-circle"></i> Create Watchlist</p>
+          <p class="createnew mt-5"><i class="fas fa-plus-circle" style="color: #DE4779"></i>Create Watchlist</p>
         <% end %>
     </div>
     <hr>
 
-    <div class="d-flex my-watchlists-line-wrapper" data-watchlist-count="<%= current_user.watchlists.count %>" style="justify-content: start;">
+    <div class="my-watchlists-line-wrapper" data-watchlist-count="<%= current_user.watchlists.count %>" style="justify-content: start;">
       <% current_user.watchlists.each do |watchlist| %>
         <div class="multiple-watchlists">
           <%= link_to watchlist_path(watchlist), class: "movie-card-link" do  %>
@@ -99,16 +99,14 @@
     </div>
 
   <% else %>
+    <h2 class="mt-5">Watchlists</h2>
 
     <div class="d-flex justify-content-between">
-      <h2 class="mt-5">Watchlists</h2>
-        <%= link_to '#', data: {toggle: "modal", target:"#createWatchlistModal"} do %>
-          <p class="createnew mt-5"><i class="fas fa-plus-circle"></i> Create New</p>
-        <% end %>
+      <h2 class="mt-5"><%= @user.first_name %>'s Watchlists</h2>
       </div>
       <hr>
 
-      <div class="d-flex my-watchlists-line-wrapper" data-watchlist-count="<%= @user.watchlists.count %>" style="justify-content: start;">
+      <div class="my-watchlists-line-wrapper" data-watchlist-count="<%= @user.watchlists.count %>" style="justify-content: start;">
         <% @user.watchlists.each do |watchlist| %>
           <div class="multiple-watchlists">
             <%= link_to watchlist_path(watchlist), class: "movie-card-link" do  %>
@@ -159,7 +157,7 @@
 
   <% else %>
     <div class="d-flex justify-content-between">
-      <h2 class="mt-5">Friends</h2>
+      <h2 class="mt-5"><%= @user.first_name %>'s Friends</h2>
     </div>
     <hr>
     <div class="d-flex friends-line-wrapper" data-friends-count="<%= @user.friends.count %>" style="justify-content: start;">
