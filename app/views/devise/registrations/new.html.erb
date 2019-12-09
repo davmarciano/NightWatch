@@ -1,6 +1,10 @@
 <div style="background-image:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),url('https://source.unsplash.com/featured/?movies');background-size:cover;background-position:center;height:100vh;overflow:scroll;">
 
   <div class="signup-container mt-5">
+  <h2>Already singed up?</h2>
+    <br>
+    <%= link_to "Log in", new_user_session_path, class: "button-pink"  %>
+    <hr>
     <h2>Sign up</h2>
     <br>
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -15,8 +19,6 @@
           <%= f.submit "Sign up", class: "button-pink" %>
       <% end %>
       <br>
-    <%= render "devise/shared/links" %>
-    <hr>
     <%= link_to "Sign up with facebook",  class: "btn btn-primary" %>
   </div>
 </div>
