@@ -31,7 +31,7 @@ class WatchlistsController < ApplicationController
   end
 
   def edit
-    @watchlist = Watchlist.find(params[:watchlist_id])
+    set_watchlist
   end
 
   def update
@@ -40,8 +40,9 @@ class WatchlistsController < ApplicationController
   end
 
   def destroy
-    @watchlist = Watchlist.find(params[:watchlist_id])
+    @watchlist = Watchlist.find(params[:id])
     @watchlist.destroy
+    redirect_to profile_path(current_user)
   end
 
   def follow
@@ -66,6 +67,6 @@ class WatchlistsController < ApplicationController
   end
 
   def watchlist_params
-    params.require(:watchlist).permit(:name, :description, :photo)
+    params.require(:watchlist).permit(:name, :description, :photo, :id)
   end
 end

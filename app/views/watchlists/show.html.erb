@@ -12,6 +12,10 @@
         <%= link_to "Follow", follow_watchlist_path(@watchlist), class: "button-pink" %>
       <% end %>
     <% else %>
+      <% unless @watchlist == current_user.watchlists.first %>
+        <%= link_to "Delete", watchlist_path(@watchlist), method: :delete, class: "button-pink" %>
+        <%= link_to "Edit", edit_watchlist_path(@watchlist), class: "button-pink" %>
+      <% end %>
       <%= link_to '#', class: "button-pink", data: {toggle: "modal", target:"#addMovieModal"} do %>
           Add Movie
         <% end %>
