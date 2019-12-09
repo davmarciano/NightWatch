@@ -30,7 +30,7 @@
 <hr>
 
 <div class="d-flex" style="justify-content: normal;">
-  <div class="row">
+  <div class="row mx-1">
     <% @watchlist.movies.uniq.each do |movie| %>
       <div class="position-relative">
         <%= link_to movie_path(movie), class: "movie-card-link" do  %>

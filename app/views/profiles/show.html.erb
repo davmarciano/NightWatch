@@ -128,6 +128,9 @@
   <% if @is_owner %>
     <div class="d-flex justify-content-between">
       <h2 class="mt-5">My Friends</h2>
+      <%= link_to profiles_path do %>
+        <p class="createnew" style="margin-top: 54px;"><i class="fas fa-plus-circle" style="color: #DE4779"></i>Find friends</p>
+      <% end %>
     </div>
     <hr>
 
