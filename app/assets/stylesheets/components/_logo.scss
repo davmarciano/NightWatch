@@ -1,9 +1,16 @@
 .logo {
-  width: 20px;
-  height:20px;
-  border-radius: 50%;
-  margin-right: 3px;
-  background-image: url("../../images/nw_logo1.png");
+  width: 200px;
+  height:200px;
+  margin-left: 22px;
   object-fit: cover;
   object-position: center;
+}
+
+.logo-home {
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+  object-position: center;
+  margin-top: 130px;
+  margin-bottom: -60px;
 }
