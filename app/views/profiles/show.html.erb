@@ -33,38 +33,6 @@
 </div>
 
 
-<!-- movies -->
-<% if @is_owner %>
-
-  <h2 class="mt-5">My Movies</h2>
-  <hr>
-    <div class="movies-line-wrapper" data-movies-count="<%= current_user.movies.count %>" style="justify-content: start;">
-      <% @mymovies.each do |movie| %>
-        <%= link_to movie_path(movie), class: "movie-card-link" do  %>
-        <div class="movie-card">
-          <img src="<%= movie.poster %>" class="card-img-top" alt="Movie Poster">
-          <p> <%= movie.title %> </p>
-        </div>
-        <% end %>
-      <% end %>
-    </div>
-
-<% else %>
-
-  <h2 class="mt-5"><%= @user.first_name %>'s Movies</h2>
-  <hr>
-    <div class="movies-line-wrapper" data-movies-count="<%= @user.movies.count %>" style="justify-content: start;">
-      <% @user.movies.each do |movie| %>
-        <%= link_to movie_path(movie), class: "movie-card-link" do  %>
-        <div class="movie-card">
-          <img src="<%= movie.poster %>" class="card-img-top" alt="Movie Poster">
-          <p> <%= movie.title %> </p>
-        </div>
-        <% end %>
-      <% end %>
-    </div>
-
-<% end %>
 
 
 <!-- watchlists -->
@@ -176,6 +144,38 @@
     </div>
   <% end %>
 
+<!-- movies -->
+<% if @is_owner %>
+
+  <h2 class="mt-5">My Movies</h2>
+  <hr>
+    <div class="movies-line-wrapper" data-movies-count="<%= current_user.movies.count %>" style="justify-content: start;">
+      <% @mymovies.each do |movie| %>
+        <%= link_to movie_path(movie), class: "movie-card-link" do  %>
+        <div class="movie-card">
+          <img src="<%= movie.poster %>" class="card-img-top" alt="Movie Poster">
+          <p> <%= movie.title %> </p>
+        </div>
+        <% end %>
+      <% end %>
+    </div>
+
+<% else %>
+
+  <h2 class="mt-5"><%= @user.first_name %>'s Movies</h2>
+  <hr>
+    <div class="movies-line-wrapper" data-movies-count="<%= @user.movies.count %>" style="justify-content: start;">
+      <% @user.movies.each do |movie| %>
+        <%= link_to movie_path(movie), class: "movie-card-link" do  %>
+        <div class="movie-card">
+          <img src="<%= movie.poster %>" class="card-img-top" alt="Movie Poster">
+          <p> <%= movie.title %> </p>
+        </div>
+        <% end %>
+      <% end %>
+    </div>
+
+<% end %>
 
   <%= render 'shared/createwatchlist_modal', modal_watchlist: Watchlist.new %>
   <%# render 'shared/follower_modal' %>
