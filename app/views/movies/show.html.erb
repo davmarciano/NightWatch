@@ -1,25 +1,28 @@
-<div class="d-flex">
-    <img src="<%= @movie.poster %>" class="movie-poster" alt="Movie Poster">
-      <div class="movie-info">
-        <h1><%= @movie.title %></h1>
-        <p style="font-weight: lighter;font-size: 12px;"> <%= @movie.year %> • <%= @movie.genres %></p>
-        <% if @friends_average_rating > 0 %>
-          <p><% @friends_average_rating.times do  %>
-            <i class="fas fa-star rating"></i>
-          <% end %> <small><em>– average friends rating</em></small></p>
-        <% end %>
+<div class="banner-container">
+  <div class="banner-picture" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @movie.background %>);">
+    <div class="d-flex banner-content">
+      <img src="<%= @movie.poster %>" class="movie-poster" alt="Movie Poster">
+        <div class="movie-info">
+          <h1><%= @movie.title %></h1>
+          <p style="font-weight: lighter;font-size: 12px;"> <%= @movie.year %> • <%= @movie.genres %></p>
+          <% if @friends_average_rating > 0 %>
+            <p><% @friends_average_rating.times do  %>
+              <i class="fas fa-star rating"></i>
+            <% end %> <small><em>– average friends rating</em></small></p>
+          <% end %>
 
-        <p><strong>Directed by: </strong><%= @movie.directors %></p>
-        <p><strong>Starring: </strong><%= @movie.actors %></p>
-        <p style="margin-bottom: 0px;"><strong>Plot: </strong>
-        <p><%= @movie.plot %></p>
-      </div>
+          <p><strong>Directed by: </strong><%= @movie.directors %></p>
+          <p><strong>Starring: </strong><%= @movie.actors %></p>
+          <p style="margin-bottom: 0px;"><%= @movie.plot %></p>
+        </div>
 
-      <div class="mr-4 mt-3">
-        <%= link_to '#', class: "button-pink", data: {toggle: "modal", target:"#addMovieModal"} do %>
-          Add Movie to ...
-        <% end %>
-      </div>
+        <div class="mr-4" style="margin-top: 400px;">
+          <%= link_to '#', class: "button-pink", data: {toggle: "modal", target:"#addMovieModal"} do %>
+            Add Movie to ...
+          <% end %>
+        </div>
+    </div>
+  </div>
 </div>
 
 <div class="d-flex justify-content-between mt-5 watchlist">
@@ -36,6 +39,5 @@
   <%= render 'reviews/show', reviews: @reviews %>
 </div>
 
-<img src="<%= @movie.background %>" alt="Movie Poster">
 
 <%= render 'shared/addreview_modal', review: Review.new, movie: @movie %>

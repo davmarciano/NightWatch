@@ -8,17 +8,17 @@ require "csv"
 
 ###### UNCOMMENT ######
 
-# puts "DELETING ALL SEEDS ..."
+puts "DELETING ALL SEEDS ..."
 
-# WatchlistMovie.destroy_all
-# Movie.destroy_all
-# Follow.destroy_all
-# Movie.destroy_all
-# Review.destroy_all
-# Watchlist.destroy_all
-# User.destroy_all
+WatchlistMovie.destroy_all
+Movie.destroy_all
+Follow.destroy_all
+Movie.destroy_all
+Review.destroy_all
+Watchlist.destroy_all
+User.destroy_all
 
-# puts "DONE!"
+puts "DONE!"
 
 #######################
 
