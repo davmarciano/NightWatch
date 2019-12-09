@@ -19,8 +19,18 @@ class MoviesController < ApplicationController
     @reviews = @movie.friend_reviews(current_user) + current_user.reviews.where(movie: @movie)
     @friends_average_rating = @movie.friends_average_rating(current_user)
     set_background_image
-    @background
+    @saved = current_user.watchlists.first.movies.include?(@movie)
     render layout: 'application_purple'
+  end
+
+  def saved
+    @movie = Movie.find(params[:id])
+    if current_user.watchlists.first.movies.include?(@movie)
+      WatchlistMovie.where(watchlist: current_user.watchlists.first, movie: @movie).first.destroy
+    else
+      WatchlistMovie.create!(watchlist_id: current_user.watchlists.first.id, movie_id: @movie.id)
+    end
+    redirect_to movie_path(@movie)
   end
 
   private

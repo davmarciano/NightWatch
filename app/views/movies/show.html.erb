@@ -21,6 +21,15 @@
             Add Movie to ...
           <% end %>
         </div>
+      
+        <div class="mr-4 mt-3">
+          <% if @saved %>
+            <%= link_to "Saved", saved_movie_path(@movie), class: "button-pink" %>
+          <% else %>
+            <%= link_to "Save", saved_movie_path(@movie), class: "button-pink" %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
