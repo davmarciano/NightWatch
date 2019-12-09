@@ -5,7 +5,9 @@ class MoviesController < ApplicationController
     if params[:query].present?
       sql_query = "title ILIKE :query OR movies.actors ILIKE :query
       OR movies.directors ILIKE :query  OR movies.genres ILIKE :query"
+      sql_query_w = "watchlists.name ILIKE :query"
       @movies = Movie.where(sql_query, query: "%#{params[:query]}%")
+      @watchlists = Watchlist.where(sql_query_w, query: "%#{params[:query]}%")
       render layout: 'application_white'
     else
       @top_rated_movies = policy_scope(Movie).joins(:reviews).select("movies.id, movies.poster, movies.title, avg(reviews.rating) as average_rating").group("movies.id").order("average_rating DESC")
