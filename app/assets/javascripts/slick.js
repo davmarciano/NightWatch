@@ -77,7 +77,7 @@ function slickMovies() {
     infinite: true,
     slidesToShow: 5,
     slidesToScroll: 5,
-    dots: true
+    dots: true,
   });
 };
 

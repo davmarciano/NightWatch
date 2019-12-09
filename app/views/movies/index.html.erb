@@ -3,28 +3,63 @@
   <h5>Didn't decide on a movie yet?</h5>
 
   <%= form_tag movies_path, method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Find a movie"
-    %>
+    <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find a movie" %>
     <%= submit_tag "Search", class: "button-pink-flat" %>
   <% end %>
 </div>
 
+
+  <% if params[:query].present? %>
+    <h2 class="mt-5">Search Results Watchlists</h2>
+    <hr>
+      <p><em>No watchlists found</em></p>
+  <% else %>
+    <h2 class="mt-5">Popular Watchlists</h2>
+    <hr>
+  <% end %>
+
+
+
+
 <!-- the list of movies -->
-<hr>
-  <div class="row" style="justify-content: normal;">
-    <% @movies.each do |movie|  %>
-      <%= link_to movie_path(movie), class: "movie-card-link" do  %>
-        <div class="movie-card">
-          <img src="<%= movie.poster %>" class="card-img-top" alt="Movie Poster">
-          <p> <%= movie.title %> </p>
-          <% movie.friends_average_rating(current_user).times do %>
-            <i class="fas fa-star rating"></i>
+
+    <% if params[:query].present? %>
+      <h2 class="mt-5"> Search Results Movies</h2>
+      <hr>
+      <% if @movies.present? %>
+        <div class="row" style="justify-content: normal,">
+          <% @movies.each do |movie| %>
+            <%= link_to movie_path(movie), class: "movie-card-link" do  %>
+            <div class="movie-card">
+              <img src="<%= movie.poster %>" class="card-img-top" alt="Movie Poster">
+              <p> <%= movie.title %> </p>
+              <% movie.friends_average_rating(current_user).times do %>
+              <i class="fas fa-star rating"></i>
+              <% end %>
+            </div>
+            <% end %>
+          <% end %>
+          </div>
+          <% else %>
+            <p><em>No movies found</em></p>
+          <% end %>
+    <% else %>
+      <h2 class="mt-5">Top Rated Movies</h2>
+        <hr>
+        <div class="movies-line-wrapper" data-movies-count="<%= @top_rated_movies.length %>" style="justify-content: start;">
+          <% @top_rated_movies.each do |movie| %>
+            <%= link_to movie_path(movie), class: "movie-card-link" do  %>
+            <div class="movie-card">
+              <img src="<%= movie.poster %>" class="card-img-top" alt="Movie Poster">
+              <p> <%= movie.title %> </p>
+              <% movie.friends_average_rating(current_user).times do %>
+              <i class="fas fa-star rating"></i>
+              <% end %>
+            </div>
+            <% end %>
           <% end %>
         </div>
-      <% end %>
     <% end %>
-</div>
+
+
 

@@ -8,7 +8,7 @@ class MoviesController < ApplicationController
       @movies = Movie.where(sql_query, query: "%#{params[:query]}%")
       render layout: 'application_white'
     else
-      @movies = policy_scope(Movie)
+      @top_rated_movies = policy_scope(Movie).joins(:reviews).select("movies.id, movies.poster, movies.title, avg(reviews.rating) as average_rating").group("movies.id").order("average_rating DESC")
       render layout: 'application_white'
     end
   end
@@ -19,8 +19,18 @@ class MoviesController < ApplicationController
     @reviews = @movie.friend_reviews(current_user) + current_user.reviews.where(movie: @movie)
     @friends_average_rating = @movie.friends_average_rating(current_user)
     set_background_image
-    @background
+    @saved = current_user.watchlists.first.movies.include?(@movie)
     render layout: 'application_purple'
+  end
+
+  def saved
+    @movie = Movie.find(params[:id])
+    if current_user.watchlists.first.movies.include?(@movie)
+      WatchlistMovie.where(watchlist: current_user.watchlists.first, movie: @movie).first.destroy
+    else
+      WatchlistMovie.create!(watchlist_id: current_user.watchlists.first.id, movie_id: @movie.id)
+    end
+    redirect_to movie_path(@movie)
   end
 
   private
@@ -36,8 +46,7 @@ class MoviesController < ApplicationController
 
   def set_background_image
     if @movie.background.nil?
-      token = "2b1bd731b0e8a09e7f1cb8a5f851a0e3"
-      url = URI("https://api.themoviedb.org/3/movie/#{@movie.imdb_id}/images?api_key=#{token}")
+      url = URI("https://api.themoviedb.org/3/movie/#{@movie.imdb_id}/images?api_key=#{ENV['IMDB_TOKEN']}")
 
       http = Net::HTTP.new(url.host, url.port)
       http.use_ssl = true

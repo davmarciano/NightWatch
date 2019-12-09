@@ -3,7 +3,18 @@
     <div class="d-flex banner-content">
       <img src="<%= @movie.poster %>" class="movie-poster" alt="Movie Poster">
         <div class="movie-info">
+          <div class="d-flex">
           <h1><%= @movie.title %></h1>
+             <% if @saved %>
+                <%= link_to saved_movie_path(@movie), class: "button-pink-seconday ml-3" do %>
+                  <i class="fas fa-bookmark icon-pink"></i>
+                <% end %>
+              <% else %>
+                <%= link_to saved_movie_path(@movie), class: "button-pink-seconday ml-3" do %>
+                  <i class="far fa-bookmark icon-pink"></i>
+                <% end %>
+              <% end %>
+          </div>
           <p style="font-weight: lighter;font-size: 12px;"> <%= @movie.year %> • <%= @movie.genres %></p>
           <% if @friends_average_rating > 0 %>
             <p><% @friends_average_rating.times do  %>
@@ -17,9 +28,9 @@
         </div>
 
         <div class="mr-4" style="margin-top: 400px;">
-          <%= link_to '#', class: "button-pink", data: {toggle: "modal", target:"#addMovieModal"} do %>
-            Add Movie to ...
-          <% end %>
+            <%= link_to '#', class: "button-pink mr-2", data: {toggle: "modal", target:"#addMovieModal"} do %>
+              Add Movie to ...
+            <% end %>
         </div>
     </div>
   </div>
