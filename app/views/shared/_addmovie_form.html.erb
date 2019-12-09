@@ -4,29 +4,45 @@
       <div class="modal-header">
         <h5 class="modal-title" id="addMovieModalLabel">Add Movie</h5>
         <button type="button" id="movie-close" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
+          <span aria-hidden="true">&times;</span>
         </button>
       </div>
 
       <div class="modal-body">
-        <div class="container">
-          <div class="row">
-            <div class="col-xs-4">
-              <% if controller_name == 'movies' && @movie.present? %>
-                <%= f.input :movie_id, collection: Movie.all.order(:title), label: "Add Title", include_hidden: false, selected: @movie.id %>
-              <% else %>
-                <%= f.input :movie_id, collection: Movie.all.order(:title), label: "Add Title", include_hidden: false %>
-              <% end %>
-              <% if controller_name =='watchlists' && @watchlist.present? %>
-                <%= f.input :watchlist_id, collection: Watchlist.where(user: current_user), label: "Add to Watchlist", selected: @watchlist.id%>
-              <% else %>
-                <%= f.input :watchlist_id, collection: Watchlist.where(user: current_user), label: "Add to Watchlist" %>
-              <% end %>
-              <%= f.input :comment, label: "Add comment"%>
-              <%= f.input :rating, collection: (1..5).to_a, label: "Give a rating"%>
-            </div>
+        <% if controller_name == 'movies' && @movie.present? %>
+        <%= f.input :movie_id, collection: Movie.all.order(:title), label: "Add Title", include_hidden: false, selected: @movie.id, :input_html => { :class => "select2" } %>
+        <% else %>
+        <%= f.input :movie_id, collection: Movie.all.order(:title), label: "Add Title", include_hidden: false, :input_html => { :class => "select2" }%>
+        <% end %>
+
+        <div class="form-group">
+          <label class="control-label check_boxes optional">Add to Watchlist</label>
+          <input type="hidden" name="watchlist_movie[watchlist_ids][]" value="">
+          <div class="watchlist-choices">
+            <% Watchlist.where(user: current_user).where.not(name: "Saved").each do |watchlist| %>
+            <input type="checkbox" class="d-none" value="<%= watchlist.id %>" name="watchlist_movie[watchlist_ids][]" id="watchlist_movie_watchlist_ids_<%= watchlist.id %>" <%= "checked" if @watchlist && watchlist == @watchlist %> >
+            <label for="watchlist_movie_watchlist_ids_<%= watchlist.id %>">
+              <div class="watchlist-card-small"style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(
+          <% if watchlist.photo? %>
+            <%= cl_image_path watchlist.photo, class:"watchlist-photo" %>
+          <% else %>
+            <%= image_path "https://source.unsplash.com/featured/?movies" %>
+          <% end %>)">
+                  <div class="watchlist-card-name">
+                    <%= watchlist.name %>
+                  </div>
+              </div>
+            </label>
+            <% end %>
           </div>
         </div>
+        <%# f.input :watchlist_id, collection: Watchlist.where(user: current_user).where.not(name: "Saved"), as: :check_boxes, input_html: { multiple: true }, label: "Add to Watchlist", selected: @watchlist.id %>
+        <%# f.input :watchlist_id, collection: Watchlist.where(user: current_user).where.not(name: "Saved"), as: :check_boxes,  input_html: { multiple: true }, label: "Add to Watchlist"%>
+
+
+
+        <%= f.input :comment, label: "Add comment"%>
+        <%= f.input :rating, collection: (1..5).to_a, label: "Give a rating"%>
       </div>
 
       <div class="modal-footer">
@@ -36,3 +52,6 @@
     </div>
   </div>
   <% end %>
+
+
+
