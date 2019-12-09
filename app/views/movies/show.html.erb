@@ -20,16 +20,13 @@
           <%= link_to '#', class: "button-pink", data: {toggle: "modal", target:"#addMovieModal"} do %>
             Add Movie to ...
           <% end %>
-        </div>
-      
-        <div class="mr-4 mt-3">
+          <br>
           <% if @saved %>
-            <%= link_to "Saved", saved_movie_path(@movie), class: "button-pink" %>
+            <%= link_to "Saved", saved_movie_path(@movie), class: "button-pink mt-2" %>
           <% else %>
             <%= link_to "Save", saved_movie_path(@movie), class: "button-pink" %>
           <% end %>
         </div>
-      </div>
     </div>
   </div>
 </div>
