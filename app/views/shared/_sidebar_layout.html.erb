@@ -29,7 +29,7 @@
   <%= link_to edit_user_registration_path do %>
     <i class="fas fa-cog"></i> Settings
   <% end %>
-  <%= link_to destroy_user_session_path do %>
+  <%= link_to destroy_user_session_path, method: :delete do %>
     <i class="fas fa-sign-out-alt"></i> Log out
   <% end %>
   </div>

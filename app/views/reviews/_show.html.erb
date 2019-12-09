@@ -1,11 +1,16 @@
 <%if reviews.any? %>
-    <% reviews.each do |review| %>
-    <div class="review-card">
-      <% review.rating.times do  %>
-        <i class="fas fa-star rating"></i>
-      <% end %> – <%= review.content %>
-      <br>
-      <small><em>by <%= review.user.first_name %> <%= review.user.last_name %></em></small>
+  <% reviews.each do |review| %>
+    <div class="review-card d-flex">
+      <% if review.user.profile_picture? %>
+        <%= cl_image_tag review.user.profile_picture, class: "avatar-bordered" %>
+      <% end %>
+      <div class="align-self-center">
+        <% review.rating.times do  %>
+          <i class="fas fa-star rating"></i>
+        <% end %> – <%= review.content %>
+        <br>
+        <small><em>by <%= review.user.first_name %> <%= review.user.last_name %></em></small>
+      </div>
     </div>
-    <% end %>
+  <% end %>
 <% end %>

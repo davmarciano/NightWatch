@@ -15,6 +15,14 @@
       <%= link_to '#', class: "button-pink", data: {toggle: "modal", target:"#addMovieModal"} do %>
           Add Movie
         <% end %>
+      <% unless @watchlist == current_user.watchlists.first %>
+        <%= link_to edit_watchlist_path(@watchlist) do %>
+          <i class="fas fa-edit icon-pink-big"></i>
+        <% end %>
+        <%= link_to watchlist_path(@watchlist), method: :delete, data: { confirm: "Are you sure?" }  do %>
+          <i class="fas fa-trash-alt icon-pink-big"></i>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
 </div>
@@ -22,22 +30,29 @@
 
 <div class="d-flex" style="justify-content: normal;">
   <div class="row">
-    <% @watchlist.movies.each do |movie| %>
-      <%= link_to movie_path(movie), class: "movie-card-link" do  %>
-        <div class="d-flex movie-review-card">
-          <img src="<%= movie.poster %>" alt="Movie Poster">
-          <div class="movie-review-text">
-            <h5> <%= movie.title %> </h5>
-            <% user_review = movie.reviews.where(user: @watchlist.user).first %>
-            <% if user_review.present? %>
-              <% user_review.rating.times do  %>
-                <i class="fas fa-star rating"></i>
+    <% @watchlist.movies.uniq.each do |movie| %>
+      <div class="position-relative">
+        <%= link_to movie_path(movie), class: "movie-card-link" do  %>
+          <div class="d-flex movie-review-card">
+            <img src="<%= movie.poster %>" alt="Movie Poster">
+            <div class="movie-review-text">
+              <h5> <%= movie.title %> </h5>
+              <% user_review = movie.reviews.where(user: @watchlist.user).first %>
+              <% if user_review.present? %>
+                <% user_review.rating.times do  %>
+                  <i class="fas fa-star rating"></i>
+                <% end %>
+                <p> <%= user_review.content %> </p>
               <% end %>
-              <p> <%= user_review.content %> </p>
-            <% end %>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+        <%= link_to watchlists_movie_path(movie, watchlist: @watchlist),
+                    method: :delete, data: { confirm: "Are you sure?" },
+                    class: 'icon-movie-trash'  do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>

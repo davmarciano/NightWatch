@@ -19,14 +19,14 @@
 <hr>
   <div class="row" style="justify-content: normal;">
     <% @followers.each do |f| %>
-    <%= link_to profile_path(f.followable), class: "friend-card-link" do  %>
+    <%= link_to profile_path(f), class: "friend-card-link" do  %>
       <div class="friend-card mt-2" style="width: 160px;">
-        <% if f.followable.profile_picture? %>
-          <%= cl_image_tag f.followable.profile_picture, class: "avatar-bordered" %>
+        <% if f.profile_picture? %>
+          <%= cl_image_tag f.profile_picture, class: "avatar-bordered" %>
         <% else %>
           <%= image_tag "https://source.unsplash.com/featured/?face", class: "avatar-bordered" %>
         <% end %>
-        <p><%= f.followable.first_name %> <%= f.followable.last_name unless nil %></p>
+        <p><%= f.first_name %> <%= f.last_name unless nil %></p>
       </div>
     <% end %>
     <% end %>

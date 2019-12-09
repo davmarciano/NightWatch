@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resources :watchlists
 
-  resources :watchlists_movies, only: [:create]
+  resources :watchlists_movies, only: [:create, :destroy]
   # post 'watchlists_movies', to: 'watchlists_movies#create'
 
 
