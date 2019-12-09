@@ -5,9 +5,9 @@
 //= require slick.js
 if (document.URL.match('watchlists')) {
 slickFollowed();
-}
-
-if (!document.URL.match(/movies\/\d+/)) {
+} else if (document.URL.match('movies')) {
+  slickMovies();
+} else if (!document.URL.match(/movies\/\d+/)) {
   slick();
   slickFriends ();
   slickMovies();

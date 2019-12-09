@@ -8,7 +8,7 @@ class MoviesController < ApplicationController
       @movies = Movie.where(sql_query, query: "%#{params[:query]}%")
       render layout: 'application_white'
     else
-      @movies = policy_scope(Movie)
+      @top_rated_movies = policy_scope(Movie).joins(:reviews).select("movies.id, movies.poster, movies.title, avg(reviews.rating) as average_rating").group("movies.id").order("average_rating DESC")
       render layout: 'application_white'
     end
   end
@@ -46,8 +46,7 @@ class MoviesController < ApplicationController
 
   def set_background_image
     if @movie.background.nil?
-      token = "2b1bd731b0e8a09e7f1cb8a5f851a0e3"
-      url = URI("https://api.themoviedb.org/3/movie/#{@movie.imdb_id}/images?api_key=#{token}")
+      url = URI("https://api.themoviedb.org/3/movie/#{@movie.imdb_id}/images?api_key=#{ENV['IMDB_TOKEN']}")
 
       http = Net::HTTP.new(url.host, url.port)
       http.use_ssl = true
