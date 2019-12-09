@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     resources :followers, only: [:index]
   end
 
+  get "movies/:id/saved", to: "movies#saved", as: :saved_movie
   get "watchlists/:id/follow", to: "watchlists#follow", as: :follow_watchlist
   get "profiles/:id/follow", to: "profiles#follow", as: :follow_user
 

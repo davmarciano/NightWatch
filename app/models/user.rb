@@ -39,7 +39,7 @@ class User < ApplicationRecord
 
   def create_default_watchlists
     # Watchlist.create(user: self, name: "My Movies")
-    Watchlist.create(user: self, name: "Watch Later")
+    Watchlist.create(user: self, name: "Saved")
   end
 
   def remove_all_follows
