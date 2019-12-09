@@ -1,5 +1,5 @@
 function slick() {
-  const count = parseInt(document.querySelector(".my-watchlists-line-wrapper").dataset.watchlistCount, 10)
+  var count = parseInt(document.querySelector(".my-watchlists-line-wrapper").dataset.watchlistCount, 10)
   // let slides;
   // if (count >= 3) {
   //   slides = 3
@@ -19,7 +19,7 @@ function slick() {
 
 function slickFollowed() {
 
-  const count = parseInt(document.querySelector(".followed-watchlists-line-wrapper").dataset.watchlistCount, 10)
+  var count = parseInt(document.querySelector(".followed-watchlists-line-wrapper").dataset.watchlistCount, 10)
   // let slides;
   // if (count >= 3) {
   //   slides = 3
@@ -39,8 +39,8 @@ function slickFollowed() {
 
 function slickFriends() {
 
-  const count = parseInt(document.querySelector(".friends-line-wrapper").dataset.friendsCount, 10)
-  let slides;
+  var count = parseInt(document.querySelector(".friends-line-wrapper").dataset.friendsCount, 10)
+  var slides;
   if (count >= 10) {
     slides = 10
   } else if (count === 9) {
@@ -72,7 +72,7 @@ function slickFriends() {
 };
 
 function slickMovies() {
-  const count = parseInt(document.querySelector(".movies-line-wrapper").dataset.moviesCount, 10)
+  var count = parseInt(document.querySelector(".movies-line-wrapper").dataset.moviesCount, 10)
   $('.movies-line-wrapper').slick({
     infinite: true,
     slidesToShow: 5,
