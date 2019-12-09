@@ -45,12 +45,15 @@
 
 input:checked {
   +label {
-    opacity: 0.75;
+    opacity: 0.8;
+    border: 3px solid $pink;
+    border-radius: 10px;
   }
 }
 
 .select2-results__option--highlighted,
 .select2-results__option:hover{
   background: $pink !important;
+
 }
 
