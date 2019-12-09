@@ -13,7 +13,7 @@
 <hr>
 
 <% if params[:query].present? %>
-  <div class="row" style="justify-content: space-evenly;">
+  <div class="row" style="align-content: flex-start;">
     <% @users.each do |user| %>
       <% unless user == current_user || current_user.following?(user) %>
         <%= link_to profile_path(user), class: "friend-card-link" do  %>
@@ -31,7 +31,7 @@
   </div>
 <% else %>
   <h3>Suggestions for <%= current_user.first_name %></h3>
-  <div class="row" style="justify-content: space-evenly;">
+  <div class="row" style="align-content: flex-start;">
     <% @suggested_users.each do |user| %>
       <% unless user == current_user || current_user.following?(user) %>
         <%= link_to profile_path(user), class: "friend-card-link" do  %>
