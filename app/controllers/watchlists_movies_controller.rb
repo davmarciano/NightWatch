@@ -27,6 +27,14 @@ class WatchlistsMoviesController < ApplicationController
     end
   end
 
+  def destroy
+    @movie = Movie.find(params[:id])
+    @watchlist = Watchlist.find(params[:watchlist])
+    @watchlist_movie = WatchlistMovie.find_by(movie: @movie, watchlist: @watchlist)
+    @watchlist_movie.destroy
+    redirect_to watchlist_path(@watchlist)
+  end
+
   private
 
   def watchlist_movie_params
