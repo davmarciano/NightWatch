@@ -76,19 +76,19 @@ puts "MOVIES CREATED !"
 
 #######################
 
-# require 'faker'
+require 'faker'
 
-# 40.times do
+40.times do
 
-#   user = User.create!(
-#     first_name: Faker::Name.first_name,
-#     last_name: Faker::Name.last_name,
-#     email: "#{Faker::Name.first_name}-#{Faker::Name.last_name}@mail.com",
-#     password: "123456",
-#     profile_picture: "https://source.unsplash.com/featured/?face"
-#   )
+  user = User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: "#{Faker::Name.first_name}-#{Faker::Name.last_name}@mail.com",
+    password: "123456",
+    profile_picture: "https://source.unsplash.com/featured/?face"
+  )
 
-#   user.email = "#{user.first_name}-#{user.last_name}@mail.com"
-#   user.save!
-# end
+  user.email = "#{user.first_name}-#{user.last_name}@mail.com"
+  user.save!
+end
 
