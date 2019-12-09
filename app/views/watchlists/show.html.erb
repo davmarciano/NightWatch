@@ -2,6 +2,7 @@
   <div>
     <h1><%= @watchlist.name %> <element style="font-weight:lighter;font-size:14px;font-style:italic;">Created by <%= link_to profile_path(@watchlist.user), style: "color:#DE4779" do %><%= @watchlist.user.first_name %> <%= @watchlist.user.last_name unless nil%> <% end %></element></h1>
     <p><%= @watchlist.description %></p>
+    <p><i class="fas fa-users"></i><%= @watchlist.followers_count  %> Followers</p>
   </div>
 
   <div class="mr-5 mt-3">
