@@ -30,7 +30,6 @@
 
 
 <div class="watchlists-followed mt-6">
-
   <div class="d-flex justify-content-between">
     <h1>Followed Watchlists</h1>
   </div>
@@ -48,8 +47,8 @@
           <%= image_path "https://source.unsplash.com/featured/?movies" %>
         <% end %>)">
         <div class="watchlist-card-name">
-            <p><%= watchlist.name %> </p>
-            <p style="font-weight:lighter;font-size:14px;font-style:italic;">Created by <%= watchlist.user.first_name %> <%= watchlist.user.last_name unless nil%></p>
+          <p><%= watchlist.name %> </p>
+          <p style="font-weight:lighter;font-size:14px;font-style:italic;">Created by <%= watchlist.user.first_name %> <%= watchlist.user.last_name %></p>
         </div>
       </div> <!-- .watchlist-card -->
       <% end %>
@@ -58,3 +57,4 @@
   </div>
 
 </div>
+

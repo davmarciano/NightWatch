@@ -20,13 +20,6 @@ function slick() {
 function slickFollowed() {
 
   var count = parseInt(document.querySelector(".followed-watchlists-line-wrapper").dataset.watchlistCount, 10)
-  // let slides;
-  // if (count >= 3) {
-  //   slides = 3
-  // } else {
-  //   slides = 3
-  // }
-
   $('.followed-watchlists-line-wrapper').slick({
     infinite: true,
     slidesToShow: 3,
