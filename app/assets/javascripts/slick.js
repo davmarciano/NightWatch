@@ -1,4 +1,4 @@
-function slick() {
+function slickItem() {
   var count = parseInt(document.querySelector(".my-watchlists-line-wrapper").dataset.watchlistCount, 10)
   // let slides;
   // if (count >= 3) {
@@ -12,7 +12,7 @@ function slick() {
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 3,
-    dots: true,
+    dots: true
   });
 };
 
@@ -28,7 +28,6 @@ function slickFollowed() {
   });
 };
 
-//export { slick };
 
 function slickFriends() {
 
