@@ -10,7 +10,7 @@ class MoviesController < ApplicationController
       @watchlists = Watchlist.where(sql_query_w, query: "%#{params[:query]}%")
       render layout: 'application_white'
     else
-      @top_rated_movies = policy_scope(Movie).joins(:reviews).select("movies.id, movies.poster, movies.title, avg(reviews.rating) as average_rating").group("movies.id").order("average_rating DESC")
+      @top_rated_movies = policy_scope(Movie).joins(:reviews).where.not(reviews: {user_id: current_user.id}).select("movies.id, movies.poster, movies.title, avg(reviews.rating) as average_rating").group("movies.id").order("average_rating DESC")
       @popular_watchlists = Watchlist.joins(:followings).select("watchlists.id, watchlists.photo, watchlists.name, watchlists.user_id, count(follows.id) as followers").group("watchlists.id").order("followers desc")
       render layout: 'application_white'
     end

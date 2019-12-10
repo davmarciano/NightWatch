@@ -44,7 +44,11 @@
                 <% user_review.rating.times do  %>
                   <i class="fas fa-star rating"></i>
                 <% end %>
-                <p> <%= user_review.content %> </p>
+                <% if  user_review.content.length < 70 %>
+                  <p> <%= user_review.content %> </p>
+                <% else  %>
+                <p> <%= user_review.content.first(70) %> [...] </p>
+                <% end %>
               <% end %>
             </div>
           </div>

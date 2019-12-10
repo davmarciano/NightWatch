@@ -11,8 +11,8 @@
         <br>
         <small><em>by <%= link_to profile_path(review.user), style: "color:#DE4779" do %><%= review.user.first_name %> <%= review.user.last_name unless nil %><% end %></em></small>
       </div>
-      <div class="review-created align-self-center">
-        <p>created <%= distance_of_time_in_words(Time.now - review.created_at)%> ago</p>
+      <div class="review-created align-self-center" >
+        <p style="width: 190px" >created <%= distance_of_time_in_words(Time.now - review.created_at)%> ago</p>
       </div>
     </div>
   <% end %>

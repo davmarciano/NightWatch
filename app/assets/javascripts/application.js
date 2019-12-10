@@ -4,8 +4,6 @@
 //= require jquery.slick
 //= require slick.js
 
-
-
 document.addEventListener('DOMContentLoaded', function(){
   if (document.querySelector(".my-watchlists-line-wrapper")) {
     slickItem()
