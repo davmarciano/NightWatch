@@ -11,5 +11,8 @@ function refreshForm(innerHTML) {
   refreshForm('<%= j render "shared/addmovie_form", modal_watchlist_movie: WatchlistMovie.new %>');
   document.getElementById('movie-close').click()
   window.starRating();
+
+  alert("You movie has been added")
+  window.location = "<%= watchlist_path(@watchlist_movie.watchlist) %>";
 <% end %>
 

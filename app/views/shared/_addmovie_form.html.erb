@@ -35,6 +35,11 @@
             </label>
             <% end %>
           </div>
+          <% if modal_watchlist_movie.errors.any? %>
+            <% modal_watchlist_movie.errors.full_messages.each do |error| %>
+              <div class="error" style="color: red"><%= error %></div>
+            <% end %>
+          <% end %>
         </div>
         <%# f.input :watchlist_id, collection: Watchlist.where(user: current_user).where.not(name: "Saved"), as: :check_boxes, input_html: { multiple: true }, label: "Add to Watchlist", selected: @watchlist.id %>
         <%# f.input :watchlist_id, collection: Watchlist.where(user: current_user).where.not(name: "Saved"), as: :check_boxes,  input_html: { multiple: true }, label: "Add to Watchlist"%>

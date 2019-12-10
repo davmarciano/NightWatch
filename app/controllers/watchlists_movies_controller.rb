@@ -3,8 +3,6 @@ class WatchlistsMoviesController < ApplicationController
   end
 
   def create
-        # binding.pry
-
     params["watchlist_movie"]["watchlist_ids"].each do |watchlist_id|
       @watchlist_movie = WatchlistMovie.new(watchlist_movie_params)
       @watchlist_movie.watchlist_id = watchlist_id unless watchlist_id == ""
@@ -15,16 +13,6 @@ class WatchlistsMoviesController < ApplicationController
           user_id: current_user.id)
       end
     end
-
-    # if params[:watchlist_movie][:movie].to_i > 0
-    #   @movie = Movie.find(params[:watchlist_movie][:movie])
-    #   @watchlist_movie.movie = @movie
-    # end
-
-    # if params[:watchlist_movie][:watchlist].to_i > 0
-    #   @watchlist = Watchlist.find(params[:watchlist_movie][:watchlist])
-    #   @watchlist_movie.watchlist = @watchlist
-    # end
 
     respond_to do |format|
       format.html { redirect_to movies_path } # we do not really expect html, but only JS
