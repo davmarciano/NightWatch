@@ -105,8 +105,10 @@
             <div class="movie-card">
               <img src="<%= movie.poster %>" class="card-img-top" alt="Movie Poster">
               <p> <%= movie.title %> </p>
-              <% movie.friends_average_rating(current_user).times do %>
-              <i class="fas fa-star rating"></i>
+              <% unless movie.friends_average_rating(current_user) == nil  %>
+                <% movie.friends_average_rating(current_user).times do %>
+                <i class="fas fa-star rating"></i>
+                <% end %>
               <% end %>
             </div>
             <% end %>
