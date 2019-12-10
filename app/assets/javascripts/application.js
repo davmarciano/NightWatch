@@ -16,7 +16,7 @@
 //   slickMovies();
 // }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function(){
   if (document.querySelector(".my-watchlists-line-wrapper")) {
     slick();
   }
