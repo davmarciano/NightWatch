@@ -46,6 +46,7 @@
 
     <div class="my-watchlists-line-wrapper" data-watchlist-count="<%= current_user.watchlists.count %>" style="justify-content: start;">
       <% current_user.watchlists.each do |watchlist| %>
+      <% unless watchlist == current_user.watchlists.first %>
         <div class="multiple-watchlists">
           <%= link_to watchlist_path(watchlist), class: "movie-card-link" do  %>
             <div class="watchlist-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(
@@ -58,6 +59,7 @@
                 <p><%= watchlist.name %> </p>
               </div>
               </div>
+              <% end %>
           <% end %>
             </div> <!-- .watchlist-card -->
       <% end %>
@@ -72,6 +74,7 @@
 
       <div class="my-watchlists-line-wrapper" data-watchlist-count="<%= @user.watchlists.count %>" style="justify-content: start;">
         <% @user.watchlists.each do |watchlist| %>
+        <% unless watchlist == @user.watchlists.first %>
           <div class="multiple-watchlists">
             <%= link_to watchlist_path(watchlist), class: "movie-card-link" do  %>
               <div class="watchlist-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(
@@ -84,6 +87,7 @@
                   <p><%= watchlist.name %> </p>
                 </div>
               </div> <!-- .watchlist-card -->
+            <% end %>
             <% end %>
           </div>
         <% end %>
