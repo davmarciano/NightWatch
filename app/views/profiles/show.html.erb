@@ -46,63 +46,10 @@
 
     <div class="my-watchlists-line-wrapper" data-watchlist-count="<%= current_user.watchlists.count %>" style="justify-content: start;">
       <% current_user.watchlists.each do |watchlist| %>
-      <% unless watchlist == current_user.watchlists.first %>
-        <div class="multiple-watchlists">
-
-          <%= link_to watchlist_path(watchlist), class: "movie-card-link" do  %>
-
-            <div class="watchlist-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(
-              <% if watchlist.photo? %>
-                <%= cl_image_path watchlist.photo, class:"watchlist-photo" %>
-              <% else %>
-                <%= image_path "https://source.unsplash.com/featured/?movies" %>
-              <% end %>)">
-              <div class="watchlist-card-name">
-                <p><%= watchlist.name %> </p>
-							</div>
-
-              </div>
-
-           <% end %>
-
-
-        </div>
-        <% end %>
-      <% end %>
-     </div>
-
-
-
-      </div> <!-- .watchlist-card -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <% else %>
-
-    <div class="d-flex justify-content-between">
-      <h2 class="mt-5"><%= @user.first_name %>'s Watchlists</h2>
-      </div>
-      <hr>
-
-      <div class="my-watchlists-line-wrapper" data-watchlist-count="<%= @user.watchlists.count %>" style="justify-content: start;">
-        <% @user.watchlists.each do |watchlist| %>
-        <% unless watchlist == @user.watchlists.first %>
+        <% unless watchlist == current_user.watchlists.first %>
           <div class="multiple-watchlists">
             <%= link_to watchlist_path(watchlist), class: "movie-card-link" do  %>
+
               <div class="watchlist-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(
                 <% if watchlist.photo? %>
                   <%= cl_image_path watchlist.photo, class:"watchlist-photo" %>
@@ -111,11 +58,38 @@
                 <% end %>)">
                 <div class="watchlist-card-name">
                   <p><%= watchlist.name %> </p>
-                </div>
-              </div> <!-- .watchlist-card -->
-            <% end %>
+  							</div>
+              </div>
             <% end %>
           </div>
+        <% end %>
+      <% end %>
+     </div>
+  <% else %>
+
+    <div class="d-flex justify-content-between">
+      <h2 class="mt-5"><%= @user.first_name %>'s Watchlists</h2>
+    </div>
+      <hr>
+
+      <div class="my-watchlists-line-wrapper" data-watchlist-count="<%= @user.watchlists.count %>" style="justify-content: start;">
+        <% @user.watchlists.each do |watchlist| %>
+          <% unless watchlist == @user.watchlists.first %>
+            <div class="multiple-watchlists">
+              <%= link_to watchlist_path(watchlist), class: "movie-card-link" do  %>
+                <div class="watchlist-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(
+                  <% if watchlist.photo? %>
+                    <%= cl_image_path watchlist.photo, class:"watchlist-photo" %>
+                  <% else %>
+                    <%= image_path "https://source.unsplash.com/featured/?movies" %>
+                  <% end %>)">
+                  <div class="watchlist-card-name">
+                    <p><%= watchlist.name %> </p>
+                  </div>
+                </div> <!-- .watchlist-card -->
+              <% end %>
+            </div>
+          <% end %>
         <% end %>
       </div>
   <% end %>
