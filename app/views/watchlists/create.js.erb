@@ -10,5 +10,7 @@ function refreshForm(innerHTML) {
   refreshForm('<%= j render "shared/createwatchlist_form", modal_watchlist: Watchlist.new %>');
   document.getElementById('watchlist-close').click()
   // addWatchlist('watchlistHTML')
+  alert("You watchlist has been created")
+  window.location = "<%= watchlist_path(@watchlist) %>";
 <% end %>
 
