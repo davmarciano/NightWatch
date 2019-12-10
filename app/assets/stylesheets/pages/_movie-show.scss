@@ -16,3 +16,11 @@
 hr.line {
   border-top: 1px solid #8c8b8b;
 }
+
+.wiki-link > a {
+  text-decoration: none;
+  color: #464b56;
+  &:hover {
+    text-decoration: underline;
+  }
+}

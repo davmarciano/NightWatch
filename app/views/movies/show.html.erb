@@ -21,9 +21,12 @@
               <i class="fas fa-star rating"></i>
             <% end %> <small><em>– average friends rating</em></small></p>
           <% end %>
-
-          <p><strong>Directed by: </strong><%= @movie.directors %></p>
-          <p><strong>Starring: </strong><%= @movie.actors %></p>
+          <p class="wiki-link"><strong>Directed by: </strong><%= link_to "#{@movie.directors}" , "https://en.wikipedia.org/wiki/#{@movie.directors}", target: :_blank %></p>
+          <p class="wiki-link"><strong>Starring: </strong>
+            <% @movie.actors.split(", ").each do |actor| %>
+             <%= link_to "#{actor}," , "https://en.wikipedia.org/wiki/#{actor}", target: :_blank %>
+            <% end %>
+          </p>
           <p style="margin-bottom: 0px;"><%= @movie.plot %></p>
         </div>
 
