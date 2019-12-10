@@ -18,7 +18,7 @@
         <div class="form-group">
           <label class="control-label check_boxes optional">Add to Watchlist</label>
           <input type="hidden" name="watchlist_movie[watchlist_ids][]" value="">
-          <div class="watchlist-choices d-flex">
+          <div class="watchlist-choices">
             <% Watchlist.where(user: current_user).where.not(name: "Saved").each do |watchlist| %>
             <input type="checkbox" class="d-none" value="<%= watchlist.id %>" name="watchlist_movie[watchlist_ids][]" id="watchlist_movie_watchlist_ids_<%= watchlist.id %>" <%= "checked" if @watchlist && watchlist == @watchlist %> >
             <label for="watchlist_movie_watchlist_ids_<%= watchlist.id %>">
@@ -46,6 +46,7 @@
         <%= f.input :comment, label: "Add comment"%>
         <%= f.input :rating, collection: (1..5).to_a, label: "Give a rating"%>
       </div>
+
 
       <div class="modal-footer">
         <button type="button" class="btn button-pink-small-secondary" data-dismiss="modal">Cancel</button>
