@@ -2,7 +2,7 @@
   <div class="banner-content-white">
     <h1><%= @watchlist.name %> </h1>
     <p style="font-weight:lighter;font-size:14px;font-style:italic;">Created by <%= link_to profile_path(@watchlist.user), style: "color:#DE4779" do %><%= @watchlist.user.first_name %> <%= @watchlist.user.last_name unless nil%> <% end %></p>
-    <p style="font-weight: lighter;font-size: 14px;"><i class="fas fa-users"></i><%= @watchlist.followers_count  %> Followers</p>
+    <p style="font-weight: lighter;font-size: 14px;"><i class="fas fa-users"></i><%= pluralize(@watchlist.followers_count, 'Follower')  %> </p>
     <p><%= @watchlist.description %></p>
   </div>
 
@@ -49,10 +49,12 @@
             </div>
           </div>
         <% end %>
-        <%= link_to watchlists_movie_path(movie, watchlist: @watchlist),
-                    method: :delete, data: { confirm: "Are you sure?" },
-                    class: 'icon-movie-trash'  do %>
-          <i class="fas fa-trash-alt"></i>
+        <% if @is_owner %>
+          <%= link_to watchlists_movie_path(movie, watchlist: @watchlist),
+                      method: :delete, data: { confirm: "Are you sure?" },
+                      class: 'icon-movie-trash'  do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
         <% end %>
       </div>
     <% end %>
