@@ -28,7 +28,7 @@
     <% end %>
   </div>
 <% else %>
-  <h3>Suggestions for <%= current_user.first_name %></h3>
+  <h2 class="mt-5">Suggestions for <%= current_user.first_name %></h2>
   <hr>
   <div class="row" style="align-content: flex-start;">
     <% @suggested_users.each do |user| %>

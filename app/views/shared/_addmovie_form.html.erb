@@ -38,9 +38,6 @@
         </div>
         <%# f.input :watchlist_id, collection: Watchlist.where(user: current_user).where.not(name: "Saved"), as: :check_boxes, input_html: { multiple: true }, label: "Add to Watchlist", selected: @watchlist.id %>
         <%# f.input :watchlist_id, collection: Watchlist.where(user: current_user).where.not(name: "Saved"), as: :check_boxes,  input_html: { multiple: true }, label: "Add to Watchlist"%>
-
-
-
         <%= f.input :comment, label: "Add comment"%>
         <%= f.input :rating, collection: (1..5).to_a, label: "Give a rating"%>
       </div>
