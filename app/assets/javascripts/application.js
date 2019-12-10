@@ -16,17 +16,19 @@
 //   slickMovies();
 // }
 
-
-
-if (document.querySelector(".my-watchlists-line-wrapper")) {
-  slick();
-  console.log(88888)
-} else if (document.querySelector(".friends-line-wrapper")) {
-  slickFriends();
-} else if (document.querySelector(".followed-watchlists-line-wrapper")) {
-  slickFollowed();
-} else if (document.querySelector(".movies-line-wrapper")) {
-  slickMovies();
-}
-
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.querySelector(".my-watchlists-line-wrapper")) {
+    slick();
+  }
+  if (document.querySelector(".friends-line-wrapper")) {
+    slickFriends();
+  }
+  if (document.querySelector(".followed-watchlists-line-wrapper")) {
+    slickFollowed();
+    console.log(8888);
+  }
+  if (document.querySelector(".movies-line-wrapper")) {
+    slickMovies();
+  }
+})
 
