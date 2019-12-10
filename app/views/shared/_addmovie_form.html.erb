@@ -18,7 +18,7 @@
         <div class="form-group">
           <label class="control-label check_boxes optional">Add to Watchlist</label>
           <input type="hidden" name="watchlist_movie[watchlist_ids][]" value="">
-          <div class="watchlist-choices">
+          <div class="watchlist-choices d-flex">
             <% Watchlist.where(user: current_user).where.not(name: "Saved").each do |watchlist| %>
             <input type="checkbox" class="d-none" value="<%= watchlist.id %>" name="watchlist_movie[watchlist_ids][]" id="watchlist_movie_watchlist_ids_<%= watchlist.id %>" <%= "checked" if @watchlist && watchlist == @watchlist %> >
             <label for="watchlist_movie_watchlist_ids_<%= watchlist.id %>">
