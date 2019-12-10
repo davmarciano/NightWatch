@@ -3,7 +3,19 @@ class WatchlistsMoviesController < ApplicationController
   end
 
   def create
-    @watchlist_movie = WatchlistMovie.new(watchlist_movie_params)
+        # binding.pry
+
+    params["watchlist_movie"]["watchlist_ids"].each do |watchlist_id|
+      @watchlist_movie = WatchlistMovie.new(watchlist_movie_params)
+      @watchlist_movie.watchlist_id = watchlist_id unless watchlist_id == ""
+      if @watchlist_movie.save
+        Review.create(content: @watchlist_movie.comment,
+          rating: @watchlist_movie.rating,
+          movie_id: @watchlist_movie.movie_id,
+          user_id: current_user.id)
+      end
+    end
+
     # if params[:watchlist_movie][:movie].to_i > 0
     #   @movie = Movie.find(params[:watchlist_movie][:movie])
     #   @watchlist_movie.movie = @movie
@@ -13,13 +25,6 @@ class WatchlistsMoviesController < ApplicationController
     #   @watchlist = Watchlist.find(params[:watchlist_movie][:watchlist])
     #   @watchlist_movie.watchlist = @watchlist
     # end
-
-    if @watchlist_movie.save
-      Review.create(content: @watchlist_movie.comment,
-        rating: @watchlist_movie.rating,
-        movie_id: @watchlist_movie.movie_id,
-        user_id: current_user.id)
-    end
 
     respond_to do |format|
       format.html { redirect_to movies_path } # we do not really expect html, but only JS
@@ -38,6 +43,6 @@ class WatchlistsMoviesController < ApplicationController
   private
 
   def watchlist_movie_params
-    params.require(:watchlist_movie).permit(:comment, :rating, :watchlist_id, :movie_id)
+    params.require(:watchlist_movie).permit(:comment, :rating, :watchlist_ids, :movie_id)
   end
 end
