@@ -4,6 +4,7 @@ function refreshForm(innerHTML) {
 }
 
 
+
 <% if @watchlist_movie.errors.any? %>
   refreshForm('<%= j render "shared/addmovie_form", modal_watchlist_movie: @watchlist_movie %>');
 <% else %>

@@ -48,7 +48,9 @@
       <% current_user.watchlists.each do |watchlist| %>
       <% unless watchlist == current_user.watchlists.first %>
         <div class="multiple-watchlists">
+
           <%= link_to watchlist_path(watchlist), class: "movie-card-link" do  %>
+
             <div class="watchlist-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(
               <% if watchlist.photo? %>
                 <%= cl_image_path watchlist.photo, class:"watchlist-photo" %>
@@ -57,13 +59,37 @@
               <% end %>)">
               <div class="watchlist-card-name">
                 <p><%= watchlist.name %> </p>
+							</div>
+
               </div>
-              </div>
-              <% end %>
-          <% end %>
-            </div> <!-- .watchlist-card -->
+
+           <% end %>
+
+
+        </div>
+        <% end %>
       <% end %>
-    </div>
+     </div>
+
+
+
+      </div> <!-- .watchlist-card -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <% else %>
 
