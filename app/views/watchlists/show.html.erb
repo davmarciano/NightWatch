@@ -1,11 +1,12 @@
-<div class="d-flex justify-content-between">
-  <div>
-    <h1><%= @watchlist.name %> <element style="font-weight:lighter;font-size:14px;font-style:italic;">Created by <%= link_to profile_path(@watchlist.user), style: "color:#DE4779" do %><%= @watchlist.user.first_name %> <%= @watchlist.user.last_name unless nil%> <% end %></element></h1>
+<div class="banner-picture-watchlist" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @watchlist.photo %>);">
+  <div class="banner-content-white">
+    <h1><%= @watchlist.name %> </h1>
+    <p style="font-weight:lighter;font-size:14px;font-style:italic;">Created by <%= link_to profile_path(@watchlist.user), style: "color:#DE4779" do %><%= @watchlist.user.first_name %> <%= @watchlist.user.last_name unless nil%> <% end %></p>
+    <p style="font-weight: lighter;font-size: 14px;"><i class="fas fa-users"></i><%= @watchlist.followers_count  %> Followers</p>
     <p><%= @watchlist.description %></p>
-    <p><i class="fas fa-users"></i><%= @watchlist.followers_count  %> Followers</p>
   </div>
 
-  <div class="mr-5 mt-3">
+<div class="position-absolute" style="right: 2%; top: 13%;">
     <% if !@is_owner %>
       <% if @following %>
         <%= link_to "Unfollow", follow_watchlist_path(@watchlist), class: "button-pink" %>
@@ -13,9 +14,9 @@
         <%= link_to "Follow", follow_watchlist_path(@watchlist), class: "button-pink" %>
       <% end %>
     <% else %>
-      <%= link_to '#', class: "button-pink", data: {toggle: "modal", target:"#addMovieModal"} do %>
-          Add Movie
-        <% end %>
+      <%= link_to '#', data: {toggle: "modal", target:"#addMovieModal"} do %>
+        <i class="fas fa-plus-circle icon-pink-big"></i>
+      <% end %>
       <% unless @watchlist == current_user.watchlists.first %>
         <%= link_to edit_watchlist_path(@watchlist) do %>
           <i class="fas fa-edit icon-pink-big"></i>
@@ -25,7 +26,7 @@
         <% end %>
       <% end %>
     <% end %>
-  </div>
+</div>
 </div>
 <hr>
 

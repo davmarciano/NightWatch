@@ -27,6 +27,7 @@
                   <% end %>)">
                   <div class="watchlist-card-name">
                     <p><%= watchlist.name %> </p>
+                    <p style="font-weight:lighter;font-size:14px;font-style:italic;">Created by <%= watchlist.user.first_name %> <%= watchlist.user.last_name unless nil%></p>
                   </div>
               <% end %>
             </div>

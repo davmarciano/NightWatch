@@ -5,9 +5,26 @@
   position: relative;
 }
 
+.banner-picture-watchlist {
+  height: 30vh;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding-top: 30px;
+  position: relative;
+
+}
+
 .banner-content {
   position: absolute;
   margin-left: 20px;
+}
+
+.banner-content-white {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-weight: bold;
 }
 
 .banner-container {
