@@ -1,12 +1,12 @@
 <div class="landingpage-background vh-100">
   <%= image_tag "final_logo.png", class: "logo-home" %>
-  <h1>Become a part of the unique network!</h1>
-  <p>Follow your friends • Get inspiration • Create your own watchlists</p>
+  <h1>Follow your friends • Get inspiration • Create your own watchlists</h1>
+  <p></p>
   <br>
     <% if user_signed_in? %>
-      <%= link_to "Join the network", movies_path, class: "button-pink" %>
+      <%= link_to "Get inspired", movies_path, class: "button-pink" %>
     <% else %>
-      <%= link_to "Join the network", new_user_registration_path, class: "button-pink"  %>
+      <%= link_to "Get inspired", new_user_registration_path, class: "button-pink"  %>
     <% end %>
 </div>
 
