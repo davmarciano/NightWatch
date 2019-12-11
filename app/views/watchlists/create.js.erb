@@ -3,14 +3,16 @@ function refreshForm(innerHTML) {
   newWatchlistForm.innerHTML = innerHTML;
 }
 
+console.log('hellooooooooo');
 
 <% if @watchlist.errors.any? %>
   refreshForm('<%= j render "shared/createwatchlist_form", modal_watchlist: @watchlist %>');
 <% else %>
-  refreshForm('<%= j render "shared/createwatchlist_form", modal_watchlist: Watchlist.new %>');
-  document.getElementById('watchlist-close').click()
-  // addWatchlist('watchlistHTML')
-  alert("You watchlist has been created")
-  window.location = "<%= watchlist_path(@watchlist) %>";
+  window.createWatchlistSubmission();
+  setTimeout(() => {
+    window.location = "<%= watchlist_path(@watchlist) %>";
+  }, 2000)
+    refreshForm('<%= j render "shared/createwatchlist_form", modal_watchlist: Watchlist.new %>');
+    document.getElementById('watchlist-close').click()
 <% end %>
 
