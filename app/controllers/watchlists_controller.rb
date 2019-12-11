@@ -25,8 +25,13 @@ class WatchlistsController < ApplicationController
     if @watchlist.save
       respond_to do |format|
         format.html { redirect_to watchlist_path(@watchlist) }
-        format.js # <-- will render `app/views/reviews/create.js.erb`
+        format.js
       end
+    else
+    respond_to do |format|
+      format.html { redirect_to watchlist_path(@watchlist) } # we do not really expect html, but only JS
+      format.js  # <-- idem
+    end
     end
   end
 

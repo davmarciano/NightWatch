@@ -7,12 +7,12 @@ function refreshForm(innerHTML) {
 
 <% if @watchlist_movie.errors.any? %>
   refreshForm('<%= j render "shared/addmovie_form", modal_watchlist_movie: @watchlist_movie %>');
-<% else %>
-  refreshForm('<%= j render "shared/addmovie_form", modal_watchlist_movie: WatchlistMovie.new %>');
-  document.getElementById('movie-close').click()
   window.starRating();
-
-  alert("You movie has been added")
+<% else %>
+  window.starRating();
+  window.addMovieSubmission();
+  refreshForm('<%= j render "shared/addmovie_form", modal_watchlist_movie: WatchlistMovie.new %>');
+  document.getElementById('movie-close').click();
   window.location = "<%= watchlist_path(@watchlist_movie.watchlist) %>";
 <% end %>
 

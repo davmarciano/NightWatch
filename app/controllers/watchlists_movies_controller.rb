@@ -3,7 +3,9 @@ class WatchlistsMoviesController < ApplicationController
   end
 
   def create
-    params["watchlist_movie"]["watchlist_ids"].each do |watchlist_id|
+    @created_watchlists
+    watchlist_ids = params["watchlist_movie"]["watchlist_ids"]
+    watchlist_ids.each do |watchlist_id|
       @watchlist_movie = WatchlistMovie.new(watchlist_movie_params)
       @watchlist_movie.watchlist_id = watchlist_id unless watchlist_id == ""
       if @watchlist_movie.save
@@ -14,9 +16,16 @@ class WatchlistsMoviesController < ApplicationController
       end
     end
 
-    respond_to do |format|
-      format.html { redirect_to movies_path } # we do not really expect html, but only JS
-      format.js  # <-- idem
+    if @watchlist_movie.save
+      respond_to do |format|
+        format.html { redirect_to movies_path } # we do not really expect html, but only JS
+        format.js  # <-- idem
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to movies_path } # we do not really expect html, but only JS
+        format.js  # <-- idem
+      end
     end
   end
 
