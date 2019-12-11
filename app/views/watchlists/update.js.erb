@@ -1,0 +1,16 @@
+function refreshForm(innerHTML) {
+  const editWatchlistForm = document.getElementById('edit_watchlist');
+  editWatchlistForm.innerHTML = innerHTML;
+}
+
+
+<% if @watchlist.errors.any? %>
+  refreshForm('<%= j render "shared/updatewatchlist_form", modal_watchlist: @watchlist %>');
+<% else %>
+  refreshForm('<%= j render "shared/updatewatchlist_form", modal_watchlist: @watchlist %>');
+  document.getElementById('watchlist-close').click()
+  // addWatchlist('watchlistHTML')
+  alert("Your watchlist has been updated")
+  window.location = "<%= watchlist_path(@watchlist) %>";
+<% end %>
+

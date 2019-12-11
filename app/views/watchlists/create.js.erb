@@ -8,11 +8,13 @@ console.log('hellooooooooo');
 <% if @watchlist.errors.any? %>
   refreshForm('<%= j render "shared/createwatchlist_form", modal_watchlist: @watchlist %>');
 <% else %>
+
   window.createWatchlistSubmission();
   setTimeout(() => {
     window.location = "<%= watchlist_path(@watchlist) %>";
   }, 2000)
     refreshForm('<%= j render "shared/createwatchlist_form", modal_watchlist: Watchlist.new %>');
     document.getElementById('watchlist-close').click()
+
 <% end %>
 

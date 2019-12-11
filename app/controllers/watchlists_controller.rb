@@ -36,12 +36,18 @@ class WatchlistsController < ApplicationController
   end
 
   def edit
-    set_watchlist
+    @watchlist = Watchlist.find(params[:id])
+    render layout: 'application_white'
   end
 
   def update
     @watchlist = Watchlist.find(params[:watchlist_id])
-    @watchlist.update(params[:watchlist])
+    if @watchlist.update(params[:watchlist])
+      respond_to do |format|
+        format.html { redirect_to watchlist_path(@watchlist) }
+        format.js # <-- will render `app/views/reviews/create.js.erb`
+      end
+    end
   end
 
   def destroy
