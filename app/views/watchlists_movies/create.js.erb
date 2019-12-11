@@ -11,8 +11,10 @@ function refreshForm(innerHTML) {
 <% else %>
   window.starRating();
   window.addMovieSubmission();
+  setTimeout(() => {
+    window.location = "<%= watchlist_path(@watchlist_movie.watchlist) %>";
+  }, 2000)
   refreshForm('<%= j render "shared/addmovie_form", modal_watchlist_movie: WatchlistMovie.new %>');
   document.getElementById('movie-close').click();
-  window.location = "<%= watchlist_path(@watchlist_movie.watchlist) %>";
 <% end %>
 
