@@ -1,7 +1,7 @@
 <div class="landingpage-background vh-100">
   <%= image_tag "final_logo.png", class: "logo-home" %>
   <h1>Become a part of the unique network!</h1>
-  <p>Get inspiration • Create your own watchlists • Follow your friends</p>
+  <p>Follow your friends • Get inspiration • Create your own watchlists</p>
   <br>
     <% if user_signed_in? %>
       <%= link_to "Join the network", movies_path, class: "button-pink" %>
