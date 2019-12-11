@@ -18,9 +18,10 @@
         <i class="fas fa-plus-circle icon-pink-big"></i>
       <% end %>
       <% unless @watchlist == current_user.watchlists.first %>
-        <%= link_to edit_watchlist_path(@watchlist) do %>
+        <%= link_to '#', data: {toggle: "modal", target:"#updateWatchlistModal"} do %>
           <i class="fas fa-edit icon-pink-big"></i>
         <% end %>
+        <%= render 'shared/updatewatchlist_modal', modal_watchlist: @watchlist, edit: true %>
         <%= link_to watchlist_path(@watchlist), method: :delete, data: { confirm: "Are you sure?" }  do %>
           <i class="fas fa-trash-alt icon-pink-big"></i>
         <% end %>
