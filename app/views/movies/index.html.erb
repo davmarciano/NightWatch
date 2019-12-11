@@ -75,7 +75,6 @@
       <h2 class="mt-5"> Search Results Movies</h2>
       <hr>
       <% if @movies.present? %>
-        <% @watchlists.each do |watchlist| %>
           <div class="row" style="justify-content: normal,">
             <% @movies.each do |movie| %>
               <%= link_to movie_path(movie), class: "movie-card-link" do  %>
@@ -89,7 +88,6 @@
               <% end %>
             <% end %>
           </div>
-        <% end %>
 
       <% else %>
         <p><em>No movies found</em></p>
