@@ -2,7 +2,7 @@
   <h1>Discover</h1>
     <h5>Didn't decide on a movie yet?</h5>
     <%= form_tag movies_path, method: :get do %>
-      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find a movie" %>
+      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search for Movies, Watchlists, Actors, Directors, Genres" %>
       <%= submit_tag "Search", class: "button-pink-flat" %>
     <% end %>
 </div>
@@ -10,7 +10,7 @@
 <!-- Search Results Watchlists -->
 
   <% if params[:query].present? %>
-    <h2 class="mt-5">Search Results Watchlists</h2>
+    <h2 class="mt-5">Watchlists - results for "<%= params[:query] %>"</h2>
       <hr>
       <% if @watchlists.present? %>
       <!-- Watchlist card for Search -->
@@ -72,7 +72,7 @@
 <!-- Search Results Movies-->
 
     <% if params[:query].present? %>
-      <h2 class="mt-5"> Search Results Movies</h2>
+      <h2 class="mt-5"> Movies - Results for "<%= params[:query] %>"</h2>
       <hr>
       <% if @movies.present? %>
           <div class="row" style="justify-content: normal,">
