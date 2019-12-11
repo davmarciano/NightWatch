@@ -2,11 +2,9 @@
   margin-left: 16px;
 }
 
-
-.form-control {
-  border-radius: 5px;
-}
-
+// .form-control {
+//   border-radius: 5px;
+// }
 
 .select2.select2-container.select2-container--default {
   width: 100% !important;
@@ -52,8 +50,7 @@ input:checked {
 }
 
 .select2-results__option--highlighted,
-.select2-results__option:hover{
+.select2-results__option:hover {
   background: $pink !important;
-
 }
 

@@ -47,7 +47,7 @@
 .movie-review-card > img {
   background-color: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3));
   height: 180px;
-  width: 120px;
+  // width: 120px;
   border-radius: 10px;
   // box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
   object-fit: cover;
@@ -121,11 +121,14 @@
 }
 
 .review-created {
-  padding-left: 370px;
   font-style: italic;
   font-size: 14px;
   color: gray;
   font-weight: bold;
+  width: 20%;
+}
+.review-content {
+  flex: 1;
 }
 
 .watchlist-card-small{
@@ -143,6 +146,5 @@
   justify-content: center;
   align-items: center;
   width: 120px;
-  margin-right: 8px;
 }
 

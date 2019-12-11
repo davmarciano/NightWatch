@@ -4,7 +4,7 @@
       <% if review.user.profile_picture? %>
         <%= cl_image_tag review.user.profile_picture, class: "avatar-bordered" %>
       <% end %>
-      <div class="align-self-center">
+      <div class="align-self-center review-content">
         <% review.rating.times do  %>
           <i class="fas fa-star rating"></i>
         <% end %> – <%= review.content %>
