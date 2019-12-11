@@ -1,9 +1,16 @@
-<div class="banner-picture-watchlist" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @watchlist.photo %>);">
+<div class="banner-picture-watchlist" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(
+  <% if @watchlist.photo.present? %>
+    <%= @watchlist.photo %>
+  <% else %>
+    <%= "https://source.unsplash.com/featured/?movies" %>
+  <% end %>);">
   <div class="banner-content-white">
     <h1><%= @watchlist.name %> </h1>
-    <p style="font-weight:lighter;font-size:14px;font-style:italic;">Created by <%= link_to profile_path(@watchlist.user), style: "color:#DE4779" do %><%= @watchlist.user.first_name %> <%= @watchlist.user.last_name unless nil%> <% end %></p>
-    <p style="font-weight: lighter;font-size: 14px;"><i class="fas fa-users"></i><%= pluralize(@watchlist.followers_count, 'Follower')  %> </p>
-    <p><%= @watchlist.description %></p>
+    <% unless @watchlist.name == "Saved" %>
+      <p style="font-weight:lighter;font-size:14px;font-style:italic;">Created by <%= link_to profile_path(@watchlist.user), style: "color:#DE4779" do %><%= @watchlist.user.first_name %> <%= @watchlist.user.last_name unless nil%> <% end %></p>
+      <p style="font-weight: lighter;font-size: 14px;"><i class="fas fa-users"></i><%= pluralize(@watchlist.followers_count, 'Follower')  %> </p>
+      <p><%= @watchlist.description %></p>
+    <% end %>
   </div>
 
 <div class="position-absolute" style="right: 2%; top: 13%;">
@@ -14,10 +21,10 @@
         <%= link_to "Follow", follow_watchlist_path(@watchlist), class: "button-pink" %>
       <% end %>
     <% else %>
-      <%= link_to '#', data: {toggle: "modal", target:"#addMovieModal"} do %>
-        <i class="fas fa-plus-circle icon-pink-big"></i>
-      <% end %>
       <% unless @watchlist == current_user.watchlists.first %>
+        <%= link_to '#', data: {toggle: "modal", target:"#addMovieModal"} do %>
+          <i class="fas fa-plus-circle icon-pink-big"></i>
+        <% end %>
         <%= link_to edit_watchlist_path(@watchlist) do %>
           <i class="fas fa-edit icon-pink-big"></i>
         <% end %>
