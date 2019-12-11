@@ -11,6 +11,8 @@
 </div>
 
 <% if params[:query].present? %>
+  <h2 class="mt-5">Results for "<%= params[:query] %>" </h2>
+  <hr>
   <div class="row" style="align-content: flex-start;">
     <% @users.each do |user| %>
       <% unless user == current_user || current_user.following?(user) %>
